@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// プレイヤーの入力に応じてロケットを動かすクラス
-/// </summary>
-public class PlayerRocketController : MonoBehaviour
+public class PlayerRocketController2 : MonoBehaviour
 {
     [SerializeField] private float moveForce = 3f;
     [SerializeField] private float rotationSpeed = 3f;
+    [SerializeField] private float minSpeed = 3f;
+    [SerializeField] private float maxSpeed = 10f;
+    [SerializeField] private float decelerationRate = 0.98f;
     private Rigidbody2D m_rigidbody;
     private bool isMoveForce; //加速しているか
     private PlayerRocket m_rocket;
@@ -22,6 +22,11 @@ public class PlayerRocketController : MonoBehaviour
         this.m_rigidbody = GetComponent<Rigidbody2D>();
         this.m_rocket = GetComponent<PlayerRocket>();
         this.InjectionFire = this.transform.Find("InjectionFire").gameObject;
+    }
+
+    private void Start()
+    {
+        this.m_rigidbody.velocity = new Vector2(0f, 1f);
     }
 
     private void Update()
@@ -45,6 +50,15 @@ public class PlayerRocketController : MonoBehaviour
             this.m_rigidbody.AddRelativeForce(new Vector2(0f, this.moveForce));
             this.isMoveForce = false;
             this.InjectionFire.SetActive(false);
+        }
+        this.m_rigidbody.velocity *= this.decelerationRate;
+        if(this.m_rigidbody.velocity.magnitude < this.minSpeed)
+        {
+            this.m_rigidbody.velocity *= this.minSpeed / this.m_rigidbody.velocity.magnitude;
+        }
+        if(this.m_rigidbody.velocity.magnitude > this.maxSpeed)
+        {
+            this.m_rigidbody.velocity *= this.maxSpeed / this.m_rigidbody.velocity.magnitude;
         }
     }
 
@@ -77,6 +91,4 @@ public class PlayerRocketController : MonoBehaviour
             this.InjectionFire.SetActive(true);
         }
     }
-
-    
 }
