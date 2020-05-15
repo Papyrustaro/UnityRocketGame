@@ -6,13 +6,14 @@ using System;
 public class HomingOnAndOffMovementByForce : MonoBehaviour
 {
     [SerializeField] private float moveForce = 1f;
-    [SerializeField] private Transform playerPrefab;
+    //[SerializeField] private Transform playerPrefab;
     [SerializeField] private Vector2 forwardDirection = new Vector2(0f, 1f);
     [SerializeField] private float oneStopTime = 3f;
     [SerializeField] private float decelerationRate = 0.95f;
     [SerializeField] private float stopLowerSpeed = 0.5f;
     [SerializeField] private bool boundWall = false;
 
+    private Transform playerPrefab;
     private float countTime = 0f;
     private Vector3 forwardDirection3D;
     private Rigidbody2D m_rigidbody2D;
@@ -23,6 +24,11 @@ public class HomingOnAndOffMovementByForce : MonoBehaviour
     {
         this.m_rigidbody2D = GetComponent<Rigidbody2D>();
         this.forwardDirection3D = new Vector3(this.forwardDirection.x, this.forwardDirection.y, 0f).normalized;
+    }
+
+    private void Start()
+    {
+        this.playerPrefab = StageManager.playerPrefab.transform;
     }
     private void Update()
     {

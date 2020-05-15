@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1955272210741182768}
   - component: {fileID: 1955272210741182773}
   - component: {fileID: 2183463233034448298}
+  - component: {fileID: 9059170430976266447}
   m_Layer: 0
   m_Name: HomingObstacle3
   m_TagString: Untagged
@@ -115,5 +116,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 1
-  playerPrefab: {fileID: 0}
   forwardDirection: {x: -1.732, y: 1}
+  explosionInDestroy: {fileID: 325713126293832010, guid: bfa03db5357ff334a90e06745aa9dab7,
+    type: 3}
+--- !u!114 &9059170430976266447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955272210741182775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248de9d6c22c1f94c8fec4e604ad859f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTimeFromInstantiate: 5
+  destroyEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2183463233034448298}
+        m_MethodName: DestroyMissile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

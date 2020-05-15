@@ -11,10 +11,12 @@ public class PlayerRocket : MonoBehaviour
     private PlayerRocketController m_rocketController;
     private SpriteRenderer m_spriteRenderer;
 
+    
     public bool IsDied { get; private set; } = false;
     
     private void Awake()
     {
+        StageManager.playerPrefab = this.gameObject;
         this.m_spriteRenderer = GetComponent<SpriteRenderer>();
         this.m_rocketController = GetComponent<PlayerRocketController>();
     }
