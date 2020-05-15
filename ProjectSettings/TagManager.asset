@@ -15,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
-  - Missile
-  - Player
+  - CheckWall
+  - StageSize
   - Wall
   - Obstacle
   - 

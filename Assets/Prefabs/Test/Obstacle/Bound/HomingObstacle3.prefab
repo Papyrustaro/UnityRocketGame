@@ -116,8 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 5
-  playerPrefab: {fileID: 0}
   forwardDirection: {x: -1.732, y: 1}
+  explosionInDestroy: {fileID: 325713126293832010, guid: bfa03db5357ff334a90e06745aa9dab7,
+    type: 3}
 --- !u!58 &2896645448168209980
 CircleCollider2D:
   m_ObjectHideFlags: 0
