@@ -21,25 +21,21 @@ public class PlayerRocket : MonoBehaviour
         this.m_rocketController = GetComponent<PlayerRocketController>();
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void DestroyPlayerRocket()
     {
-        if (collision.CompareTag("Obstacle"))
+        this.IsDied = true;
+        this.m_rocketController.InjectionFire.SetActive(false);
+        Time.timeScale = 0f;
+        Debug.Log("墜落");
+        this.m_spriteRenderer.sprite = this.explosion_small;
+        StartCoroutine(DelayMethodRealTime(0.3f, () =>
         {
-            this.IsDied = true;
-            this.m_rocketController.InjectionFire.SetActive(false);
-            Time.timeScale = 0f;
-            Debug.Log("墜落");
-            this.m_spriteRenderer.sprite = this.explosion_small;
-            StartCoroutine(DelayMethodRealTime(0.3f, () =>
-            {
-                this.m_spriteRenderer.sprite = this.explosion_big;
-            }));
-            StartCoroutine(DelayMethodRealTime(1.5f, () =>
-            {
-                SceneManager.LoadScene("GameOver");
-            }));
-        }
+            this.m_spriteRenderer.sprite = this.explosion_big;
+        }));
+        StartCoroutine(DelayMethodRealTime(1.5f, () =>
+        {
+            SceneManager.LoadScene("GameOver");
+        }));
     }
 
     IEnumerator DelayMethodRealTime(float waitTime, Action action)

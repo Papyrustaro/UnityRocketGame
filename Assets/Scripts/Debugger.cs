@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Debugger : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> gameObjects = new List<GameObject>();
-
-    private void Start()
+    public void HaveDamagedFunc()
     {
-        foreach(GameObject obj in this.gameObjects)
-        {
-            Debug.Log(obj.transform.right);
-            //Debug.Log(obj.transform.left);
-            //Debug.Log(obj.transform.);
-        }
+        Debug.Log("ダメージを受けた" + Time.time);
+    }
+
+    public void DestroyFunc()
+    {
+        Debug.Log("死んだ!" + Time.time);
+    }
+
+    public void ContactEnemy()
+    {
+        Debug.Log("敵と衝突した");
     }
 }

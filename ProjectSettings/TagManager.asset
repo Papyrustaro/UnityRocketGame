@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Obstacle
   - Wall
+  - AttackToEnemy
+  - AttackToPlayer
+  - AttackToAll
+  - Enemy
   layers:
   - Default
   - TransparentFX
