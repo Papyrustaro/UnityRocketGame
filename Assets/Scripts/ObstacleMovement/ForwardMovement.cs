@@ -42,6 +42,15 @@ public class ForwardMovement : MonoBehaviour
         }
     }
 
+    public void SetMoveDirection(Vector2 moveDirection)
+    {
+        this.moveDirection = moveDirection;
+
+        this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, this.moveDirection);
+        this.m_rigidbody2D.velocity = Vector2.zero;
+        this.m_rigidbody2D.AddForce(this.moveDirection * this.moveSpeed);
+    }
+
     IEnumerator DelayMethod(float waitTime, Action action)
     {
         yield return new WaitForSeconds(waitTime);

@@ -86,6 +86,11 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
             }
         }
     }
+
+    public void DestroyMyGameObject()
+    {
+        Destroy(this.gameObject);
+    }
 }
 
 public enum E_FlyingObjectType

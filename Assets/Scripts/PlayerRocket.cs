@@ -11,6 +11,8 @@ public class PlayerRocket : MonoBehaviour
     private PlayerRocketController m_rocketController;
     private SpriteRenderer m_spriteRenderer;
 
+    private WeaponGenerator weaponGenerator;
+
     
     public bool IsDied { get; private set; } = false;
     
@@ -19,6 +21,15 @@ public class PlayerRocket : MonoBehaviour
         StageManager.playerPrefab = this.gameObject;
         this.m_spriteRenderer = GetComponent<SpriteRenderer>();
         this.m_rocketController = GetComponent<PlayerRocketController>();
+        this.weaponGenerator = this.transform.Find("Weapon").GetComponent<WeaponGenerator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            this.weaponGenerator.GenerateWeapon();
+        }
     }
 
     public void DestroyPlayerRocket()
