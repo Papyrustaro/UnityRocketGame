@@ -2,47 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRocketController3 : MonoBehaviour
+/// <summary>
+/// プレイヤーロケットの動き制御。角度を変更すると進行方向も変わる。噴射で力学的加速。最低速度・最高速度有
+/// </summary>
+public class PRM_PhysicsWithSpeedRangeAndMoveDirectionWithRotation : PlayerRocketMovement
 {
-    [SerializeField] private float moveForce = 3f;
-    [SerializeField] private float rotationSpeed = 3f;
+    [SerializeField] private float moveForce = 1f;
+    [SerializeField] private float rotationSpeed = 200f;
     [SerializeField] private float minSpeed = 3f;
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float decelerationRate = 0.98f;
-    private Rigidbody2D m_rigidbody;
     private bool isMoveForce; //加速しているか
-    private PlayerRocket m_rocket;
     private float rotationValue = 0f; //回転量記憶用
 
     private float moveToSidesLength = 1f; //横へ瞬時移動距離
 
-    public Rigidbody2D M_RigidBody => this.m_rigidbody;
-
-    public GameObject InjectionFire { get; private set; }
-
     private void Awake()
     {
-        this.m_rigidbody = GetComponent<Rigidbody2D>();
-        this.m_rocket = GetComponent<PlayerRocket>();
-        this.InjectionFire = this.transform.Find("InjectionFire").gameObject;
+        this.AwakeFunc();
     }
 
     private void Start()
     {
-        this.m_rigidbody.velocity = new Vector2(0f, 1f);
+        this.M_Rigidbody2D.velocity = new Vector2(0f, 1f);
     }
 
     private void Update()
     {
-        if (!this.m_rocket.IsDied)
+        if (!this.M_PlayerRocket.IsDied)
         {
             this.RocketMoveUpdate();
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            this.m_rigidbody.velocity = Vector2.zero;
-            this.m_rigidbody.angularVelocity = 0f;
+            this.M_Rigidbody2D.velocity = Vector2.zero;
+            this.M_Rigidbody2D.angularVelocity = 0f;
         }
     }
 
@@ -50,22 +45,22 @@ public class PlayerRocketController3 : MonoBehaviour
     {
         if (this.isMoveForce)
         {
-            this.m_rigidbody.AddRelativeForce(new Vector2(0f, this.moveForce));
+            this.M_Rigidbody2D.AddRelativeForce(new Vector2(0f, this.moveForce));
             this.isMoveForce = false;
             this.InjectionFire.SetActive(false);
         }
         //velocityの向きを回転に合わせて変える
-        this.m_rigidbody.velocity = Quaternion.Euler(0, 0, this.rotationValue) * this.m_rigidbody.velocity;
+        this.M_Rigidbody2D.velocity = Quaternion.Euler(0, 0, this.rotationValue) * this.M_Rigidbody2D.velocity;
         this.rotationValue = 0f;
 
-        this.m_rigidbody.velocity *= this.decelerationRate;
-        if (this.m_rigidbody.velocity.magnitude < this.minSpeed)
+        this.M_Rigidbody2D.velocity *= this.decelerationRate;
+        if (this.M_Rigidbody2D.velocity.magnitude < this.minSpeed)
         {
-            this.m_rigidbody.velocity *= this.minSpeed / this.m_rigidbody.velocity.magnitude;
+            this.M_Rigidbody2D.velocity *= this.minSpeed / this.M_Rigidbody2D.velocity.magnitude;
         }
-        if (this.m_rigidbody.velocity.magnitude > this.maxSpeed)
+        if (this.M_Rigidbody2D.velocity.magnitude > this.maxSpeed)
         {
-            this.m_rigidbody.velocity *= this.maxSpeed / this.m_rigidbody.velocity.magnitude;
+            this.M_Rigidbody2D.velocity *= this.maxSpeed / this.M_Rigidbody2D.velocity.magnitude;
         }
     }
 
@@ -74,8 +69,8 @@ public class PlayerRocketController3 : MonoBehaviour
     /// </summary>
     public void StopMovement()
     {
-        this.m_rigidbody.velocity = Vector2.zero;
-        this.m_rigidbody.angularVelocity = 0f;
+        this.M_Rigidbody2D.velocity = Vector2.zero;
+        this.M_Rigidbody2D.angularVelocity = 0f;
     }
 
 

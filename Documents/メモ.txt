@@ -1,0 +1,8 @@
+プレイヤーロケットの基本的種類
+
+# 基本攻撃搭載
+・物理的(重力有/無)→PhysicsSimple
+・非物理的(回転はその場)→PhysicsWithSpeedRange
+・非物理的(回転すると進行方向も変わる)→PhysicsWithSpeedRangeAndMoveDirectionWithRotation
+・非物理的(進行速度一定)→ConstantSpeedSimple
+・非物理的(一定時間その方向に動き続ける)→ConstantSpeedAndMoveTime

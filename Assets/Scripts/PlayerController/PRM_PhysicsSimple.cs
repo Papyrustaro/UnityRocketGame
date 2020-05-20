@@ -3,38 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// プレイヤーの入力に応じてロケットを動かすクラス
+/// プレイヤーロケットの動き制御。向いている方向に力学的に加速。回転は独立。最低速度・最高速度は無し
 /// </summary>
-public class PlayerRocketController : MonoBehaviour
+public class PRM_PhysicsSimple : PlayerRocketMovement
 {
     [SerializeField] private float moveForce = 3f;
     [SerializeField] private float rotationSpeed = 3f;
-    private Rigidbody2D m_rigidbody;
     private bool isMoveForce; //加速しているか
-    private PlayerRocket m_rocket;
-
-    public Rigidbody2D M_RigidBody => this.m_rigidbody;
-
-    public GameObject InjectionFire { get; private set; }
 
     private void Awake()
     {
-        this.m_rigidbody = GetComponent<Rigidbody2D>();
-        this.m_rocket = GetComponent<PlayerRocket>();
-        this.InjectionFire = this.transform.Find("InjectionFire").gameObject;
+        this.AwakeFunc();
     }
 
     private void Update()
     {
-        if (!this.m_rocket.IsDied)
+        if (!this.M_PlayerRocket.IsDied)
         {
             this.RocketMoveUpdate();
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            this.m_rigidbody.velocity = Vector2.zero;
-            this.m_rigidbody.angularVelocity = 0f;
+            this.M_Rigidbody2D.velocity = Vector2.zero;
+            this.M_Rigidbody2D.angularVelocity = 0f;
         }
     }
 
@@ -42,7 +34,7 @@ public class PlayerRocketController : MonoBehaviour
     {
         if (this.isMoveForce)
         {
-            this.m_rigidbody.AddRelativeForce(new Vector2(0f, this.moveForce));
+            this.M_Rigidbody2D.AddRelativeForce(new Vector2(0f, this.moveForce));
             this.isMoveForce = false;
             this.InjectionFire.SetActive(false);
         }
@@ -53,8 +45,8 @@ public class PlayerRocketController : MonoBehaviour
     /// </summary>
     public void StopMovement()
     {
-        this.m_rigidbody.velocity = Vector2.zero;
-        this.m_rigidbody.angularVelocity = 0f;
+        this.M_Rigidbody2D.velocity = Vector2.zero;
+        this.M_Rigidbody2D.angularVelocity = 0f;
     }
 
 
