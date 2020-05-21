@@ -63,7 +63,13 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
             {
                 this.hp -= collision.GetComponent<DamageAttackObject>().DamageValue;
                 this.haveDamaged.Invoke();
-                if (this.hp <= 0) this.destroyMe.Invoke();
+                if (this.hp <= 0) {
+                    if(this.FlyingObjectType == E_FlyingObjectType.Enemy && StageManager.Instance.ClearFlagType == E_ClearFlagType.DefeatEnemy)
+                    {
+                        ClearFlag_DefeatEnemy.Instance.CheckDefeatedEnemy(this.transform.root.gameObject);
+                    }
+                    this.destroyMe.Invoke(); 
+                }
             }
             else if (collision.CompareTag("Player"))
             {

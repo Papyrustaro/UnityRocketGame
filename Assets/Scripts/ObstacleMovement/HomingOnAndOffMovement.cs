@@ -30,7 +30,7 @@ public class HomingOnAndOffMovement : MonoBehaviour
 
     private void Start()
     {
-        this.playerPrefab = StageManager.playerPrefab.transform;
+        this.playerPrefab = StageManager.Instance.PlayerPrefab.transform;
     }
     private void Update()
     {

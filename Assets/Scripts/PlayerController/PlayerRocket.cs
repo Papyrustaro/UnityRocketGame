@@ -18,7 +18,7 @@ public class PlayerRocket : MonoBehaviour
     
     private void Awake()
     {
-        StageManager.playerPrefab = this.gameObject;
+        StageManager.Instance.PlayerPrefab = this.gameObject;
         this.m_spriteRenderer = GetComponent<SpriteRenderer>();
         this.m_rocketController = GetComponent<PlayerRocketMovement>();
         try
@@ -52,7 +52,7 @@ public class PlayerRocket : MonoBehaviour
         }));
         StartCoroutine(DelayMethodRealTime(1.5f, () =>
         {
-            SceneManager.LoadScene("GameOver");
+            StageManager.Instance.GameOver();
         }));
     }
 
