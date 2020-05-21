@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class Debugger : MonoBehaviour
 {
-    public void HaveDamagedFunc()
+    private void Start()
     {
-        Debug.Log("ダメージを受けた" + Time.time);
-    }
-
-    public void DestroyFunc()
-    {
-        Debug.Log("死んだ!" + Time.time);
-    }
-
-    public void ContactEnemy()
-    {
-        Debug.Log("敵と衝突した");
+        Debug.Log(Math.Pow(2, 32) % 211);
+        Debug.Log(Math.Pow(2, 64) % 211);
+        Debug.Log((16 * 51 * 69) % 211);
     }
 }

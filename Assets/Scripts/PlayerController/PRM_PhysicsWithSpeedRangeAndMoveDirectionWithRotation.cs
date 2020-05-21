@@ -54,7 +54,7 @@ public class PRM_PhysicsWithSpeedRangeAndMoveDirectionWithRotation : PlayerRocke
         this.rotationValue = 0f;
 
         this.M_Rigidbody2D.velocity *= this.decelerationRate;
-        if (this.M_Rigidbody2D.velocity.magnitude < this.minSpeed)
+        if (this.M_Rigidbody2D.velocity.magnitude < this.minSpeed && this.M_Rigidbody2D.velocity.magnitude != 0f)
         {
             this.M_Rigidbody2D.velocity *= this.minSpeed / this.M_Rigidbody2D.velocity.magnitude;
         }
