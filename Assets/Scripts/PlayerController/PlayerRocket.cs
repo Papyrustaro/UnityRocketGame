@@ -42,12 +42,14 @@ public class PlayerRocket : MonoBehaviour
     {
         if (this.haveWeapon && Input.GetKeyDown(KeyCode.J))
         {
+            SEManager.PlaySE(SEManager.shotBullet);
             this.weaponGenerator.GenerateWeapon();
         }
     }
 
     public void DestroyPlayerRocket()
     {
+        SEManager.PlaySE(SEManager.explosion);
         this.IsDied = true;
         this.m_rocketController.InjectionFire.SetActive(false);
         Time.timeScale = 0f;
