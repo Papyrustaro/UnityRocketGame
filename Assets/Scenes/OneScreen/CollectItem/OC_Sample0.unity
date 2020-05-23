@@ -492,6 +492,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5967893907661738691, guid: 7991be23409a1a440a253efc8ac739c1,
+        type: 3}
+      propertyPath: destroyContactObstacle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7991be23409a1a440a253efc8ac739c1, type: 3}
 --- !u!1001 &1050583065

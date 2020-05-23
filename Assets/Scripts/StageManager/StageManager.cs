@@ -40,6 +40,7 @@ public class StageManager : MonoBehaviour
         ClearFlag_DefeatEnemy.Instance = null;
         ClearFlag_CollectItem.Instance = null;
         SceneManager.LoadScene("GameOver");
+        Time.timeScale = 1f;
     }
 }
 
