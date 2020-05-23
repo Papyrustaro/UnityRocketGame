@@ -8,8 +8,6 @@ public class Debugger : MonoBehaviour
 {
     private void Start()
     {
-        Debug.Log(Math.Pow(2, 32) % 211);
-        Debug.Log(Math.Pow(2, 64) % 211);
-        Debug.Log((16 * 51 * 69) % 211);
+        //PolygonCollider2D collider = GetComponent<CompositeCollider2D>().
     }
 }

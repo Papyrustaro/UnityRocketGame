@@ -10,7 +10,7 @@ public class GoalFlag : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //ゲームクリア処理
-            SceneManager.LoadScene("GameClear");
+            StageManager.Instance.StageClear();
         }
     }
 }

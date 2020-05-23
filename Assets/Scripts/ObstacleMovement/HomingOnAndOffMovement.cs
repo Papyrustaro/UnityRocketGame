@@ -5,11 +5,11 @@ using System;
 
 public class HomingOnAndOffMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float moveSpeed = 30f;
     //[SerializeField] private Transform playerPrefab;
     [SerializeField] private Vector2 forwardDirection = new Vector2(0f, 1f);
-    [SerializeField] private float oneMoveTime = 3f;
-    [SerializeField] private float oneStopTime = 3f;
+    [SerializeField] private float oneMoveTime = 2f;
+    [SerializeField] private float oneStopTime = 1f;
     [SerializeField] private bool boundWall = false;
 
     private Transform playerPrefab;
@@ -30,7 +30,7 @@ public class HomingOnAndOffMovement : MonoBehaviour
 
     private void Start()
     {
-        this.playerPrefab = StageManager.Instance.PlayerPrefab.transform;
+        this.playerPrefab = PlayerRocket.PlayerTransform;
     }
     private void Update()
     {
@@ -57,7 +57,7 @@ public class HomingOnAndOffMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.boundWall && collision.transform.CompareTag("Wall"))
+        if (this.boundWall && (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Obstacle")))
         {
             Vector2 diff = new Vector2();
             diff = this.transform.position;

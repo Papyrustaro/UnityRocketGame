@@ -17,7 +17,7 @@ public class HomingMovement : MonoBehaviour
 
     private void Start()
     {
-        this.playerPrefab = StageManager.Instance.PlayerPrefab.transform;
+        this.playerPrefab = PlayerRocket.PlayerTransform;
     }
     private void Update()
     {

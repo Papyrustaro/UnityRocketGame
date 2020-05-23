@@ -15,14 +15,17 @@ public class DestroyAfterCertainTime : MonoBehaviour
         this.countTime += Time.deltaTime;
         if(countTime >= this.destroyTimeFromInstantiate)
         {
-            if(this.destroyEvent.GetPersistentEventCount() == 0)
+            this.destroyEvent.Invoke();
+            Destroy(this.gameObject);
+
+            /*if(this.destroyEvent.GetPersistentEventCount() == 0)
             {
                 Destroy(this.gameObject);
             }
             else
             {
-                this.destroyEvent.Invoke();
-            }
+                this.destroyEvent.Invoke(); 
+            }*/
         }
     }
 }

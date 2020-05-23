@@ -13,12 +13,13 @@ public class PlayerRocket : MonoBehaviour
     private WeaponGenerator weaponGenerator;
     private bool haveWeapon = true;
 
+    public static Transform PlayerTransform { private set; get; }
+
     
     public bool IsDied { get; private set; } = false;
     
     private void Awake()
     {
-        StageManager.Instance.PlayerPrefab = this.gameObject;
         this.m_spriteRenderer = GetComponent<SpriteRenderer>();
         this.m_rocketController = GetComponent<PlayerRocketMovement>();
         try
@@ -29,6 +30,12 @@ public class PlayerRocket : MonoBehaviour
         {
             this.haveWeapon = false;
         }
+        PlayerRocket.PlayerTransform = this.transform;
+    }
+
+    private void Start()
+    {
+        //StageManager.Instance.PlayerPrefab = this.gameObject;
     }
 
     private void Update()

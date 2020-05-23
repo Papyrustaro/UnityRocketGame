@@ -31,7 +31,7 @@ public class ForwardMovementByForce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.boundWall && collision.transform.CompareTag("Wall"))
+        if (this.boundWall && (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Obstacle")))
         {
             Vector2 diff = new Vector2();
             diff = this.transform.position;

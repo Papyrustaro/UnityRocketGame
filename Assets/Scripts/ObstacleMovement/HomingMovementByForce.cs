@@ -5,9 +5,7 @@ using UnityEngine;
 public class HomingMovementByForce : MonoBehaviour
 {
     [SerializeField] private float moveForce = 1f;
-    //[SerializeField] private Transform playerPrefab;
     [SerializeField] private Vector2 forwardDirection = new Vector2(0f, 1f);
-    [SerializeField] private GameObject explosionInDestroy;
     private Rigidbody2D m_rigidbody2D;
     private Vector3 forwardDirection3D;
     private Vector3 diff;
@@ -22,7 +20,7 @@ public class HomingMovementByForce : MonoBehaviour
 
     private void Start()
     {
-        this.playerPrefab = StageManager.Instance.PlayerPrefab.transform;
+        this.playerPrefab = PlayerRocket.PlayerTransform;
     }
     private void Update()
     {
@@ -35,9 +33,9 @@ public class HomingMovementByForce : MonoBehaviour
         this.m_rigidbody2D.AddForce(this.diff);
     }
 
-    public void DestroyMissile()
+    /*public void DestroyMissile()
     {
         Instantiate(this.explosionInDestroy, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
-    }
+    }*/
 }

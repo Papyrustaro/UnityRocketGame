@@ -7,9 +7,9 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] E_ClearFlagType clearFlagType;
 
-    public static StageManager Instance { get; private set; }
+    public static StageManager Instance { get; set; }
 
-    public GameObject PlayerPrefab { get; set; }
+    //public GameObject PlayerPrefab { get; set; }
     public E_ClearFlagType ClearFlagType => this.clearFlagType;
 
     private void Awake()
@@ -50,5 +50,6 @@ public enum E_ClearFlagType
 {
     DefeatEnemy,
     CollectItem,
-    Survival
+    Survival,
+    MoveToGoal
 }

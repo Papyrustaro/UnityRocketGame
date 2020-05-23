@@ -8,7 +8,8 @@ using UnityEngine.Events;
 /// </summary>
 public class ColliderFunctionOfHaveHpObject : MonoBehaviour
 {
-    [SerializeField] private bool ignoreObstacle = false;
+    [SerializeField] private bool destroyContactWall = false;
+    [SerializeField] private bool destroyContactObstacle = false;
     [SerializeField] private int hp = 2;
     [SerializeField] private UnityEvent haveDamaged; //攻撃を受けた際の処理(damage計算以外: SE再生など)
     [SerializeField] private UnityEvent destroyMe; //自身が破壊されるときの処理
@@ -33,7 +34,8 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
                 break;
             case "Obstacle":
                 this.FlyingObjectType = E_FlyingObjectType.Obstacle;
-                this.ignoreObstacle = true;
+                this.destroyContactObstacle = false; ;
+                this.destroyContactWall = false;
                 break;
             case "AttackToPlayer":
                 this.FlyingObjectType = E_FlyingObjectType.AttackToPlayer;
@@ -46,7 +48,13 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!this.ignoreObstacle && collision.CompareTag("Obstacle"))
+
+        if (this.destroyContactObstacle && collision.CompareTag("Obstacle"))
+        {
+            this.destroyMe.Invoke();
+            return;
+        }
+        if(this.destroyContactWall && collision.CompareTag("Wall"))
         {
             this.destroyMe.Invoke();
             return;

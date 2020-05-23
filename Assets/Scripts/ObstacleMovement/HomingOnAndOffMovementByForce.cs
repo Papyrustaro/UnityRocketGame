@@ -28,7 +28,7 @@ public class HomingOnAndOffMovementByForce : MonoBehaviour
 
     private void Start()
     {
-        this.playerPrefab = StageManager.Instance.PlayerPrefab.transform;
+        this.playerPrefab = PlayerRocket.PlayerTransform;
     }
     private void Update()
     {
@@ -60,7 +60,7 @@ public class HomingOnAndOffMovementByForce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.boundWall && collision.transform.CompareTag("Wall"))
+        if (this.boundWall && (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Obstacle")))
         {
             Vector2 diff = new Vector2();
             diff = this.transform.position;
