@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4332188830596981429}
   - component: {fileID: 4082626729758320729}
   m_Layer: 8
-  m_Name: HomingObstacle2
+  m_Name: HomingMissile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,7 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreObstacle: 0
+  destroyContactWall: 1
+  destroyContactObstacle: 0
   hp: 1
   haveDamaged:
     m_PersistentCalls:

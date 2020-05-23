@@ -49,7 +49,7 @@ public class PlayerRocket : MonoBehaviour
 
     public void DestroyPlayerRocket()
     {
-        SEManager.PlaySE(SEManager.explosion);
+        //SEManager.PlaySE(SEManager.explosion);
         this.IsDied = true;
         this.m_rocketController.InjectionFire.SetActive(false);
         Time.timeScale = 0f;

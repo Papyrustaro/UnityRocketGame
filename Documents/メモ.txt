@@ -6,3 +6,5 @@
 ・非物理的(回転すると進行方向も変わる)→PhysicsWithSpeedRangeAndMoveDirectionWithRotation
 ・非物理的(進行速度一定)→ConstantSpeedSimple
 ・非物理的(一定時間その方向に動き続ける)→ConstantSpeedAndMoveTime
+
+BGM/SEの音量→基本-30db

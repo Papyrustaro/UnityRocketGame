@@ -5,11 +5,12 @@ using UnityEngine;
 public class LoadSE : MonoBehaviour
 {
     [SerializeField] private AudioClip shotBullet;
-    [SerializeField] private AudioClip explosion;
+    [SerializeField] private AudioClip missileExplosion;
+
 
     private void Awake()
     {
         SEManager.shotBullet = this.shotBullet;
-        SEManager.explosion = this.explosion;
+        SEManager.missileExplosion = this.missileExplosion;
     }
 }

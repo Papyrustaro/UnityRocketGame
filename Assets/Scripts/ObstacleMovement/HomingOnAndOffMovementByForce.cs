@@ -45,7 +45,6 @@ public class HomingOnAndOffMovementByForce : MonoBehaviour
             }
             if(this.m_rigidbody2D.velocity.magnitude < this.stopLowerSpeed)
             {
-                Debug.Log("停止");
                 this.m_rigidbody2D.velocity = Vector2.zero;
                 this.countTime = 0f;
                 this.rotationFlag = true;

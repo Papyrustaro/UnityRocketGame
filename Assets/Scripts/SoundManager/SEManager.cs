@@ -6,7 +6,7 @@ public class SEManager : MonoBehaviour
 {
     private static AudioSource audioSource;
     public static AudioClip shotBullet;
-    public static AudioClip explosion;
+    public static AudioClip missileExplosion;
 
     private void Awake()
     {

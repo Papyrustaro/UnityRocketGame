@@ -6,8 +6,7 @@ using System;
 
 public class Debugger : MonoBehaviour
 {
-    private void Start()
-    {
-        //PolygonCollider2D collider = GetComponent<CompositeCollider2D>().
-    }
+    [field: SerializeField]
+    [field: RenameField("health")]
+    public int Health { get; private set; }
 }

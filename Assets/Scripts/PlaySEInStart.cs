@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlaySEInStart : MonoBehaviour
 {
-    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private E_SE playSE;
 
     private void Start()
     {
-        SEManager.PlaySE(audioClip);
+        PlaySEByEnum.PlaySE(this.playSE);
     }
 }
