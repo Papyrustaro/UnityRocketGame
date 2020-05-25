@@ -29,7 +29,6 @@ public class ClearFlag_DefeatEnemy : MonoBehaviour
         {
             if(defeatedEnemy.GetInstanceID() == mustDefeatEnemy.GetInstanceID())
             {
-                Debug.Log("A");
                 this.mustDefeatEnemyCount--;
                 if(this.mustDefeatEnemyCount <= 0)
                 {

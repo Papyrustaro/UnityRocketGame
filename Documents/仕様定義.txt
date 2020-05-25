@@ -1,0 +1,3 @@
+・playerprefsのプレイヤー名key: scenename + PlayerName + 順位(int)
+・playerprefsのスコアkey: scenename + Score + 順位(int)
+・playerprefsのタイムkey: scenename + Tcore + 順位(int)
