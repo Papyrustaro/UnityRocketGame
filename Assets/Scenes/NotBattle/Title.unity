@@ -579,24 +579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 7402af61ca6392543b7e8033ca47c203, type: 3}
---- !u!1 &1512125949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9081221142000726075, guid: e027c8da04d7f68419d0139d3de698b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 9081221143362860254}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1512125950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512125949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 936b3c83e6398f04c837c85fb22e48d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1957339013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1078,16 +1060,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoundManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081221142309511438, guid: e027c8da04d7f68419d0139d3de698b1,
-        type: 3}
-      propertyPath: m_Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081221143133930227, guid: e027c8da04d7f68419d0139d3de698b1,
-        type: 3}
-      propertyPath: m_Volume
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e027c8da04d7f68419d0139d3de698b1, type: 3}

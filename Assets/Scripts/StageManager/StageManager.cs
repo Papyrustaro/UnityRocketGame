@@ -12,6 +12,11 @@ public class StageManager : MonoBehaviour
     //public GameObject PlayerPrefab { get; set; }
     public E_ClearFlagType ClearFlagType => this.clearFlagType;
 
+    /// <summary>
+    /// ゲームが一時停止されているかどうか(pause、カウントダウン、クリア演出時等)
+    /// </summary>
+    public bool IsStop { get; set; } = false;
+
     private void Awake()
     {
         if(StageManager.Instance == null)
@@ -24,23 +29,32 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+    }
+
     public void StageClear()
     {
-        //ステージクリア処理
-        StageManager.Instance = null;
-        ClearFlag_DefeatEnemy.Instance = null;
-        ClearFlag_CollectItem.Instance = null;
+        InitStageInstance();
         SceneManager.LoadScene("GameClear");
+        Time.timeScale = 1f;
     }
 
     public void GameOver()
     {
-        //gameOver処理
+        InitStageInstance();
+        SceneManager.LoadScene("GameOver");
+        Time.timeScale = 1f;
+    }
+
+    public void InitStageInstance()
+    {
         StageManager.Instance = null;
         ClearFlag_DefeatEnemy.Instance = null;
         ClearFlag_CollectItem.Instance = null;
-        SceneManager.LoadScene("GameOver");
-        Time.timeScale = 1f;
+        ScoreManager.Instance = null;
+        TimeManager.Instance = null;
+        StageUIManager.Instance = null;
     }
 }
 
