@@ -61,7 +61,8 @@ public class TimeManager : MonoBehaviour
 
     private void SetTimeText()
     {
-        this.timeText.text = "Time: " + Math.Round(this.CountTime).ToString();
+        // this.timeText.text = "Time: " + Math.Round(this.CountTime).ToString();
+        this.timeText.text = "Time: " + this.CountTime.ToString();
     }
 
     public void AddTime(float addTimeValue)

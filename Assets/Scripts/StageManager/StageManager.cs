@@ -30,6 +30,7 @@ public class StageManager : MonoBehaviour
         {
             throw new System.Exception();
         }
+        //PlayerPrefs.DeleteAll();
     }
 
     private void Start()
@@ -50,23 +51,23 @@ public class StageManager : MonoBehaviour
 
     public void SetRanking()
     {
-        float time = TimeManager.Instance.CountTime;
+        float time = TimeManager.Instance.CountTime + Time.deltaTime;
         string sceneName = SceneManager.GetActiveScene().name;
-        float[] rankingTime = new float[10];
+        float[] rankingTime = new float[11];
         for(int i = 1; i <= 10; i++)
         {
-            rankingTime[i - 1] = PlayerPrefs.GetFloat(sceneName + "Time" + i);
+            rankingTime[i] = PlayerPrefs.GetFloat(sceneName + "Time" + i);
         }
 
         for(int i = 1; i <= 10; i++)
         {
-            if(rankingTime[i - 1] == 0f || rankingTime[i - 1] > time)
+            if(rankingTime[i] == 0f || rankingTime[i] > time)
             {
-                for(int j = 10; j > i; j--)
+                for(int j = 10; j >= i; j--)
                 {
-                    if (rankingTime[j - 1] == 0f) continue;
-                    PlayerPrefs.SetString(sceneName + "PlayerName" + j, PlayerPrefs.GetString(sceneName + "PlayerName" + (j - 1)));
-                    PlayerPrefs.SetFloat(sceneName + "Time" + j, rankingTime[j - 1]);
+                    if (rankingTime[j] == 0f) continue;
+                    PlayerPrefs.SetString(sceneName + "PlayerName" + (j + 1), PlayerPrefs.GetString(sceneName + "PlayerName" + j));
+                    PlayerPrefs.SetFloat(sceneName + "Time" + (j + 1), rankingTime[j]);
                 }
                 PlayerPrefs.SetString(sceneName + "PlayerName" + i, StaticData.playerName);
                 PlayerPrefs.SetFloat(sceneName + "Time" + i, time);
