@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using System.Text;
 
 public class StageUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button resumeButton;
     [SerializeField] private GameObject rankingPanel;
-    [SerializeField] private Text rankingNameAndValueText;
+    [SerializeField] private Text rankingPlayerNameText;
+    [SerializeField] private Text rankingScoreOrTimeText;
     [SerializeField] private GameObject smogPanel;
     [SerializeField] private Button continueButton;
     [SerializeField] private GameObject scoreText;
@@ -83,14 +85,33 @@ public class StageUIManager : MonoBehaviour
 
     public void SetRankingText()
     {
-        string s = "";
         string sceneName = SceneManager.GetActiveScene().name;
-        for (int i = 1; i <= 10; i++)
+        if(StageManager.Instance.PlayType == E_PlayType.TimeAttack)
         {
-            if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
-            s += (i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i)).ToString().PadRight(25) + PlayerPrefs.GetFloat(sceneName + "Time" + i).ToString() + "\n";
+            string playerNameText = "";
+            string timeText = "";
+            for (int i = 1; i <= 10; i++)
+            {
+                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
+                playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i) + "\n";
+                timeText += PlayerPrefs.GetFloat(sceneName + "Time" + i).ToString() + "\n";
+            }
+            this.rankingPlayerNameText.text = playerNameText;
+            this.rankingScoreOrTimeText.text = timeText;
         }
-        this.rankingNameAndValueText.text = s;
+        else if(StageManager.Instance.PlayType == E_PlayType.ScoreAttack)
+        {
+            string playerNameText = "";
+            string scoreText = "";
+            for (int i = 1; i <= 10; i++)
+            {
+                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
+                playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i) + "\n";
+                scoreText += PlayerPrefs.GetFloat(sceneName + "Score" + i).ToString() + "\n";
+            }
+            this.rankingPlayerNameText.text = playerNameText;
+            this.rankingScoreOrTimeText.text = scoreText;
+        }
     }
 
     public void ShowRankingWhenStageClear()

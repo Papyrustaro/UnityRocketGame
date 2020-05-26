@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f813e8ef8d4944e929df1c20c3284c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveToPlayMode: 3
+  moveToPlayMode: 5
 --- !u!58 &318846251
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f813e8ef8d4944e929df1c20c3284c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveToPlayMode: 0
+  moveToPlayMode: 4
 --- !u!58 &1113835800
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -802,7 +802,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1778788251
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8aa5a4158827bfd49b46b77cfdb0a2e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

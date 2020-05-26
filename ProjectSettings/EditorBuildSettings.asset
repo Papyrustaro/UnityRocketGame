@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OneScreen/CollectItem/OC_Sample0.unity
     guid: c650f89111278474a8b69f9e84512279
+  - enabled: 1
+    path: Assets/Scenes/MoveScreen/TimeAttack/MoveToGoal/MTM_Sample0.unity
+    guid: 762ffecd5e31d134cab0d4b646bf1e2a
+  - enabled: 1
+    path: Assets/Scenes/MoveScreen/ScoreAttack/MoveScreen_ScoreAttack0.unity
+    guid: 1a20408926088424796688637c5a65f1
   m_configObjects: {}

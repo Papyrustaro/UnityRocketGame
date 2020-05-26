@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int haveScore = 0;
     private Text scoreText;
     public static ScoreManager Instance { get; set; }
+
+    public int HaveScore { get; private set; } = 0;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int addValue)
     {
-        this.haveScore += addValue;
-        this.scoreText.text = "Score: " + this.haveScore.ToString();
+        this.HaveScore += addValue;
+        this.scoreText.text = "Score: " + this.HaveScore.ToString();
     }
 }

@@ -21,6 +21,12 @@ public class TitleManager : MonoBehaviour
         }
     }
 
+    public void SetPlayerName(string inputName)
+    {
+        StaticData.playerName = inputName;
+        SceneManager.LoadScene("SelectMode");
+    }
+
     void Update()
     {
         if (this.PlayerInStartObject && Input.GetKeyDown(KeyCode.Return))

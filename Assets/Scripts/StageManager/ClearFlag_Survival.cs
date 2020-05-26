@@ -13,6 +13,7 @@ public class ClearFlag_Survival : MonoBehaviour
         if(this.countTime >= this.survivalTime)
         {
             StageManager.Instance.StageClear();
+            this.gameObject.SetActive(false);
         }
     }
 }

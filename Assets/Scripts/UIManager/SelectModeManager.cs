@@ -38,6 +38,12 @@ public class SelectModeManager : MonoBehaviour
                 case E_PlayMode.OneScreen_CollectItem0:
                     SceneManager.LoadScene("OC_Sample0");
                     break;
+                case E_PlayMode.MoveScreen_ScoreAttack0:
+                    SceneManager.LoadScene("MoveScreen_ScoreAttack0");
+                    break;
+                case E_PlayMode.MTM_Sample0:
+                    SceneManager.LoadScene("MTM_Sample0");
+                    break;
             }
         }
     }
@@ -49,4 +55,6 @@ public enum E_PlayMode
     MoveScreen_DefeatEnemy0,
     Other,
     OneScreen_CollectItem0,
+    MoveScreen_ScoreAttack0,
+    MTM_Sample0,
 }
