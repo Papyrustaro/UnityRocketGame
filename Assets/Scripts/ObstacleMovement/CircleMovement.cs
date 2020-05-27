@@ -15,6 +15,7 @@ public class CircleMovement : MonoBehaviour
 
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         float x = this.circleRadius * Mathf.Sin(Time.time * this.moveSpeed);
         float y = this.circleRadius * Mathf.Cos(Time.time * this.moveSpeed);
 

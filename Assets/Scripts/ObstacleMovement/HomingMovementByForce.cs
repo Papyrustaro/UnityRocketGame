@@ -24,6 +24,7 @@ public class HomingMovementByForce : MonoBehaviour
     }
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         this.diff = new Vector3(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y, 0f).normalized;
         this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, this.diff);
     }

@@ -35,12 +35,12 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         StaticData.playingStageSceneName = SceneManager.GetActiveScene().name;
-        Debug.Log("aaa".PadRight(5) + "A");
-        Debug.Log(string.Format("{0, -5}", "aaa"));
-        Debug.Log("____A");
-        //Debug.Log(Mathf.Log(4, 2));
+    }
 
-        //Debug.Log(SceneManager.GetActiveScene().name);
+    public void StopAllMoving()
+    {
+        Time.timeScale = 0f;
+        this.IsStop = true;
     }
 
     public void StageClear()
@@ -49,7 +49,7 @@ public class StageManager : MonoBehaviour
         //SceneManager.LoadScene("GameClear");
         SetRanking();
         StageUIManager.Instance.ShowRankingWhenStageClear();
-        Time.timeScale = 0f;
+        StopAllMoving();
     }
 
     public void SetRanking()

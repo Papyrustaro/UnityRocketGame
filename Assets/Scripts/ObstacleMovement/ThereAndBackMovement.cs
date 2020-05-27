@@ -22,6 +22,7 @@ public class ThereAndBackMovement : MonoBehaviour
 
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         if (this.isMoving)
         {
             MoveThereAndBack();

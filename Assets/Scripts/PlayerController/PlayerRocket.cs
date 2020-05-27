@@ -40,6 +40,7 @@ public class PlayerRocket : MonoBehaviour
 
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         if (this.haveWeapon && Input.GetKeyDown(KeyCode.J))
         {
             SEManager.PlaySE(SEManager.shotBullet);
@@ -54,7 +55,7 @@ public class PlayerRocket : MonoBehaviour
         //SEManager.PlaySE(SEManager.explosion);
         this.IsDied = true;
         this.m_rocketController.InjectionFire.SetActive(false);
-        Time.timeScale = 0f;
+        StageManager.Instance.StopAllMoving();
         Debug.Log("墜落");
         this.m_spriteRenderer.sprite = this.explosion_small;
         StartCoroutine(DelayMethodRealTime(0.3f, () =>

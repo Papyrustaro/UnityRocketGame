@@ -63,7 +63,7 @@ public class StageUIManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0f;
+            StageManager.Instance.StopAllMoving();
             this.pausePanel.SetActive(true);
             this.resumeButton.Select();
         }
@@ -116,7 +116,7 @@ public class StageUIManager : MonoBehaviour
 
     public void ShowRankingWhenStageClear()
     {
-        Time.timeScale = 0f;
+        StageManager.Instance.StopAllMoving();
         //ランキングテキストの処理
         SetRankingText();
 

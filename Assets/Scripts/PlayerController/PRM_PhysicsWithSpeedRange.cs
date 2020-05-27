@@ -26,15 +26,10 @@ public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
 
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         if (!this.M_PlayerRocket.IsDied)
         {
             this.RocketMoveUpdate();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            this.M_Rigidbody2D.velocity = Vector2.zero;
-            this.M_Rigidbody2D.angularVelocity = 0f;
         }
     }
 

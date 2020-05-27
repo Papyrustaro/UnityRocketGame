@@ -21,6 +21,7 @@ public class HomingMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         this.transform.position = Vector2.MoveTowards(this.transform.position, this.playerPrefab.position, this.moveSpeed * Time.deltaTime);
 
         Vector3 diff = new Vector3(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y, 0f);
