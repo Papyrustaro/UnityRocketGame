@@ -17,6 +17,7 @@ public class StageUIManager : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private GameObject scoreText;
     [SerializeField] private GameObject timeText;
+    [SerializeField] private Text playerResultText;
 
     private GameObject stageClearText;
     private GameObject gameOverText;
@@ -67,6 +68,7 @@ public class StageUIManager : MonoBehaviour
         }
     }
 
+
     public void MoveSceneToStageSelect()
     {
         StageManager.Instance.InitStageInstance();
@@ -96,6 +98,8 @@ public class StageUIManager : MonoBehaviour
             }
             this.rankingPlayerNameText.text = playerNameText;
             this.rankingScoreOrTimeText.text = timeText;
+
+            this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
         }
         else if(StageManager.Instance.PlayType == E_PlayType.ScoreAttack)
         {
@@ -109,7 +113,11 @@ public class StageUIManager : MonoBehaviour
             }
             this.rankingPlayerNameText.text = playerNameText;
             this.rankingScoreOrTimeText.text = scoreText;
+
+            this.playerResultText.text = StaticData.playerName + ": " + ScoreManager.Instance.HaveScore;
         }
+
+
     }
 
     public void GameOver()

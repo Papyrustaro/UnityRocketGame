@@ -84,14 +84,14 @@ public class PRM_PhysicsWithSpeedRangeAndMoveDirectionWithRotation : PlayerRocke
             this.isMoveForce = true;
             this.InjectionFire.SetActive(true);
         }
-        if (Input.GetKey(KeyCode.R))
+        /*if (Input.GetKey(KeyCode.R))
         {
             //進行方向の右側に移動
             Vector2 v = new Vector2(0f, this.moveToSidesLength);
             v = Quaternion.Euler(0, 0, this.transform.rotation.z + -90) * v;
             v = new Vector2(v.x + this.transform.position.x, v.y + this.transform.position.y);
             this.transform.position = Vector2.MoveTowards(this.transform.position, v, this.moveToSidesLength);
-        }
+        }*/
         if (Input.GetKey(KeyCode.E))
         {
             //進行方向の左側に移動
