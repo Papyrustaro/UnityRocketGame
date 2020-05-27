@@ -35,20 +35,15 @@ public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
 
     private void FixedUpdate()
     {
-        if (this.isMoveForce)
+        if (this.isMoveForce && this.M_Rigidbody2D.velocity.magnitude <= this.maxSpeed)
         {
             this.M_Rigidbody2D.AddRelativeForce(new Vector2(0f, this.moveForce));
             this.isMoveForce = false;
             this.InjectionFire.SetActive(false);
         }
-        this.M_Rigidbody2D.velocity *= this.decelerationRate;
-        if(this.M_Rigidbody2D.velocity.magnitude < this.minSpeed && this.M_Rigidbody2D.velocity.magnitude != 0f)
+        if(this.M_Rigidbody2D.velocity.magnitude >= this.minSpeed)
         {
-            this.M_Rigidbody2D.velocity *= this.minSpeed / this.M_Rigidbody2D.velocity.magnitude;
-        }
-        if(this.M_Rigidbody2D.velocity.magnitude > this.maxSpeed)
-        {
-            this.M_Rigidbody2D.velocity *= this.maxSpeed / this.M_Rigidbody2D.velocity.magnitude;
+            this.M_Rigidbody2D.velocity *= this.decelerationRate;
         }
     }
 
