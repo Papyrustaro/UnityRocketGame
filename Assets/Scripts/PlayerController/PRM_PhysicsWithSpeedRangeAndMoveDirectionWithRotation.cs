@@ -29,7 +29,7 @@ public class PRM_PhysicsWithSpeedRangeAndMoveDirectionWithRotation : PlayerRocke
 
     private void Update()
     {
-        if (StageManager.Instance.IsStop) return;
+        if (Time.timeScale == 0f) return;
         if (!this.M_PlayerRocket.IsDied)
         {
             this.RocketMoveUpdate();

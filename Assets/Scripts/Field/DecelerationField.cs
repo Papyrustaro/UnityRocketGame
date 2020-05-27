@@ -9,7 +9,8 @@ public class DecelerationField : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Rigidbody2D>().velocity *= this.lowerRate;
+            SEManager.PlaySE(SEManager.speedDown);
+            collision.transform.parent.GetComponent<Rigidbody2D>().velocity *= this.lowerRate;
         }
     }
 }

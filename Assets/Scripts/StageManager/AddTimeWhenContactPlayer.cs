@@ -12,6 +12,7 @@ public class AddTimeWhenContactPlayer : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SEManager.PlaySE(SEManager.getItem);
             TimeManager.Instance.AddTime(this.addTimeValue);
             this.contactPlayerEvent.Invoke();
             Destroy(this.gameObject);

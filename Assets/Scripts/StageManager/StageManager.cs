@@ -116,9 +116,9 @@ public class StageManager : MonoBehaviour
 
     public void GameOver()
     {
-        InitStageInstance();
-        SceneManager.LoadScene("GameOver");
-        Time.timeScale = 1f;
+        SetRanking();
+        StageUIManager.Instance.GameOver();
+        StopAllMoving();
     }
 
     public void InitStageInstance()

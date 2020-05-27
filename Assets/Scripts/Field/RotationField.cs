@@ -8,7 +8,8 @@ public class RotationField : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.transform.Rotate(0f, 0f, 180f);
+            SEManager.PlaySE(SEManager.returnMoveDirection);
+            collision.transform.parent.Rotate(0f, 0f, 180f);
         }
     }
 }

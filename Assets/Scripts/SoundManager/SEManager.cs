@@ -5,8 +5,26 @@ using UnityEngine;
 public class SEManager : MonoBehaviour
 {
     private static AudioSource audioSource;
-    public static AudioClip shotBullet;
-    public static AudioClip missileExplosion;
+
+    public static AudioClip back;
+    public static AudioClip decision;
+    public static AudioClip explosionEnemy;
+    public static AudioClip explosionMissile;
+    public static AudioClip explosionObstacle;
+    public static AudioClip explosionPlayer;
+    public static AudioClip failed;
+    public static AudioClip getItem;
+    public static AudioClip pause;
+    public static AudioClip peopleSurprise;
+    public static AudioClip returnMoveDirection;
+    public static AudioClip select;
+    public static AudioClip shotBeam;
+    public static AudioClip shot0;
+    public static AudioClip shot1;
+    public static AudioClip speedDown;
+    public static AudioClip speedUp;
+    public static AudioClip stopMovement;
+    public static AudioClip success;
 
     private void Awake()
     {

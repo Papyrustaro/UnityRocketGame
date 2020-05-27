@@ -34,17 +34,13 @@ public class StageUIManager : MonoBehaviour
             throw new System.Exception();
         }
 
-        /*this.pausePanel = this.transform.Find("PausePanel").gameObject;
-        this.resumeButton = this.pausePanel.transform.Find("ResumeButton").GetComponent<Button>();
-        this.rankingPanel = this.transform.Find("RankingPanel").gameObject;
-        this.rankingNameAndValueText = this.rankingPanel.transform.Find("RankingScrollView/Viewport/ContentOfNameAndValueText").GetComponent<Text>();*/
-
         this.stageClearText = this.smogPanel.transform.Find("StageClearText").gameObject;
         this.gameOverText = this.smogPanel.transform.Find("GameOverText").gameObject;
     }
 
     public void Update()
     {
+        if (Time.timeScale == 0f) return;
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             PauseAndResume();
@@ -59,6 +55,7 @@ public class StageUIManager : MonoBehaviour
         if (this.pausePanel.activeSelf)
         {
             this.pausePanel.SetActive(false);
+            SEManager.PlaySE(SEManager.back);
             Time.timeScale = 1f;
         }
         else
@@ -66,6 +63,7 @@ public class StageUIManager : MonoBehaviour
             StageManager.Instance.StopAllMoving();
             this.pausePanel.SetActive(true);
             this.resumeButton.Select();
+            SEManager.PlaySE(SEManager.pause);
         }
     }
 
@@ -114,6 +112,29 @@ public class StageUIManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        StageManager.Instance.StopAllMoving();
+        StartCoroutine(DelayMethodRealTime(0.5f, () =>
+        {
+            SEManager.PlaySE(SEManager.failed);
+            this.scoreText.SetActive(false);
+            this.timeText.SetActive(false);
+            this.gameOverText.SetActive(true);
+            this.smogPanel.SetActive(true);
+        }));
+        StartCoroutine(DelayMethodRealTime(1.5f, () =>
+        {
+            this.gameOverText.SetActive(false);
+        }));
+        StartCoroutine(DelayMethodRealTime(2.5f, () =>
+        {
+            SEManager.PlaySE(SEManager.getItem);
+            this.rankingPanel.SetActive(true);
+            this.continueButton.Select();
+        }));
+    }
+
     public void ShowRankingWhenStageClear()
     {
         StageManager.Instance.StopAllMoving();
@@ -122,6 +143,7 @@ public class StageUIManager : MonoBehaviour
 
         StartCoroutine(DelayMethodRealTime(0.5f, () =>
         {
+            SEManager.PlaySE(SEManager.success);
             this.scoreText.SetActive(false);
             this.timeText.SetActive(false);
             this.stageClearText.SetActive(true);
@@ -133,6 +155,7 @@ public class StageUIManager : MonoBehaviour
         }));
         StartCoroutine(DelayMethodRealTime(2.5f, () =>
         {
+            SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
             this.continueButton.Select();
         }));

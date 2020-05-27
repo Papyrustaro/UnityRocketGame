@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6331003099949921387}
   - component: {fileID: 6331003099949921386}
   - component: {fileID: 552012451}
+  - component: {fileID: 3318409170085804353}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Enemy
@@ -125,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreObstacle: 0
+  destroyContactWall: 0
+  destroyContactObstacle: 0
   hp: 3
   haveDamaged:
     m_PersistentCalls:
@@ -144,6 +146,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3318409170085804353}
+        m_MethodName: PlayAudioClip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   contactEnemy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3318409170085804353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331003099949921390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2749f009fdf159f4cbb1738cbc481640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 482baa1b36951ec48bf51ee31112698c, type: 3}

@@ -11,6 +11,7 @@ public class MustCollectItem : MonoBehaviour
     {
         if (StageManager.Instance.ClearFlagType == E_ClearFlagType.CollectItem && collision.CompareTag("Player"))
         {
+            SEManager.PlaySE(SEManager.getItem);
             this.getMustCollectItem.Invoke();
             ClearFlag_CollectItem.Instance.GetMustCollectItem();
             Destroy(this.gameObject);

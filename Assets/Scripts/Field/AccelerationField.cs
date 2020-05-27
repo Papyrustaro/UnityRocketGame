@@ -9,7 +9,8 @@ public class AccelerationField : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, this.moveForce));
+            SEManager.PlaySE(SEManager.speedUp);
+            collision.transform.parent.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, this.moveForce));
         }
     }
 }

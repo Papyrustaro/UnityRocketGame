@@ -9,17 +9,10 @@ public class StopField : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Rigidbody2D p_rb = collision.GetComponent<Rigidbody2D>();
+            SEManager.PlaySE(SEManager.stopMovement);
+            Rigidbody2D p_rb = collision.transform.parent.GetComponent<Rigidbody2D>();
             p_rb.velocity = Vector2.zero;
             p_rb.angularVelocity = 0f;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("a");
         }
     }
 }

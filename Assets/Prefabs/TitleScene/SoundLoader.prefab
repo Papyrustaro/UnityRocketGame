@@ -119,5 +119,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10723a2cefbb08d4eb4d8be9db468666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotBullet: {fileID: 8300000, guid: f18544695af1f1e49abefddf9f3ba3d5, type: 3}
-  missileExplosion: {fileID: 8300000, guid: fc53ae5ad642d7c42ad6cdfb7a0f734d, type: 3}
+  back: {fileID: 8300000, guid: d460e34525eba7146b182f8499055f41, type: 3}
+  decision: {fileID: 8300000, guid: 1b54ca087bd474342a7ba22b8d74c1fe, type: 3}
+  explosionEnemy: {fileID: 8300000, guid: 482baa1b36951ec48bf51ee31112698c, type: 3}
+  explosionMissile: {fileID: 8300000, guid: ebdfda6f25de45d4083a65f606bac3ac, type: 3}
+  explosionObstacle: {fileID: 8300000, guid: b3e90b57f4d7d594eb96426dd8796c00, type: 3}
+  explosionPlayer: {fileID: 8300000, guid: db379473973409242bb522b7930302e6, type: 3}
+  failed: {fileID: 8300000, guid: 7a57a37809be2f442b53f3bacc57b019, type: 3}
+  getItem: {fileID: 8300000, guid: b4e532c1fdee26548a23ae6809dfcc9d, type: 3}
+  pause: {fileID: 8300000, guid: d92c1848b8f72804f949c920e6c8cc2d, type: 3}
+  peopleSurprise: {fileID: 8300000, guid: 20b63edb2a7b1c142bdda8a4f712d96b, type: 3}
+  returnMoveDirection: {fileID: 8300000, guid: 44edd66fe0d99594c9601476d3b990d0, type: 3}
+  select: {fileID: 8300000, guid: 6604f5065f375954d9ba1f9119a8cf87, type: 3}
+  shotBeam: {fileID: 8300000, guid: 38d5b337ee58be84ab080096bf33598c, type: 3}
+  shot0: {fileID: 8300000, guid: cadcb475774a27c4186f04fe633f8480, type: 3}
+  shot1: {fileID: 8300000, guid: b1e141fb1727acd4d86aab0302fbeab8, type: 3}
+  speedDown: {fileID: 8300000, guid: ed0c3a3786e58ea40989159bea319a21, type: 3}
+  speedUp: {fileID: 8300000, guid: f82ab61f3a4bbe84f82b5d21d6705612, type: 3}
+  stopMovement: {fileID: 8300000, guid: 3b7cad4a3726d60438c985f6411e6348, type: 3}
+  success: {fileID: 8300000, guid: e57219931caa5954f802dbb8c4f8966d, type: 3}
