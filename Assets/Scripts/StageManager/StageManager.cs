@@ -7,8 +7,11 @@ public class StageManager : MonoBehaviour
 {
     [SerializeField] private E_ClearFlagType clearFlagType;
     [SerializeField] private E_PlayType playType;
+    [SerializeField] private bool isStageScene = true;
 
     public static StageManager Instance { get; set; }
+
+    public bool IsStageScene => this.isStageScene;
 
     //public GameObject PlayerPrefab { get; set; }
     public E_ClearFlagType ClearFlagType => this.clearFlagType;

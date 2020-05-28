@@ -37,6 +37,9 @@ public class PlaySEByEnum : MonoBehaviour
             case E_SE.explosionPlayer:
                 SEManager.PlaySE(SEManager.explosionPlayer);
                 break;
+            case E_SE.page:
+                SEManager.PlaySE(SEManager.page);
+                break;
             case E_SE.failed:
                 SEManager.PlaySE(SEManager.failed);
                 break;
@@ -101,6 +104,9 @@ public class PlaySEByEnum : MonoBehaviour
             case E_SE.explosionPlayer:
                 SEManager.PlaySE(SEManager.explosionPlayer);
                 break;
+            case E_SE.page:
+                SEManager.PlaySE(SEManager.page);
+                break;
             case E_SE.failed:
                 SEManager.PlaySE(SEManager.failed);
                 break;
@@ -156,5 +162,5 @@ public enum E_SE
     speedUp,
     stopMovement, 
     success,
-
+    page,
 }

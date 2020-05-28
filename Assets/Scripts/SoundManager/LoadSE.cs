@@ -23,6 +23,7 @@ public class LoadSE : MonoBehaviour
     [SerializeField] private AudioClip speedUp;
     [SerializeField] private AudioClip stopMovement;
     [SerializeField] private AudioClip success;
+    [SerializeField] private AudioClip page;
 
 
     private void Awake()
@@ -46,5 +47,6 @@ public class LoadSE : MonoBehaviour
         SEManager.speedUp = this.speedUp;
         SEManager.stopMovement = this.stopMovement;
         SEManager.success = this.success;
+        SEManager.page = this.page;
     }
 }

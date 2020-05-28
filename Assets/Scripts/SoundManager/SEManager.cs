@@ -25,6 +25,7 @@ public class SEManager : MonoBehaviour
     public static AudioClip speedUp;
     public static AudioClip stopMovement;
     public static AudioClip success;
+    public static AudioClip page;
 
     private void Awake()
     {

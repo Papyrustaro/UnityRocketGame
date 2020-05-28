@@ -18,10 +18,14 @@ public class StageUIManager : MonoBehaviour
     [SerializeField] private GameObject scoreText;
     [SerializeField] private GameObject timeText;
     [SerializeField] private Text playerResultText;
+    [SerializeField] private GameObject manualPanel;
 
     private GameObject stageClearText;
     private GameObject gameOverText;
+    private ManualUIManager manualUIManager;
 
+    public GameObject PausePanel => this.pausePanel;
+    public Button ResumeButton => this.resumeButton;
     public static StageUIManager Instance { get; set; }
 
     private void Awake()
@@ -37,6 +41,7 @@ public class StageUIManager : MonoBehaviour
 
         this.stageClearText = this.smogPanel.transform.Find("StageClearText").gameObject;
         this.gameOverText = this.smogPanel.transform.Find("GameOverText").gameObject;
+        this.manualUIManager = this.manualPanel.GetComponent<ManualUIManager>();
     }
 
     public void Update()
@@ -66,6 +71,13 @@ public class StageUIManager : MonoBehaviour
             this.resumeButton.Select();
             SEManager.PlaySE(SEManager.pause);
         }
+    }
+
+    public void ViewManual()
+    {
+        this.pausePanel.SetActive(false);
+        this.manualPanel.SetActive(true);
+        this.manualUIManager.FirstSelectButton();
     }
 
 
