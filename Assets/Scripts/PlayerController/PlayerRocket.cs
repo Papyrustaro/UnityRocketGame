@@ -45,8 +45,6 @@ public class PlayerRocket : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.shot0);
             this.weaponGenerator.GenerateWeapon();
-
-            ScoreManager.Instance.AddScore(100);
         }
     }
 

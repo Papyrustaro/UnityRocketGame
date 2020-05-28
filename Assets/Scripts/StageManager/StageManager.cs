@@ -143,12 +143,14 @@ public enum E_ClearFlagType
     DefeatEnemy,
     CollectItem,
     Survival,
-    MoveToGoal
+    MoveToGoal,
+    Other
 }
 
 public enum E_PlayType
 {
     Mission,
     ScoreAttack,
-    TimeAttack
+    TimeAttack,
+    Other
 }
