@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MoveScreen/ScoreAttack/MoveScreen_ScoreAttack0.unity
     guid: 1a20408926088424796688637c5a65f1
+  - enabled: 1
+    path: Assets/Scenes/NotBattle/SelectMissionStage.unity
+    guid: 2fe86205790f4754faa95bbaeae01a90
   m_configObjects: {}
