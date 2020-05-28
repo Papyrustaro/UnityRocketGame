@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SelectStageManager : MonoBehaviour
 {
-    private StageOverViewsManager stageOverViewsManager;
+    [SerializeField] private E_PlayType playType;
+    [SerializeField] private GameObject[] stageSelectPanels;
     public static SelectStageManager Instance { get; set; }
 
-    public int SelectingStageIndex { get; set; } = -1;
+    public int CurrentSelectIndex { get; set; } = -1;
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -19,25 +22,44 @@ public class SelectStageManager : MonoBehaviour
         {
             throw new System.Exception();
         }
-        this.stageOverViewsManager = GetComponent<StageOverViewsManager>();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && this.SelectingStageIndex >= 0)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            this.stageOverViewsManager.ShowStageOverView(this.SelectingStageIndex);
+            if(this.CurrentSelectIndex >= 0)
+            {
+                //初期化処理
+                InitBeforeGoStage();
+                SEManager.PlaySE(SEManager.decision);
+                switch (this.playType)
+                {
+                    case E_PlayType.Mission:
+                        //index+1かな
+                        SceneManager.LoadScene("Mission" + (this.CurrentSelectIndex + 1).ToString());
+                        break;
+                    case E_PlayType.ScoreAttack:
+                        SceneManager.LoadScene("ScoreAttack" + (this.CurrentSelectIndex + 1).ToString());
+                        break;
+                    case E_PlayType.TimeAttack:
+                        SceneManager.LoadScene("TimeAttack" + (this.CurrentSelectIndex + 1).ToString());
+                        break;
+                }
+            }
         }
     }
 
-    public void BackFromShowOverView()
+    private void InitBeforeGoStage()
     {
+        Instance = null;
+    }
 
-        SEManager.PlaySE(SEManager.back);
-        Time.timeScale = 1f;
-        this.stageOverViewsManager.OverViews[this.SelectingStageIndex].SetActive(false);
-        this.stageOverViewsManager.StageOverViewsPanel.SetActive(false);
-        this.SelectingStageIndex = -1;
-        
+    public void OpenAndClosePanel(int stageIndex, bool wantOpen)
+    {
+        if (wantOpen) this.CurrentSelectIndex = stageIndex;
+        else this.CurrentSelectIndex = -1;
+
+        this.stageSelectPanels[stageIndex].SetActive(wantOpen);
     }
 }
