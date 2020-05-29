@@ -8,15 +8,4 @@ using UnityEngine.SceneManagement;
 
 public class Debugger : MonoBehaviour
 {
-    [field: SerializeField]
-    [field: RenameField("health")]
-    public int Health { get; private set; }
-
-    [SerializeField] private InputField inputField;
-
-    private void Start()
-    {
-        //this.inputField.Select();
-        //SceneManager.LoadScene("SelectMissionStage");
-    }
 }

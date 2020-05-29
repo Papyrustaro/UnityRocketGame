@@ -8,10 +8,12 @@ public class PlayerRocket : MonoBehaviour
 {
     [SerializeField] private Sprite explosion_small;
     [SerializeField] private Sprite explosion_big;
+    [SerializeField] private float shotInterval = 0.1f;
     private PlayerRocketMovement m_rocketController;
     private SpriteRenderer m_spriteRenderer;
     private WeaponGenerator weaponGenerator;
     private bool haveWeapon = true;
+    private bool canShot = true;
 
     public static Transform PlayerTransform { private set; get; }
 
@@ -41,10 +43,15 @@ public class PlayerRocket : MonoBehaviour
     private void Update()
     {
         if (Time.timeScale == 0f) return;
-        if (this.haveWeapon && Input.GetKeyDown(KeyCode.J))
+        if (this.haveWeapon && this.canShot && Input.GetKeyDown(KeyCode.J))
         {
             SEManager.PlaySE(SEManager.shot0);
             this.weaponGenerator.GenerateWeapon();
+            this.canShot = false;
+            StartCoroutine(DelayMethod(this.shotInterval, () =>
+            {
+                this.canShot = true;
+            }));
         }
     }
 
@@ -68,6 +75,12 @@ public class PlayerRocket : MonoBehaviour
     IEnumerator DelayMethodRealTime(float waitTime, Action action)
     {
         yield return new WaitForSecondsRealtime(waitTime);
+        action();
+    }
+
+    IEnumerator DelayMethod(float waitTime, Action action)
+    {
+        yield return new WaitForSeconds(waitTime);
         action();
     }
 }

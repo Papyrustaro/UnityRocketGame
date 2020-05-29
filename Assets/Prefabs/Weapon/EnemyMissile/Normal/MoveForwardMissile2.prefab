@@ -74,7 +74,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreObstacle: 0
+  destroyContactWall: 0
+  destroyContactObstacle: 0
   hp: 1
   haveDamaged:
     m_PersistentCalls:
@@ -121,10 +122,9 @@ GameObject:
   - component: {fileID: 5409743517683356076}
   - component: {fileID: 7112576664109978762}
   - component: {fileID: 6090732629827322920}
-  - component: {fileID: 5444687333389270347}
   - component: {fileID: 5778611616440028864}
   m_Layer: 8
-  m_Name: MoveForwardMissle2
+  m_Name: MoveForwardMissile2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,9 +227,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.45, y: 0.6}
   serializedVersion: 2
-  m_Radius: 3.915
+  m_Radius: 3
 --- !u!114 &7112576664109978762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,22 +272,6 @@ MonoBehaviour:
   instantiateGameObjects:
   - {fileID: 325713126293832010, guid: bfa03db5357ff334a90e06745aa9dab7, type: 3}
   destroyMeAfterInstantiate: 1
---- !u!114 &5444687333389270347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5778611616440028865}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 258ff3aaec4efe54185f704cd68d0bf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 20
-  forwardDirection: {x: -1.732, y: 1}
-  moveDirection: {x: -1, y: 0.1}
-  boundWall: 1
 --- !u!114 &5778611616440028864
 MonoBehaviour:
   m_ObjectHideFlags: 0

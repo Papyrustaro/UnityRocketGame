@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6331003099949921388}
   - component: {fileID: 6331003099949921389}
   - component: {fileID: 6331003099949921387}
-  - component: {fileID: 6331003099949921386}
   - component: {fileID: 552012451}
   - component: {fileID: 3318409170085804353}
+  - component: {fileID: 6670297891830795709}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Enemy
@@ -98,22 +98,6 @@ MonoBehaviour:
   spawnObject: {fileID: 3679570668266381649, guid: b2dbf0f21a5dafd4a9ac0c79124e6a32,
     type: 3}
   spawnInterval: 0.5
---- !u!70 &6331003099949921386
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6331003099949921390}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4, y: 2.42}
-  m_Direction: 1
 --- !u!114 &552012451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +157,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 482baa1b36951ec48bf51ee31112698c, type: 3}
+--- !u!60 &6670297891830795709
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331003099949921390}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 2.42}
+    newSize: {x: 4, y: 2.42}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8949575, y: -0.610698}
+      - {x: 1.0147467, y: 0.49771452}
+      - {x: 0.5664916, y: 1.0519207}
+      - {x: -0.4040432, y: 0.15607095}
+      - {x: -1.9780402, y: -0.2930572}
+      - {x: -1.1419816, y: -0.77769804}
+      - {x: 0.6642933, y: -0.80630016}
