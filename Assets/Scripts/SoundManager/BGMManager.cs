@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    private static AudioSource audioSource;
+    public static AudioSource audioSource;
     public static AudioClip battleBGM;
 
     private void Awake()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
-    private static AudioSource audioSource;
+    public static AudioSource audioSource;
 
     public static AudioClip back;
     public static AudioClip decision;

@@ -16,4 +16,4 @@ BGM/SEの音量→基本-30db
 スコアアタックの死ぬまでが、タイム表示いらない
 
 # 気を付けること
-playerのsortingLayerを2に
+playerのorderInLayerを2に

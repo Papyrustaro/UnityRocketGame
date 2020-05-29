@@ -10,10 +10,17 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject timeAttackPanel;
     [SerializeField] private GameObject optionPanel;
     [SerializeField] private GameObject manualPanel;
+    [SerializeField] private GameObject manual;
+    [SerializeField] private GameObject option;
 
     public E_MenuType CurrentSelectType { get; set; } = E_MenuType.Other;
 
     public static MenuUIManager Instance { get; set; }
+
+    public float CountTime { get; set; } = 0f;
+
+    public GameObject ManualPanel => this.manualPanel;
+    public GameObject OptionPanel => this.optionPanel;
 
     private void Awake()
     {
@@ -29,6 +36,7 @@ public class MenuUIManager : MonoBehaviour
 
     private void Update()
     {
+        if(this.CountTime < 1f) this.CountTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Return))
         {
             switch (this.CurrentSelectType)
@@ -46,8 +54,24 @@ public class MenuUIManager : MonoBehaviour
                     SceneManager.LoadScene("SelectTimeAttackStage");
                     break;
                 case E_MenuType.Manual:
+                    if(CountTime > 0.3f)
+                    {
+                        SEManager.PlaySE(SEManager.decision);
+                        this.manualPanel.SetActive(false);
+                        this.manual.SetActive(true);
+                        Time.timeScale = 0f;
+                        this.CountTime = 0f;
+                    }
                     break;
                 case E_MenuType.Option:
+                    if (CountTime > 0.3f)
+                    {
+                        SEManager.PlaySE(SEManager.decision);
+                        this.optionPanel.SetActive(false);
+                        this.option.SetActive(true);
+                        Time.timeScale = 0f;
+                        this.CountTime = 0f;
+                    }
                     break;
             }
         }

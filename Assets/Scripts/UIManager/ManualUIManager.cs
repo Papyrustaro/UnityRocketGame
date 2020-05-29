@@ -16,6 +16,11 @@ public class ManualUIManager : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        this.nextButton.Select();
+    }
+
     public void FirstSelectButton()
     {
         this.nextButton.Select();
@@ -40,12 +45,17 @@ public class ManualUIManager : MonoBehaviour
     public void PressResume()
     {
         SEManager.PlaySE(SEManager.back);
-        this.gameObject.SetActive(false);
         if (StageManager.Instance.IsStageScene)
         {
             StageUIManager.Instance.PausePanel.SetActive(true);
             StageUIManager.Instance.ResumeButton.Select();
         }
+        else
+        {
+            Time.timeScale = 1f;
+            MenuUIManager.Instance.ManualPanel.SetActive(true);
+        }
+        this.gameObject.SetActive(false);
     }
 
 }

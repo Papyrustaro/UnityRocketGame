@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuGameObject : MonoBehaviour
 {
     [SerializeField] private E_MenuType menuType;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
