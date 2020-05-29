@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuUIManager : MonoBehaviour
 {
@@ -33,11 +34,16 @@ public class MenuUIManager : MonoBehaviour
             switch (this.CurrentSelectType)
             {
                 case E_MenuType.Mission:
-                    Debug.Log("mission");
+                    SEManager.PlaySE(SEManager.decision);
+                    SceneManager.LoadScene("SelectMissionStage");
                     break;
                 case E_MenuType.ScoreAttack:
+                    SEManager.PlaySE(SEManager.decision);
+                    SceneManager.LoadScene("SelectScoreAttackStage");
                     break;
                 case E_MenuType.TimeAttack:
+                    SEManager.PlaySE(SEManager.decision);
+                    SceneManager.LoadScene("SelectTimeAttackStage");
                     break;
                 case E_MenuType.Manual:
                     break;

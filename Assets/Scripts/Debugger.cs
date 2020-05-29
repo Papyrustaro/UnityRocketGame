@@ -17,6 +17,6 @@ public class Debugger : MonoBehaviour
     private void Start()
     {
         //this.inputField.Select();
-        SceneManager.LoadScene("SelectMissionStage");
+        //SceneManager.LoadScene("SelectMissionStage");
     }
 }
