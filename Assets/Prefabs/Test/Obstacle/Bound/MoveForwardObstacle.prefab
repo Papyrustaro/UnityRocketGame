@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6863464099728759658}
   - component: {fileID: 8618987604864586150}
   - component: {fileID: 9101067440962565328}
-  - component: {fileID: 9101067440962565340}
+  - component: {fileID: 2585950790854510483}
   m_Layer: 0
   m_Name: MoveForwardObstacle
   m_TagString: Untagged
@@ -119,8 +119,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &9101067440962565340
-CircleCollider2D:
+--- !u!60 &2585950790854510483
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,5 +133,19 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3.915
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.83, y: 7.14}
+    newSize: {x: 7.83, y: 7.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.5874372, y: 0.7475543}
+      - {x: 1.9293365, y: -1.8177867}
+      - {x: 3.006531, y: 0.5496621}
+      - {x: -1.865955, y: 2.0891166}
+      - {x: -3.6797209, y: 1.9795489}

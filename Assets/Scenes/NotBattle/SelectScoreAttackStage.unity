@@ -354,6 +354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 2167392817313226718, guid: f58738f638bb8fe4e829446b9e90771e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2167392817313226719, guid: f58738f638bb8fe4e829446b9e90771e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -504,6 +509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081221142000726075, guid: e027c8da04d7f68419d0139d3de698b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e027c8da04d7f68419d0139d3de698b1, type: 3}

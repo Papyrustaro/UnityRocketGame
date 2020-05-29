@@ -26,6 +26,7 @@ public class ClearFlag_CollectItem : MonoBehaviour
     public void GetMustCollectItem()
     {
         this.RemainItemCount--;
+        StageUIManager.Instance.UpdateFlagText();
         if(this.RemainItemCount <= 0)
         {
             StageManager.Instance.StageClear();

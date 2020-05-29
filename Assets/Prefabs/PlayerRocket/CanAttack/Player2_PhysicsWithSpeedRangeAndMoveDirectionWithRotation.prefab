@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecc6c23e8c530845859ece807004d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 6508802645810520011, guid: 698361d07e48a1b45b7be443416a460f,
+  weaponPrefab: {fileID: 1277590151954636581, guid: a14f0c656a6837c4ba44529d7474ba78,
     type: 3}
 --- !u!1 &8572404226416390723
 GameObject:
@@ -105,7 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreObstacle: 0
+  destroyContactWall: 0
+  destroyContactObstacle: 0
   hp: 10000
   haveDamaged:
     m_PersistentCalls:

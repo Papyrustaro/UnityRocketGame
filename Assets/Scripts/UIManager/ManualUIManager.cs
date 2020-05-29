@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ManualUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] manual;
-    [SerializeField] private Button nextButton;
+    [SerializeField] private Button resumeButton;
     private int currentIndex = 0;
     private int manualLength;
 
@@ -18,12 +18,12 @@ public class ManualUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        this.nextButton.Select();
+        this.resumeButton.Select();
     }
 
     public void FirstSelectButton()
     {
-        this.nextButton.Select();
+        this.resumeButton.Select();
     }
     public void PressNextManual()
     {

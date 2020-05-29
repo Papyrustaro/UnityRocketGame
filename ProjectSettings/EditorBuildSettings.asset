@@ -89,4 +89,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NotBattle/SelectTimeAttackStage.unity
     guid: f3050a42127378140b74386c16f92e81
+  - enabled: 1
+    path: Assets/Scenes/NotBattle/Title.unity
+    guid: 5a041a79ced8516448cfeb506fe1f91d
+  - enabled: 1
+    path: Assets/Scenes/NotBattle/FirstLoad.unity
+    guid: d3798669f7b8eb5449d58d28f272e934
   m_configObjects: {}

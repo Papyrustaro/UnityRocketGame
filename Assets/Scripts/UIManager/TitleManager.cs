@@ -21,6 +21,11 @@ public class TitleManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void SetPlayerName(string inputName)
     {
         StaticData.playerName = inputName;

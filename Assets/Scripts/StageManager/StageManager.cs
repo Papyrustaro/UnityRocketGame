@@ -144,6 +144,7 @@ public enum E_ClearFlagType
     CollectItem,
     Survival,
     MoveToGoal,
+    BreakTarget,
     Other
 }
 

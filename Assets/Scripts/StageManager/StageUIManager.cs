@@ -19,6 +19,7 @@ public class StageUIManager : MonoBehaviour
     [SerializeField] private GameObject timeText;
     [SerializeField] private Text playerResultText;
     [SerializeField] private GameObject manualPanel;
+    [SerializeField] private Text flagCountText;
 
     private GameObject stageClearText;
     private GameObject gameOverText;
@@ -44,12 +45,31 @@ public class StageUIManager : MonoBehaviour
         this.manualUIManager = this.manualPanel.GetComponent<ManualUIManager>();
     }
 
+    private void Start()
+    {
+        this.UpdateFlagText();
+    }
+
     public void Update()
     {
         if (Time.timeScale == 0f) return;
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             PauseAndResume();
+        }
+    }
+
+    public void UpdateFlagText()
+    {
+        this.flagCountText.text = "";
+        switch (StageManager.Instance.ClearFlagType)
+        {
+            case E_ClearFlagType.CollectItem:
+                this.flagCountText.text = "残り: " + ClearFlag_CollectItem.Instance.RemainItemCount;
+                break;
+            case E_ClearFlagType.BreakTarget:
+                this.flagCountText.text = "残り: " + ClearFlag_BreakTarget.Instance.RemainTargetCount;
+                break;
         }
     }
 
@@ -83,8 +103,20 @@ public class StageUIManager : MonoBehaviour
 
     public void MoveSceneToStageSelect()
     {
+        E_PlayType playType = StageManager.Instance.PlayType;
         StageManager.Instance.InitStageInstance();
-        SceneManager.LoadScene("SelectMode");
+        switch (playType)
+        {
+            case E_PlayType.Mission:
+                SceneManager.LoadScene("SelectMissionStage");
+                break;
+            case E_PlayType.ScoreAttack:
+                SceneManager.LoadScene("SelectScoreAttackStage");
+                break;
+            case E_PlayType.TimeAttack:
+                SceneManager.LoadScene("SelectTimeAttackStage");
+                break;
+        }
         Time.timeScale = 1f;
     }
 
@@ -140,6 +172,7 @@ public class StageUIManager : MonoBehaviour
             SEManager.PlaySE(SEManager.failed);
             this.scoreText.SetActive(false);
             this.timeText.SetActive(false);
+            this.flagCountText.transform.gameObject.SetActive(false);
             this.gameOverText.SetActive(true);
             this.smogPanel.SetActive(true);
         }));
@@ -151,7 +184,12 @@ public class StageUIManager : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
-            this.continueButton.Select();
+            if (StageManager.Instance.PlayType == E_PlayType.Mission)
+            {
+                this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
+                this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
+                this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
+            }
         }));
     }
 
@@ -166,6 +204,7 @@ public class StageUIManager : MonoBehaviour
             SEManager.PlaySE(SEManager.success);
             this.scoreText.SetActive(false);
             this.timeText.SetActive(false);
+            this.flagCountText.transform.gameObject.SetActive(false);
             this.stageClearText.SetActive(true);
             this.smogPanel.SetActive(true);
         }));
@@ -177,6 +216,12 @@ public class StageUIManager : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
+            if (StageManager.Instance.PlayType == E_PlayType.Mission)
+            {
+                this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
+                this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
+                this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
+            }
             this.continueButton.Select();
         }));
     }

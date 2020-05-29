@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 43962157562551221}
   - component: {fileID: 2971136067428441747}
   - component: {fileID: 2236542194944265777}
+  - component: {fileID: 4419157327927873114}
   m_Layer: 8
-  m_Name: HomingObstacle3
+  m_Name: HomingMissile3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +128,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999223225333368024}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: cb0cc8a2dfed56d48b23aec0933f557d, type: 2}
   m_IsTrigger: 0
@@ -178,6 +179,36 @@ MonoBehaviour:
   instantiateGameObjects:
   - {fileID: 325713126293832010, guid: bfa03db5357ff334a90e06745aa9dab7, type: 3}
   destroyMeAfterInstantiate: 1
+--- !u!60 &4419157327927873114
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999223225333368024}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: cb0cc8a2dfed56d48b23aec0933f557d, type: 2}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.83, y: 7.14}
+    newSize: {x: 7.83, y: 7.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.5874372, y: 0.7475543}
+      - {x: 1.9293365, y: -1.8177867}
+      - {x: 3.006531, y: 0.5496621}
+      - {x: -1.865955, y: 2.0891166}
+      - {x: -3.6797209, y: 1.9795489}
 --- !u!1 &4800965030941269394
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +221,7 @@ GameObject:
   - component: {fileID: 8196684336201442817}
   - component: {fileID: 7998804656840600326}
   - component: {fileID: 2007701343118428781}
+  - component: {fileID: 4070935515185214095}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: AttackToPlayer
@@ -231,7 +263,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4800965030941269394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -252,7 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreObstacle: 0
+  destroyContactWall: 0
+  destroyContactObstacle: 0
   hp: 1
   haveDamaged:
     m_PersistentCalls:
@@ -285,3 +318,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!60 &4070935515185214095
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800965030941269394}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.83, y: 7.14}
+    newSize: {x: 7.83, y: 7.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.5874372, y: 0.7475543}
+      - {x: 1.9293365, y: -1.8177867}
+      - {x: 3.006531, y: 0.5496621}
+      - {x: -1.865955, y: 2.0891166}
+      - {x: -3.6797209, y: 1.9795489}
