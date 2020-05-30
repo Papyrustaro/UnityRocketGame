@@ -176,11 +176,11 @@ public class StageUIManager : MonoBehaviour
             this.gameOverText.SetActive(true);
             this.smogPanel.SetActive(true);
         }));
-        StartCoroutine(DelayMethodRealTime(1.5f, () =>
+        StartCoroutine(DelayMethodRealTime(1f, () =>
         {
             this.gameOverText.SetActive(false);
         }));
-        StartCoroutine(DelayMethodRealTime(2.5f, () =>
+        StartCoroutine(DelayMethodRealTime(1.5f, () =>
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
@@ -190,6 +190,7 @@ public class StageUIManager : MonoBehaviour
                 this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
                 this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
             }
+            this.continueButton.Select();
         }));
     }
 
@@ -208,11 +209,11 @@ public class StageUIManager : MonoBehaviour
             this.stageClearText.SetActive(true);
             this.smogPanel.SetActive(true);
         }));
-        StartCoroutine(DelayMethodRealTime(1.5f, () =>
+        StartCoroutine(DelayMethodRealTime(1f, () =>
         {
             this.stageClearText.SetActive(false);
         }));
-        StartCoroutine(DelayMethodRealTime(2.5f, () =>
+        StartCoroutine(DelayMethodRealTime(1.5f, () =>
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);

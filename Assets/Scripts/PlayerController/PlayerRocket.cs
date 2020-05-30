@@ -66,7 +66,7 @@ public class PlayerRocket : MonoBehaviour
         {
             this.m_spriteRenderer.sprite = this.explosion_big;
         }));
-        StartCoroutine(DelayMethodRealTime(1.5f, () =>
+        StartCoroutine(DelayMethodRealTime(1f, () =>
         {
             StageManager.Instance.GameOver();
         }));
