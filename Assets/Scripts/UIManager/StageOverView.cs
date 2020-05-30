@@ -18,6 +18,14 @@ public class StageOverView : MonoBehaviour
     {
         SEManager.PlaySE(SEManager.decision);
         Time.timeScale = 1f;
+        if(this.gameObject.name == "Mission10")
+        {
+            BGMManager.PlayBGM(BGMManager.bossBGM0);
+        }
+        else
+        {
+            BGMManager.PlayBGM(BGMManager.missionBGM);
+        }
         SceneManager.LoadScene(this.gameObject.name);
     }
 

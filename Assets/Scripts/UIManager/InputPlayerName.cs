@@ -29,7 +29,7 @@ public class InputPlayerName : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.decision);
             StaticData.playerName = this.inputField.text;
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("SelectMissionStage");
         }
     }
 

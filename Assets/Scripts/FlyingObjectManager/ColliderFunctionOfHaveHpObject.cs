@@ -101,6 +101,15 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
         }
     }
 
+    public void UpdateBossHPText()
+    {
+        BossStageUIManager.Instance.BossHPText.text = "ボスHP: " + this.Hp.ToString();
+    }
+
+    public void UpdatePlayerHPText()
+    {
+        BossStageUIManager.Instance.PlayerHPText.text = "味方HP: " + this.Hp.ToString();
+    }
     public void DestroyMyGameObject()
     {
         Destroy(this.transform.root.gameObject);

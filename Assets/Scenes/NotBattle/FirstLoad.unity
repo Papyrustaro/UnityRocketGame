@@ -820,21 +820,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2167392817494365719, guid: f58738f638bb8fe4e829446b9e90771e,
-        type: 3}
-      propertyPath: battleBGM
-      value: 
-      objectReference: {fileID: 8300000, guid: eae7fa5ce992ecd469da00514daf53e9, type: 3}
-    - target: {fileID: 2167392818474259277, guid: f58738f638bb8fe4e829446b9e90771e,
-        type: 3}
-      propertyPath: missileExplosion
-      value: 
-      objectReference: {fileID: 8300000, guid: fc53ae5ad642d7c42ad6cdfb7a0f734d, type: 3}
-    - target: {fileID: 2167392818474259277, guid: f58738f638bb8fe4e829446b9e90771e,
-        type: 3}
-      propertyPath: shotBullet
-      value: 
-      objectReference: {fileID: 8300000, guid: f18544695af1f1e49abefddf9f3ba3d5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f58738f638bb8fe4e829446b9e90771e, type: 3}
 --- !u!1001 &9081221143362860254

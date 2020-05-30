@@ -5,7 +5,10 @@ using UnityEngine;
 public class BGMManager : MonoBehaviour
 {
     public static AudioSource audioSource;
-    public static AudioClip battleBGM;
+    public static AudioClip menuBGM;
+    public static AudioClip missionBGM;
+    public static AudioClip bossBGM0;
+    public static AudioClip bossBGM1;
 
     private void Awake()
     {
@@ -14,11 +17,12 @@ public class BGMManager : MonoBehaviour
 
     private void Start()
     {
-        BGMManager.PlayBGM(BGMManager.battleBGM);
+        PlayBGM(menuBGM);
     }
 
     public static void PlayBGM(AudioClip audioClip)
     {
-        BGMManager.audioSource.PlayOneShot(audioClip);
+        audioSource.clip = audioClip;
+        audioSource.Play();
     }
 }

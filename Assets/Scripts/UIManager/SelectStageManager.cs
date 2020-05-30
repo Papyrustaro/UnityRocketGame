@@ -37,7 +37,16 @@ public class SelectStageManager : MonoBehaviour
                 {
                     case E_PlayType.Mission:
                         //index+1かな
+                        if(this.CurrentSelectIndex == 9)
+                        {
+                            BGMManager.PlayBGM(BGMManager.bossBGM1);
+                        }
+                        else
+                        {
+                            BGMManager.PlayBGM(BGMManager.missionBGM);
+                        }
                         SceneManager.LoadScene("Mission" + (this.CurrentSelectIndex + 1).ToString());
+
                         break;
                     case E_PlayType.ScoreAttack:
                         SceneManager.LoadScene("ScoreAttack" + (this.CurrentSelectIndex + 1).ToString());

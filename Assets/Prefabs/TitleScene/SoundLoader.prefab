@@ -75,7 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad67007343f1790489a07b08fe415beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleBGM: {fileID: 8300000, guid: eae7fa5ce992ecd469da00514daf53e9, type: 3}
+  menuBGM: {fileID: 8300000, guid: eae7fa5ce992ecd469da00514daf53e9, type: 3}
+  missionBGM: {fileID: 8300000, guid: 81d64d678e398524fad1de539d2add54, type: 3}
+  bossBGM0: {fileID: 8300000, guid: daa41a3f75571684f98a26c809236440, type: 3}
+  bossBGM1: {fileID: 8300000, guid: 7f3abfead81ffdf46aa642f75d6aa46f, type: 3}
 --- !u!1 &2167392818474259267
 GameObject:
   m_ObjectHideFlags: 0

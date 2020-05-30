@@ -59,7 +59,7 @@ public class StageUIManager : MonoBehaviour
     public void Update()
     {
         if (Time.timeScale == 0f) return;
-        if (Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.LeftControl))
         {
             PauseAndResume();
         }
@@ -114,6 +114,7 @@ public class StageUIManager : MonoBehaviour
         switch (playType)
         {
             case E_PlayType.Mission:
+                BGMManager.PlayBGM(BGMManager.menuBGM);
                 SceneManager.LoadScene("SelectMissionStage");
                 break;
             case E_PlayType.ScoreAttack:

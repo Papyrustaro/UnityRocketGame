@@ -5,31 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: e9a4db4662259964391e5a9eb6a4c08a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: 604a3a60c99a0a043a2ac975795dfbda
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameClear.unity
     guid: edf9af9d2061b4142a4f6baa5697ca48
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NotBattle/SelectMode.unity
     guid: c215a87862ccc7941afe0cf768b4b34a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MoveScreen/MoveScreenSample.unity
     guid: 6b7af9a92da4e06409a6d7fe8c32b531
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OneScreen/Survival/OS_Sample0.unity
     guid: 0a7a87ef932499e42905cfe9b8b7aafe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OneScreen/CollectItem/OC_Sample0.unity
     guid: c650f89111278474a8b69f9e84512279
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MoveScreen/TimeAttack/MoveToGoal/MTM_Sample0.unity
     guid: 762ffecd5e31d134cab0d4b646bf1e2a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MoveScreen/ScoreAttack/MoveScreen_ScoreAttack0.unity
     guid: 1a20408926088424796688637c5a65f1
   - enabled: 1
@@ -50,43 +50,43 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mission/Mission5.unity
     guid: 3ee2843c99f688b4d90105a9e0d5232f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScoreAttack/ScoreAttack1.unity
     guid: 30d48e802b429be488e2a2e8fe44f49a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScoreAttack/ScoreAttack2.unity
     guid: eb559fdd5c6650b4fb9799800f8b957d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScoreAttack/ScoreAttack3.unity
     guid: 0db13ea707507664a8e17da17d2af8a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScoreAttack/ScoreAttack4.unity
     guid: 9bdab11a329bf9a4b9ed812ee6bfa27f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScoreAttack/ScoreAttack5.unity
     guid: 81e147a5af53e344db14cb8dfb717846
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimeAttack/TimeAttack1.unity
     guid: 24547648e742218448a74d9d849665c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimeAttack/TimeAttack2.unity
     guid: b0e5d18581d3bf148bf1f6e2f3a7ce0b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimeAttack/TimeAttack3.unity
     guid: 1118f0713f950f446870de921792c01a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimeAttack/TimeAttack4.unity
     guid: 99495f60250078b4a8c3c3eb79d52cab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TimeAttack/TimeAttack5.unity
     guid: 133a2998a851f1f43bc9a19a132c41bb
   - enabled: 1
     path: Assets/Scenes/NotBattle/Menu.unity
     guid: 5f83ee1b8640c8c41a999380bcd7d0b8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NotBattle/SelectScoreAttackStage.unity
     guid: 8c6ee6505a5290a4c851868284e0b4e9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NotBattle/SelectTimeAttackStage.unity
     guid: f3050a42127378140b74386c16f92e81
   - enabled: 1
@@ -95,4 +95,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NotBattle/FirstLoad.unity
     guid: d3798669f7b8eb5449d58d28f272e934
+  - enabled: 1
+    path: Assets/Scenes/Mission/Mission6.unity
+    guid: 0580ea1c3678de144917c62ab2ff4092
+  - enabled: 1
+    path: Assets/Scenes/Mission/Mission7.unity
+    guid: 4a8a29c13217f6d47a7784687855d266
+  - enabled: 1
+    path: Assets/Scenes/Mission/Mission8.unity
+    guid: 29a5c4c87815af7449a53ca06889d873
+  - enabled: 1
+    path: Assets/Scenes/Mission/Mission9.unity
+    guid: 9c28d8b4f831f6041ab9cb8183eb6a78
+  - enabled: 1
+    path: Assets/Scenes/Mission/Mission10.unity
+    guid: 95a5bbb94824a1949bed364248f87fc7
   m_configObjects: {}
