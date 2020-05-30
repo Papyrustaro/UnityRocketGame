@@ -8,6 +8,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject[] finalStageMasicCircles;
     [SerializeField] private Transform[] masicCirclePositions;
     [SerializeField] private float instantiateMasicCircleInterval;
+    [SerializeField] private int changeAttackHp = 50;
 
     private int earlyStageMasicCirclesCount;
     private int finalStageMasicCirclesCount;
@@ -33,7 +34,11 @@ public class BossController : MonoBehaviour
         {
             this.countTime = 0f;
             GenerateMasicCircle();
-            if (haveHpObject.Hp <= 25) this.isEarlyStage = false;
+            if (this.isEarlyStage && haveHpObject.Hp <= this.changeAttackHp)
+            {
+                this.isEarlyStage = false;
+                BGMManager.PlayBGM(BGMManager.bossBGM1);
+            }
         }
     }
 

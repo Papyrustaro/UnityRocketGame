@@ -119,6 +119,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8572404225652773899, guid: 0240127a9d8994541bedbf92b8578f06,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 8734172475061190828, guid: a98aaf93b03bfc34caca32c745af8bfd,
+        type: 3}
     - target: {fileID: 8572404226416390721, guid: 0240127a9d8994541bedbf92b8578f06,
         type: 3}
       propertyPath: ignoreObstacle

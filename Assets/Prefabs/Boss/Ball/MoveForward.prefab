@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyContactWall: 0
   destroyContactObstacle: 0
-  hp: 100
+  hp: 1
   haveDamaged:
     m_PersistentCalls:
       m_Calls: []

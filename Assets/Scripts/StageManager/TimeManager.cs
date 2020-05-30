@@ -58,8 +58,10 @@ public class TimeManager : MonoBehaviour
             this.CountTime -= Time.deltaTime;
             if(this.CountTime <= 0f && this.needCount)
             {
+                this.CountTime = 0f;
                 StageManager.Instance.GameOver();
                 this.needCount = false;
+                return;
             }
         }
 
