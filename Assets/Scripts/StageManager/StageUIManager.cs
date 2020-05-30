@@ -159,6 +159,18 @@ public class StageUIManager : MonoBehaviour
             this.rankingScoreOrTimeText.text = scoreText;
 
             this.playerResultText.text = StaticData.playerName + ": " + ScoreManager.Instance.HaveScore;
+        }else if(StageManager.Instance.PlayType == E_PlayType.Mission)
+        {
+            string playerNameText = "";
+            string dateText = "";
+            for(int i = 1; i <= 10; i++)
+            {
+                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
+                playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i) + "\n";
+                dateText += PlayerPrefs.GetString(sceneName + "Date" + i) + "\n";
+            }
+            this.rankingPlayerNameText.text = playerNameText;
+            this.rankingScoreOrTimeText.text = dateText;
         }
 
 
@@ -167,6 +179,7 @@ public class StageUIManager : MonoBehaviour
     public void GameOver()
     {
         StageManager.Instance.StopAllMoving();
+        SetRankingText();
         StartCoroutine(DelayMethodRealTime(0.5f, () =>
         {
             SEManager.PlaySE(SEManager.failed);
@@ -186,7 +199,7 @@ public class StageUIManager : MonoBehaviour
             this.rankingPanel.SetActive(true);
             if (StageManager.Instance.PlayType == E_PlayType.Mission)
             {
-                this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
+                //this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
                 this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
                 this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
             }
@@ -219,7 +232,7 @@ public class StageUIManager : MonoBehaviour
             this.rankingPanel.SetActive(true);
             if (StageManager.Instance.PlayType == E_PlayType.Mission)
             {
-                this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
+                //this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
                 this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
                 this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
             }

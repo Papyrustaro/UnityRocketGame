@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class StageManager : MonoBehaviour
 {
@@ -113,13 +114,24 @@ public class StageManager : MonoBehaviour
                     break;
                 }
             }
+        }else if(PlayType == E_PlayType.Mission)
+        {
+            DateTime dateTime = DateTime.Now;
+            for(int i = 9; i >= 1; i--)
+            {
+                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) continue;
+                PlayerPrefs.SetString(sceneName + "PlayerName" + (i + 1), PlayerPrefs.GetString(sceneName + "PlayerName" + i));
+                PlayerPrefs.SetString(sceneName + "Date" + (i + 1), PlayerPrefs.GetString(sceneName + "Date" + i));
+            }
+            PlayerPrefs.SetString(sceneName + "PlayerName" + 1, StaticData.playerName);
+            PlayerPrefs.SetString(sceneName + "Date" + 1, dateTime.Year.ToString() + "/" + dateTime.Month.ToString() + "/" + dateTime.Day.ToString());
         }
         PlayerPrefs.Save();
     }
 
     public void GameOver()
     {
-        SetRanking();
+        //SetRanking();
         StageUIManager.Instance.GameOver();
         StopAllMoving();
     }
