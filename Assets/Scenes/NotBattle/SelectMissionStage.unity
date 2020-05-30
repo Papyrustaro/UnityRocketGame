@@ -794,6 +794,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 19253452432898299, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30AF\u30EA\u30A2\u6761\u4EF6: \u5730\u70B9\u5230\u9054"
+      objectReference: {fileID: 0}
+    - target: {fileID: 19253452584775263, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5236\u9650\u6642\u9593: \u306A\u3057"
+      objectReference: {fileID: 0}
+    - target: {fileID: 19253453205801599, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u6B66\u5668\u306E\u6301\u3061\u8FBC\u307F: \u4E0D\u53EF"
+      objectReference: {fileID: 0}
     - target: {fileID: 19253453242680864, guid: 9b99621c74b97944b8c995acb10c4660,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -908,6 +923,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SelectMissionStageCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1310282093354141112, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30AF\u30EA\u30A2\u6761\u4EF6: \u6575\u6483\u7834"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811064660550216711, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5236\u9650\u6642\u9593: \u306A\u3057"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004472551330085894, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5236\u9650\u6642\u9593: \u306A\u3057"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636992075856576427, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30AF\u30EA\u30A2\u6761\u4EF6: \u6575\u6483\u7834"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912733728534577194, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u6B66\u5668\u306E\u6301\u3061\u8FBC\u307F: \u4E0D\u53EF"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584404939569691145, guid: 9b99621c74b97944b8c995acb10c4660,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30AF\u30EA\u30A2\u6761\u4EF6: \u5730\u70B9\u5230\u9054"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b99621c74b97944b8c995acb10c4660, type: 3}

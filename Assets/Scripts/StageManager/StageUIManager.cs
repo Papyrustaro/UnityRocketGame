@@ -24,6 +24,8 @@ public class StageUIManager : MonoBehaviour
     [SerializeField] private Text recentDateText;
     [SerializeField] private GameObject rankingScrollView;
     [SerializeField] private GameObject recentScrollView;
+    [SerializeField] private Text changeScrollViewButtonText;
+    [SerializeField] private Text scrollViewTitleText;
 
     private GameObject stageClearText;
     private GameObject gameOverText;
@@ -165,8 +167,23 @@ public class StageUIManager : MonoBehaviour
     public void ChangeScrollView()
     {
         SEManager.PlaySE(SEManager.decision);
-        this.rankingScrollView.SetActive(!this.rankingScrollView.activeSelf);
-        this.recentScrollView.SetActive(!this.recentScrollView.activeSelf);
+        bool rankingScrollViewActive = this.rankingScrollView.activeSelf;
+        if (rankingScrollViewActive)
+        {
+            this.rankingScrollView.SetActive(false);
+            this.recentScrollView.SetActive(true);
+            this.changeScrollViewButtonText.text = "ランキングを表示";
+            this.scrollViewTitleText.text = "最近遊んだプレイヤー";
+        }
+        else
+        {
+            this.rankingScrollView.SetActive(true);
+            this.recentScrollView.SetActive(false);
+            this.changeScrollViewButtonText.text = "最近遊んだ人を表示";
+            this.scrollViewTitleText.text = "ランキング";
+        }
+        //this.rankingScrollView.SetActive(!this.rankingScrollView.activeSelf);
+        //this.recentScrollView.SetActive(!this.recentScrollView.activeSelf);
     }
     public void GameOver()
     {

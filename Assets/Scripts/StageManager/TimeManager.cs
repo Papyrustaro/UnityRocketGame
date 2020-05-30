@@ -20,6 +20,8 @@ public class TimeManager : MonoBehaviour
 
     public static TimeManager Instance { get; set; }
 
+    private bool needCount = true;
+
     private void Awake()
     {
         if(Instance == null)
@@ -54,6 +56,11 @@ public class TimeManager : MonoBehaviour
         else
         {
             this.CountTime -= Time.deltaTime;
+            if(this.CountTime <= 0f && this.needCount)
+            {
+                StageManager.Instance.GameOver();
+                this.needCount = false;
+            }
         }
 
         SetTimeText();
