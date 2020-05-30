@@ -11,6 +11,7 @@ public class HomingOnAndOffMovement : MonoBehaviour
     [SerializeField] private float oneMoveTime = 2f;
     [SerializeField] private float oneStopTime = 1f;
     [SerializeField] private bool boundWall = false;
+    [SerializeField] private bool changeRotation = true;
 
     private Transform playerPrefab;
     private float countTime = 0f;
@@ -41,8 +42,11 @@ public class HomingOnAndOffMovement : MonoBehaviour
             if (this.rotationFlag)
             {
                 this.moveDirection = new Vector2(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y).normalized;
-                Vector3 diff = new Vector3(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y, 0f);
-                this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, diff.normalized);
+                if (this.changeRotation)
+                {
+                    Vector3 diff = new Vector3(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y, 0f);
+                    this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, diff.normalized);
+                }
                 this.m_rigidbody2D.AddForce(this.moveDirection * this.moveSpeed);
                 this.rotationFlag = false;
             }

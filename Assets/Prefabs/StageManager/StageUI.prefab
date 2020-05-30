@@ -3650,8 +3650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672604e3661614149a6d33750b343b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CountTimeType>k__BackingField: 1
-  <LimitSecond>k__BackingField: 10
+  <CountTimeType>k__BackingField: 0
+  <LimitSecond>k__BackingField: -1
 --- !u!1 &6999808084571819820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4106,6 +4106,8 @@ MonoBehaviour:
   recentDateText: {fileID: 434674567}
   rankingScrollView: {fileID: 588783974}
   recentScrollView: {fileID: 1331680310}
+  changeScrollViewButtonText: {fileID: 594821101}
+  scrollViewTitleText: {fileID: 1544845017}
 --- !u!1001 &4176875042249265570
 PrefabInstance:
   m_ObjectHideFlags: 0

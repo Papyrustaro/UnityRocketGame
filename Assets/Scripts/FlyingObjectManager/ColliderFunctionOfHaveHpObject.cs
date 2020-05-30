@@ -103,7 +103,7 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
 
     public void DestroyMyGameObject()
     {
-        Destroy(this.gameObject);
+        Destroy(this.transform.root.gameObject);
     }
 }
 

@@ -70,6 +70,9 @@ public class PlaySEByEnum : MonoBehaviour
             case E_SE.success:
                 SEManager.PlaySE(SEManager.success);
                 break;
+            case E_SE.generate:
+                SEManager.PlaySE(SEManager.generate);
+                break;
         }
     }
 
@@ -137,6 +140,9 @@ public class PlaySEByEnum : MonoBehaviour
             case E_SE.success:
                 SEManager.PlaySE(SEManager.success);
                 break;
+            case E_SE.generate:
+                SEManager.PlaySE(SEManager.generate);
+                break;
         }
     }
 }
@@ -163,4 +169,5 @@ public enum E_SE
     stopMovement, 
     success,
     page,
+    generate,
 }

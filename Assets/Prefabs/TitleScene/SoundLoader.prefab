@@ -139,3 +139,4 @@ MonoBehaviour:
   stopMovement: {fileID: 8300000, guid: 3b7cad4a3726d60438c985f6411e6348, type: 3}
   success: {fileID: 8300000, guid: e57219931caa5954f802dbb8c4f8966d, type: 3}
   page: {fileID: 8300000, guid: d1f1846c53799f34d8539f05a6a240aa, type: 3}
+  generate: {fileID: 8300000, guid: 3b8f1f8b4a1e8f94cab074ecd14653c0, type: 3}

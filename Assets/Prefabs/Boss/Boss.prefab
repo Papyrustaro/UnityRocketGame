@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7812469671914944708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7812469671914944710}
+  - component: {fileID: 7812469671914944709}
+  - component: {fileID: 1641887232797299528}
+  - component: {fileID: 7812469672715008846}
+  - component: {fileID: 7812469672715008845}
+  m_Layer: 0
+  m_Name: Boss
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7812469671914944710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812469671914944708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &7812469671914944709
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812469671914944708}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b5b07a838a4ad2a49b491b2631a202ce, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6.43, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!70 &1641887232797299528
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812469671914944708}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.4}
+  m_Size: {x: 3, y: 7.3}
+  m_Direction: 0
+--- !u!114 &7812469672715008846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812469671914944708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyContactWall: 0
+  destroyContactObstacle: 0
+  hp: 100
+  haveDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyMe:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7812469672715008846}
+        m_MethodName: DestroyMyGameObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  contactEnemy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7812469672715008845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812469671914944708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb7244217dd198409aae97f1dc34291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earlyStageMasicCircles:
+  - {fileID: 3368644378326393947, guid: 599d507707a5057499d1cbf540acd94f, type: 3}
+  - {fileID: 3777890307339888824, guid: 28df81754304ff04da53d1da882811a8, type: 3}
+  - {fileID: 3736608756289838593, guid: 8af7f24aa1671db45be014454026715c, type: 3}
+  - {fileID: 5715533874285780583, guid: 756f9da365d406d409a151835530acc4, type: 3}
+  - {fileID: 649112484001102635, guid: ac0545910898d164e98a7c4eb6afe854, type: 3}
+  - {fileID: 5584307344566463893, guid: 76c4dd0221d2d234089502e357d5a7ae, type: 3}
+  - {fileID: 2425162279922623196, guid: bcc9a44e7b1bd5b43af7a26fd4042313, type: 3}
+  finalStageMasicCircles:
+  - {fileID: 759361813658512381, guid: aeb9ad36e160fba48977b51ab45043d0, type: 3}
+  - {fileID: 296709952300419666, guid: d3fcfa4a292d3ee48b55e69579176cd4, type: 3}
+  - {fileID: 1497059226158456047, guid: 3555df9ac195f34498c77f3e68b112f5, type: 3}
+  - {fileID: 8076372279296493600, guid: e330e4fbf1acbfe468eb86da34c62833, type: 3}
+  - {fileID: 5055678881850941929, guid: b6ede876d393bd741aaf7e1bfad5f506, type: 3}
+  - {fileID: 2986304379630985639, guid: af048c3febe5eb8428d940baec52492b, type: 3}
+  masicCirclePositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  instantiateMasicCircleInterval: 3
