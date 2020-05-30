@@ -16,7 +16,7 @@ public class AddScoreWhenContactPlayer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             SEManager.PlaySE(SEManager.getItem);
-            ScoreManager.Instance.AddScore(this.addScoreValue);
+            //ScoreManager.Instance.AddScore(this.addScoreValue);
             this.contactPlayerEvent.Invoke();
             Destroy(this.gameObject);
         }

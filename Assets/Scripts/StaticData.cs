@@ -7,7 +7,7 @@ public class StaticData : MonoBehaviour
     /// <summary>
     /// プレイヤーの名前(ゲーム開始時に記載)
     /// </summary>
-    public static string playerName = "test";
+    public static string playerName = "player0";
 
     /// <summary>
     /// 現在遊んでいるステージのscene名(ランキングデータ保存に使用)

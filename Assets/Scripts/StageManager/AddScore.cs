@@ -11,6 +11,6 @@ public class AddScore : MonoBehaviour
 
     public void AddScoreFunc()
     {
-        ScoreManager.Instance.AddScore(this.addScoreValue);
+        //ScoreManager.Instance.AddScore(this.addScoreValue);
     }
 }

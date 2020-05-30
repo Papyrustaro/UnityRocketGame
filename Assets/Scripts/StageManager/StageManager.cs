@@ -59,73 +59,65 @@ public class StageManager : MonoBehaviour
     public void SetRanking()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        if(PlayType == E_PlayType.TimeAttack)
+        if (TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
         {
-            if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountDown)
+            float time = TimeManager.Instance.CountTime + Time.deltaTime;
+            float[] rankingTime = new float[11];
+            for (int i = 1; i <= 10; i++)
             {
-                throw new System.Exception();
-            }
-            else
-            {
-                float time = TimeManager.Instance.CountTime + Time.deltaTime;
-                float[] rankingTime = new float[11];
-                for (int i = 1; i <= 10; i++)
-                {
-                    rankingTime[i] = PlayerPrefs.GetFloat(sceneName + "Time" + i);
-                }
-
-                for (int i = 1; i <= 10; i++)
-                {
-                    if (rankingTime[i] == 0f || rankingTime[i] > time)
-                    {
-                        for (int j = 10; j >= i; j--)
-                        {
-                            if (rankingTime[j] == 0f) continue;
-                            PlayerPrefs.SetString(sceneName + "PlayerName" + (j + 1), PlayerPrefs.GetString(sceneName + "PlayerName" + j));
-                            PlayerPrefs.SetFloat(sceneName + "Time" + (j + 1), rankingTime[j]);
-                        }
-                        PlayerPrefs.SetString(sceneName + "PlayerName" + i, StaticData.playerName);
-                        PlayerPrefs.SetFloat(sceneName + "Time" + i, time);
-                        break;
-                    }
-                }
-            }
-        }else if(PlayType == E_PlayType.ScoreAttack)
-        {
-            int score = ScoreManager.Instance.HaveScore;
-            int[] rankingScore = new int[11];
-            for(int i = 1; i <= 10; i++)
-            {
-                rankingScore[i] = PlayerPrefs.GetInt(sceneName + "Score" + i);
+                rankingTime[i] = PlayerPrefs.GetFloat(sceneName + "RankingTime" + i);
             }
 
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
             {
-                if(rankingScore[i] == 0 || rankingScore[i] < score)
+                if (rankingTime[i] == 0f || rankingTime[i] > time)
                 {
-                    for(int j = 10; j >= i; j--)
+                    for (int j = 10; j >= i; j--)
                     {
-                        if (rankingScore[j] == 0) continue;
-                        PlayerPrefs.SetString(sceneName + "PlayerName" + (j + 1), PlayerPrefs.GetString(sceneName + "PlayerName" + j));
-                        PlayerPrefs.SetInt(sceneName + "Score" + (j + 1), rankingScore[j]);
+                        if (rankingTime[j] == 0f) continue;
+                        PlayerPrefs.SetString(sceneName + "RankingPlayerName" + (j + 1), PlayerPrefs.GetString(sceneName + "RankingPlayerName" + j));
+                        PlayerPrefs.SetFloat(sceneName + "RankingTime" + (j + 1), rankingTime[j]);
                     }
-                    PlayerPrefs.SetString(sceneName + "PlayerName" + i, StaticData.playerName);
-                    PlayerPrefs.SetInt(sceneName + "Score" + i, score);
+                    PlayerPrefs.SetString(sceneName + "RankingPlayerName" + i, StaticData.playerName);
+                    PlayerPrefs.SetFloat(sceneName + "RankingTime" + i, time);
                     break;
                 }
             }
-        }else if(PlayType == E_PlayType.Mission)
-        {
-            DateTime dateTime = DateTime.Now;
-            for(int i = 9; i >= 1; i--)
-            {
-                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) continue;
-                PlayerPrefs.SetString(sceneName + "PlayerName" + (i + 1), PlayerPrefs.GetString(sceneName + "PlayerName" + i));
-                PlayerPrefs.SetString(sceneName + "Date" + (i + 1), PlayerPrefs.GetString(sceneName + "Date" + i));
-            }
-            PlayerPrefs.SetString(sceneName + "PlayerName" + 1, StaticData.playerName);
-            PlayerPrefs.SetString(sceneName + "Date" + 1, dateTime.Year.ToString() + "/" + dateTime.Month.ToString() + "/" + dateTime.Day.ToString());
         }
+        else
+        {
+            float time = TimeManager.Instance.CountTime + Time.deltaTime;
+            float[] rankingTime = new float[11];
+            for (int i = 1; i <= 10; i++)
+            {
+                rankingTime[i] = PlayerPrefs.GetFloat(sceneName + "RankingTime" + i);
+            }
+
+            for (int i = 1; i <= 10; i++)
+            {
+                if (rankingTime[i] == 0f || rankingTime[i] < time)
+                {
+                    for (int j = 10; j >= i; j--)
+                    {
+                        if (rankingTime[j] == 0f) continue;
+                        PlayerPrefs.SetString(sceneName + "RankingPlayerName" + (j + 1), PlayerPrefs.GetString(sceneName + "RankingPlayerName" + j));
+                        PlayerPrefs.SetFloat(sceneName + "RankingTime" + (j + 1), rankingTime[j]);
+                    }
+                    PlayerPrefs.SetString(sceneName + "RankingPlayerName" + i, StaticData.playerName);
+                    PlayerPrefs.SetFloat(sceneName + "RankingTime" + i, time);
+                    break;
+                }
+            }
+        }
+        DateTime dateTime = DateTime.Now;
+        for (int i = 9; i >= 1; i--)
+        {
+            if (!PlayerPrefs.HasKey(sceneName + "RecentPlayerName" + i)) continue;
+            PlayerPrefs.SetString(sceneName + "RecentPlayerName" + (i + 1), PlayerPrefs.GetString(sceneName + "RecentPlayerName" + i));
+            PlayerPrefs.SetString(sceneName + "RecentDate" + (i + 1), PlayerPrefs.GetString(sceneName + "RecentDate" + i));
+        }
+        PlayerPrefs.SetString(sceneName + "RecentPlayerName" + 1, StaticData.playerName);
+        PlayerPrefs.SetString(sceneName + "RecentDate" + 1, dateTime.Year.ToString() + "/" + dateTime.Month.ToString() + "/" + dateTime.Day.ToString());
         PlayerPrefs.Save();
     }
 

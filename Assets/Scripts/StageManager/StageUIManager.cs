@@ -20,6 +20,10 @@ public class StageUIManager : MonoBehaviour
     [SerializeField] private Text playerResultText;
     [SerializeField] private GameObject manualPanel;
     [SerializeField] private Text flagCountText;
+    [SerializeField] private Text recentPlayerNameText;
+    [SerializeField] private Text recentDateText;
+    [SerializeField] private GameObject rankingScrollView;
+    [SerializeField] private GameObject recentScrollView;
 
     private GameObject stageClearText;
     private GameObject gameOverText;
@@ -130,52 +134,40 @@ public class StageUIManager : MonoBehaviour
     public void SetRankingText()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        if(StageManager.Instance.PlayType == E_PlayType.TimeAttack)
+        string playerNameText = "";
+        string timeText = "";
+        for (int i = 1; i <= 10; i++)
         {
-            string playerNameText = "";
-            string timeText = "";
-            for (int i = 1; i <= 10; i++)
-            {
-                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
-                playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i) + "\n";
-                timeText += PlayerPrefs.GetFloat(sceneName + "Time" + i).ToString() + "\n";
-            }
-            this.rankingPlayerNameText.text = playerNameText;
-            this.rankingScoreOrTimeText.text = timeText;
-
-            this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
+            if (!PlayerPrefs.HasKey(sceneName + "RankingPlayerName" + i)) break;
+            playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "RankingPlayerName" + i) + "\n";
+            timeText += PlayerPrefs.GetFloat(sceneName + "RankingTime" + i).ToString() + "\n";
         }
-        else if(StageManager.Instance.PlayType == E_PlayType.ScoreAttack)
-        {
-            string playerNameText = "";
-            string scoreText = "";
-            for (int i = 1; i <= 10; i++)
-            {
-                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
-                playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i) + "\n";
-                scoreText += PlayerPrefs.GetFloat(sceneName + "Score" + i).ToString() + "\n";
-            }
-            this.rankingPlayerNameText.text = playerNameText;
-            this.rankingScoreOrTimeText.text = scoreText;
+        this.rankingPlayerNameText.text = playerNameText;
+        this.rankingScoreOrTimeText.text = timeText;
 
-            this.playerResultText.text = StaticData.playerName + ": " + ScoreManager.Instance.HaveScore;
-        }else if(StageManager.Instance.PlayType == E_PlayType.Mission)
+        this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
+
+
+        string recentPlayerNameText = "";
+        string dateText = "";
+        for (int i = 1; i <= 10; i++)
         {
-            string playerNameText = "";
-            string dateText = "";
-            for(int i = 1; i <= 10; i++)
-            {
-                if (!PlayerPrefs.HasKey(sceneName + "PlayerName" + i)) break;
-                playerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "PlayerName" + i) + "\n";
-                dateText += PlayerPrefs.GetString(sceneName + "Date" + i) + "\n";
-            }
-            this.rankingPlayerNameText.text = playerNameText;
-            this.rankingScoreOrTimeText.text = dateText;
+            if (!PlayerPrefs.HasKey(sceneName + "RecentPlayerName" + i)) break;
+            recentPlayerNameText += i + ". " + PlayerPrefs.GetString(sceneName + "RecentPlayerName" + i) + "\n";
+            dateText += PlayerPrefs.GetString(sceneName + "RecentDate" + i) + "\n";
         }
+        this.recentPlayerNameText.text = recentPlayerNameText;
+        this.recentDateText.text = dateText;
 
 
     }
 
+    public void ChangeScrollView()
+    {
+        SEManager.PlaySE(SEManager.decision);
+        this.rankingScrollView.SetActive(!this.rankingScrollView.activeSelf);
+        this.recentScrollView.SetActive(!this.recentScrollView.activeSelf);
+    }
     public void GameOver()
     {
         StageManager.Instance.StopAllMoving();
@@ -197,12 +189,6 @@ public class StageUIManager : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
-            if (StageManager.Instance.PlayType == E_PlayType.Mission)
-            {
-                //this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
-                this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
-                this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
-            }
             this.continueButton.Select();
         }));
     }
@@ -230,12 +216,6 @@ public class StageUIManager : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
-            if (StageManager.Instance.PlayType == E_PlayType.Mission)
-            {
-                //this.rankingPanel.transform.Find("RankingScrollView").gameObject.SetActive(false);
-                this.rankingPanel.transform.Find("RankingTitleText").gameObject.SetActive(false);
-                this.rankingPanel.transform.Find("PlayerResultText").gameObject.SetActive(false);
-            }
             this.continueButton.Select();
         }));
     }

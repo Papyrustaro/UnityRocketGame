@@ -8,6 +8,6 @@ public class HaveScoreGameObject : MonoBehaviour
 
     public void AddScore()
     {
-        ScoreManager.Instance.AddScore(this.haveScoreValue);
+        //ScoreManager.Instance.AddScore(this.haveScoreValue);
     }
 }

@@ -6,6 +6,7 @@ public class HomingMovementByForce : MonoBehaviour
 {
     [SerializeField] private float moveForce = 1f;
     [SerializeField] private Vector2 forwardDirection = new Vector2(0f, 1f);
+    [SerializeField] private bool changeRotation = true;
     private Rigidbody2D m_rigidbody2D;
     private Vector3 forwardDirection3D;
     private Vector3 diff;
@@ -26,7 +27,10 @@ public class HomingMovementByForce : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
         this.diff = new Vector3(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y, 0f).normalized;
-        this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, this.diff);
+        if (this.changeRotation)
+        {
+            this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, this.diff);
+        }
     }
 
     private void FixedUpdate()
