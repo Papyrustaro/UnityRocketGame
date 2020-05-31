@@ -18,7 +18,7 @@ public class StageOverView : MonoBehaviour
     {
         SEManager.PlaySE(SEManager.decision);
         Time.timeScale = 1f;
-        if(this.gameObject.name == "Mission10")
+        if(this.gameObject.name == "Mission10" || this.gameObject.name == "Mission11")
         {
             BGMManager.PlayBGM(BGMManager.bossBGM0);
         }

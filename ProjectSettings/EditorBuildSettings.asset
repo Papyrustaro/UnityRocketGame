@@ -110,4 +110,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mission/Mission10.unity
     guid: 95a5bbb94824a1949bed364248f87fc7
+  - enabled: 1
+    path: Assets/Scenes/Mission/Mission11.unity
+    guid: 11c2a078f9dd03f44b2910a3bd1210a8
   m_configObjects: {}

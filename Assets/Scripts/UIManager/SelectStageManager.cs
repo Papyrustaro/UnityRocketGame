@@ -37,7 +37,7 @@ public class SelectStageManager : MonoBehaviour
                 {
                     case E_PlayType.Mission:
                         //index+1かな
-                        if(this.CurrentSelectIndex == 9)
+                        if(this.CurrentSelectIndex == 9 || this.CurrentSelectIndex == 10)
                         {
                             BGMManager.PlayBGM(BGMManager.bossBGM1);
                         }

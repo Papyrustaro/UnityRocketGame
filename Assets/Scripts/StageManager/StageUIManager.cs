@@ -194,13 +194,13 @@ public class StageUIManager : MonoBehaviour
             this.rankingScrollView.SetActive(false);
             this.recentScrollView.SetActive(true);
             this.changeScrollViewButtonText.text = "ランキングを表示";
-            this.scrollViewTitleText.text = "最近遊んだプレイヤー";
+            this.scrollViewTitleText.text = "最近クリアした人";
         }
         else
         {
             this.rankingScrollView.SetActive(true);
             this.recentScrollView.SetActive(false);
-            this.changeScrollViewButtonText.text = "最近遊んだ人を表示";
+            this.changeScrollViewButtonText.text = "最近クリアした人を表示";
             this.scrollViewTitleText.text = "ランキング";
         }
         //this.rankingScrollView.SetActive(!this.rankingScrollView.activeSelf);
