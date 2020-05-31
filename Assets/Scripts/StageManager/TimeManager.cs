@@ -46,7 +46,25 @@ public class TimeManager : MonoBehaviour
             this.CountTime = this.LimitSecond;
         }
     }
+    
+    public void UpdateCountTime()
+    {
+        if (this.CountTimeType == E_CountTimeType.CountUp)
+        {
+            this.CountTime += Time.deltaTime;
+        }
+        else
+        {
+            this.CountTime -= Time.deltaTime;
+            if (this.CountTime <= 0f && this.needCount)
+            {
+                this.CountTime = 0f;
+                this.needCount = false;
+            }
+        }
 
+        SetTimeText();
+    }
     private void Update()
     {
         if(this.CountTimeType == E_CountTimeType.CountUp)
@@ -85,6 +103,7 @@ public class TimeManager : MonoBehaviour
             this.CountTime -= addTimeValue;
             if (this.CountTime < 0f) this.CountTime = 0f;
         }
+        SetTimeText();
     }
 }
 

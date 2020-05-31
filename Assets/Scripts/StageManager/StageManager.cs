@@ -19,6 +19,8 @@ public class StageManager : MonoBehaviour
 
     public E_PlayType PlayType => this.playType;
 
+    public float ResultTime { get; set; } = 0f;
+
     /// <summary>
     /// ゲームが一時停止されているかどうか(pause、カウントダウン、クリア演出時等)
     /// </summary>
@@ -51,17 +53,22 @@ public class StageManager : MonoBehaviour
     {
         //InitStageInstance();
         //SceneManager.LoadScene("GameClear");
+        StopAllMoving();
+        TimeManager.Instance.UpdateCountTime();
+        //TimeManager.Instance.AddTime(Time.deltaTime);
         SetRanking();
         StageUIManager.Instance.ShowRankingWhenStageClear();
-        StopAllMoving();
+        //StopAllMoving();
     }
 
     public void SetRanking()
     {
+        this.ResultTime = TimeManager.Instance.CountTime;
         string sceneName = SceneManager.GetActiveScene().name;
         if (TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
         {
-            float time = TimeManager.Instance.CountTime + Time.deltaTime;
+            //float time = TimeManager.Instance.CountTime + Time.deltaTime;
+            float time = TimeManager.Instance.CountTime;
             float[] rankingTime = new float[11];
             for (int i = 1; i <= 10; i++)
             {
@@ -86,7 +93,8 @@ public class StageManager : MonoBehaviour
         }
         else
         {
-            float time = TimeManager.Instance.CountTime + Time.deltaTime;
+            //float time = TimeManager.Instance.CountTime - Time.deltaTime;
+            float time = TimeManager.Instance.CountTime;
             float[] rankingTime = new float[11];
             for (int i = 1; i <= 10; i++)
             {
@@ -124,8 +132,11 @@ public class StageManager : MonoBehaviour
     public void GameOver()
     {
         //SetRanking();
-        StageUIManager.Instance.GameOver();
         StopAllMoving();
+        TimeManager.Instance.UpdateCountTime();
+        //TimeManager.Instance.AddTime(Time.deltaTime);
+        StageUIManager.Instance.GameOver();
+        //StopAllMoving();
     }
 
     public void InitStageInstance()

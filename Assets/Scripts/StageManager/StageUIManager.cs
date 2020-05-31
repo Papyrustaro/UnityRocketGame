@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using System.Text;
+using UnityEngine.Networking;
 
 public class StageUIManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class StageUIManager : MonoBehaviour
     [SerializeField] private GameObject recentScrollView;
     [SerializeField] private Text changeScrollViewButtonText;
     [SerializeField] private Text scrollViewTitleText;
+    [SerializeField] private GameObject tweetResultButton;
 
     private GameObject stageClearText;
     private GameObject gameOverText;
@@ -149,6 +151,8 @@ public class StageUIManager : MonoBehaviour
         this.rankingScoreOrTimeText.text = timeText;
 
         this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
+        //if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp) this.playerResultText.text = StaticData.playerName + ": " + (TimeManager.Instance.CountTime + Time.deltaTime);
+        //else this.playerResultText.text = StaticData.playerName + ": " + (TimeManager.Instance.CountTime - Time.deltaTime);
 
 
         string recentPlayerNameText = "";
@@ -165,6 +169,22 @@ public class StageUIManager : MonoBehaviour
 
     }
 
+    public void TweetResult()
+    {
+        //TimeManager.Instance.UpdateCountTime();
+        /*float countTime;
+        if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
+        {
+            countTime = TimeManager.Instance.CountTime - Time.deltaTime;
+        }
+        else
+        {
+            countTime = TimeManager.Instance.CountTime + Time.deltaTime;
+        }*/
+        string message = SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime + "でクリア!!" + " #UnderRocket #unityroom\n" + "https://unityroom.com/games/underrocket";
+        Application.OpenURL("http://twitter.com/intent/tweet?text=" + UnityWebRequest.EscapeURL(message));
+        
+    }
     public void ChangeScrollView()
     {
         SEManager.PlaySE(SEManager.decision);
@@ -207,6 +227,7 @@ public class StageUIManager : MonoBehaviour
         {
             SEManager.PlaySE(SEManager.getItem);
             this.rankingPanel.SetActive(true);
+            this.tweetResultButton.SetActive(false);
             this.continueButton.Select();
         }));
     }
