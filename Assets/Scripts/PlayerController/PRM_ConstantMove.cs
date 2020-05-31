@@ -8,6 +8,7 @@ using UnityEngine;
 public class PRM_ConstantMove : PlayerRocketMovement
 {
     [SerializeField] private float moveSpeed = 0.01f;
+    [SerializeField] private float upperPositionLimit = 2f;
     private Vector2 moveDirection;
 
     private void Awake()
@@ -23,7 +24,8 @@ public class PRM_ConstantMove : PlayerRocketMovement
     {
         if(this.moveDirection != Vector2.zero)
         {
-            this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.transform.position.y + this.moveDirection.y * this.moveSpeed));
+            if (this.transform.position.y >= this.upperPositionLimit) this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.upperPositionLimit));
+            else this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.transform.position.y + this.moveDirection.y * this.moveSpeed));
         }
     }
 }

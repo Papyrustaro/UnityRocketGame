@@ -181,9 +181,26 @@ public class StageUIManager : MonoBehaviour
         {
             countTime = TimeManager.Instance.CountTime + Time.deltaTime;
         }*/
-        string message = SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime + "でクリア!!" + " #UnderRocket #unityroom\n" + "https://unityroom.com/games/underrocket";
+        string message = SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime + "でクリア!!" + " #UnderRocket #unityroom";
         Application.OpenURL("http://twitter.com/intent/tweet?text=" + UnityWebRequest.EscapeURL(message));
         
+    }
+
+    public void Tweeting()
+    {
+        var url = "https://twitter.com/intent/tweet?"
+            + "text=" + SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime + "でクリア!!"
+            + "&url=" + "https://unityroom.com/games/underrocket"
+            + "&hashtags=" + "UnderRocket,unityroom";
+
+#if UNITY_EDITOR
+        Application.OpenURL(url);
+#elif UNITY_WEBGL
+            // WebGLの場合は、ゲームプレイ画面と同じウィンドウでツイート画面が開かないよう、処理を変える
+            Application.ExternalEval(string.Format("window.open('{0}','_blank')", url));
+#else
+            Application.OpenURL(url);
+#endif
     }
     public void ChangeScrollView()
     {

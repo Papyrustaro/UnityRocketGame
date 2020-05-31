@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248de9d6c22c1f94c8fec4e604ad859f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTimeFromInstantiate: 15
+  destroyTimeFromInstantiate: 7
   destroyEvent:
     m_PersistentCalls:
       m_Calls: []

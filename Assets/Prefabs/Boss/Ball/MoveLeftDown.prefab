@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7917265403470792949}
   - component: {fileID: 7917265403470792948}
   - component: {fileID: 7917265403470792955}
+  - component: {fileID: 114547722257760692}
   m_Layer: 0
   m_Name: MoveLeftDown
   m_TagString: AttackToPlayer
@@ -196,3 +197,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageValue: 1
+--- !u!114 &114547722257760692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917265403470792958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248de9d6c22c1f94c8fec4e604ad859f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTimeFromInstantiate: 10
+  destroyEvent:
+    m_PersistentCalls:
+      m_Calls: []

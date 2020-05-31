@@ -205,6 +205,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
+  upperPositionLimit: 2
+--- !u!114 &132353436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132353433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1fbc716c3136d41a25c6c5b995b038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &246417343
 GameObject:
   m_ObjectHideFlags: 0

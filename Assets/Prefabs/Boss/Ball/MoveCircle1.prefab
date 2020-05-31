@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 232323015911692408}
   - component: {fileID: 232323015911692407}
   - component: {fileID: 738265101815376565}
+  - component: {fileID: 114393224822229896}
   m_Layer: 0
   m_Name: MoveCircle1
   m_TagString: AttackToPlayer
@@ -194,3 +195,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   expandRadisSpeed: 1
+--- !u!114 &114393224822229896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232323015911692402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248de9d6c22c1f94c8fec4e604ad859f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTimeFromInstantiate: 15
+  destroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
