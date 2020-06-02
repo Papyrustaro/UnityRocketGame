@@ -11,7 +11,6 @@ public class StageManager : MonoBehaviour
     [SerializeField] private E_ClearFlagType clearFlagType;
     [SerializeField] private E_PlayType playType;
     [SerializeField] private bool isStageScene = true;
-    [SerializeField] private Text testText;
 
     public static StageManager Instance { get; set; }
 
@@ -67,43 +66,11 @@ public class StageManager : MonoBehaviour
         StopAllMoving();
         TimeManager.Instance.UpdateCountTime();
         //TimeManager.Instance.AddTime(Time.deltaTime);
-        SetRanking();
-        StageUIManager.Instance.ShowRankingWhenStageClear();
+        //SetRankingByPlayerPrefs();
+        StartCoroutine(StageUIManager.Instance.SetAndShowRankingWhenClear());
         //StopAllMoving();
     }
 
-    public IEnumerator SortByDate()
-    {
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("Mission1");
-        List<NCMBObject> result = null;
-        NCMBException error = null;
-        //query.OrderByDescending("createDate"); //降順
-        //query.WhereLessThan("ClearTime", 10);
-        query.OrderByDescending("ClearTime");
-        //query.Limit = 10;
-        query.FindAsync((List<NCMBObject> _result, NCMBException _error) =>
-        {
-            result = _result;
-            error = _error;
-        });
-
-        //resultもしくはerrorが入るまで待機
-        yield return new WaitWhile(() => result == null && error == null);
-
-        //後続処理 
-        if (error == null)
-        {
-            Debug.Log("test");
-            Debug.Log(result.Count);
-            string s = "";
-            foreach (NCMBObject data in result)
-            {
-                s += data["PlayerName"] + "\n";
-            }
-            this.testText.text = s;
-        }
-        Debug.Log("Finish!!!");
-    }
     /*public void SortByDate()
     {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("Mission1");
@@ -128,23 +95,21 @@ public class StageManager : MonoBehaviour
         }
     }*/
 
-    public void SortByTime()
-    {
-        if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
-        {
 
-        }
-        else
-        {
-
-        }
-    }
-    public void SetRanking()
+    /// <summary>
+    /// 今回のプレイヤーの結果をNCMBに保存する
+    /// </summary>
+    public void SavePlayerResult()
     {
-        /*NCMBObject obj = new NCMBObject("Mission1");
+        NCMBObject obj = new NCMBObject(SceneManager.GetActiveScene().name);
         obj["PlayerName"] = StaticData.playerName;
         obj["ClearTime"] = TimeManager.Instance.CountTime;
-        obj.SaveAsync();*/
+        obj.SaveAsync();
+    }
+
+
+    public void SetRankingByPlayerPrefs()
+    {
 
         this.ResultTime = TimeManager.Instance.CountTime;
         string sceneName = SceneManager.GetActiveScene().name;
@@ -218,7 +183,14 @@ public class StageManager : MonoBehaviour
         StopAllMoving();
         TimeManager.Instance.UpdateCountTime();
         //TimeManager.Instance.AddTime(Time.deltaTime);
-        StageUIManager.Instance.GameOver();
+        if (StaticData.highRankResults.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            StageUIManager.Instance.SetResultAndShowUsedStaticData();
+        }
+        else
+        {
+            StartCoroutine(StageUIManager.Instance.SetAndShowRankingWhenFailed());
+        }
         //StopAllMoving();
     }
 

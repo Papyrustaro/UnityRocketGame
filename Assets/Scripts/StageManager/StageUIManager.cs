@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Text;
 using UnityEngine.Networking;
+using NCMB;
 
 public class StageUIManager : MonoBehaviour
 {
@@ -138,7 +139,234 @@ public class StageUIManager : MonoBehaviour
         StageManager.Instance.MoveAllMoving();
     }
 
-    public void SetRankingText()
+    public IEnumerator SetHighRankingTextFromClearResult()
+    {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>(SceneManager.GetActiveScene().name);
+        List<NCMBObject> result = null;
+        NCMBException error = null;
+
+        if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp) query.OrderByAscending("ClearTime"); //昇順
+        else query.OrderByDescending("ClearTime"); //降順
+        query.Limit = 10;
+
+        query.FindAsync((List<NCMBObject> _result, NCMBException _error) =>
+        {
+            result = _result;
+            error = _error;
+        });
+
+        //resultもしくはerrorが入るまで待機
+        yield return new WaitWhile(() => result == null && error == null);
+
+        //後続処理
+        if(error == null)
+        {
+            this.SetHighRankingTextFromClearResult(result);
+        }
+        else
+        {
+            Debug.Log(error);
+        }
+    }
+
+    public IEnumerator SetRecentClearTextFromClearResult()
+    {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>(SceneManager.GetActiveScene().name);
+        List<NCMBObject> result = null;
+        NCMBException error = null;
+
+        query.OrderByDescending("createDate");
+        query.Limit = 9;
+
+        query.FindAsync((List<NCMBObject> _result, NCMBException _error) =>
+        {
+            result = _result;
+            error = _error;
+        });
+
+        //resultもしくはerrorが入るまで待機
+        yield return new WaitWhile(() => result == null && error == null);
+
+        //後続処理
+        if (error == null)
+        {
+            this.SetRecentClearTextFromClearResult(result);
+        }
+        else
+        {
+            Debug.Log(error);
+        }
+    }
+
+    public void SetRecentClearTextFromClearResult(List<NCMBObject> recentResults)
+    {
+        string playerName = "1. " + StaticData.playerName + "\n";
+        string clearDate = DateTime.Now.ToString("yyyy/MM/dd") + "\n";
+
+        for(int i = 0; i < recentResults.Count; i++)
+        {
+            playerName += (i + 2).ToString() + ". " + recentResults[i]["PlayerName"].ToString() + "\n";
+            clearDate += recentResults[i].CreateDate.ToString().Substring(0, 10) + "\n";
+        }
+
+        this.recentPlayerNameText.text = playerName;
+        this.recentDateText.text = clearDate;
+
+        if (StaticData.recentResults.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            StaticData.recentResults[SceneManager.GetActiveScene().name] = new ResultDataNameAndDate(playerName, clearDate);
+        }
+        else
+        {
+            StaticData.recentResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndDate(playerName, clearDate));
+        }
+    }
+
+    public IEnumerator SetHighRankingTextFromFailedResult()
+    {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>(SceneManager.GetActiveScene().name);
+        List<NCMBObject> result = null;
+        NCMBException error = null;
+
+        if (TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp) query.OrderByAscending("ClearTime"); //昇順
+        else query.OrderByDescending("ClearTime"); //降順
+        query.Limit = 10;
+
+        query.FindAsync((List<NCMBObject> _result, NCMBException _error) =>
+        {
+            result = _result;
+            error = _error;
+        });
+
+        //resultもしくはerrorが入るまで待機
+        yield return new WaitWhile(() => result == null && error == null);
+
+        //後続処理
+        if (error == null)
+        {
+            this.SetHighRankingTextFromFailedResult(result);
+        }
+    }
+
+    public IEnumerator SetRecentClearTextFromFailedResult()
+    {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>(SceneManager.GetActiveScene().name);
+        List<NCMBObject> result = null;
+        NCMBException error = null;
+
+        query.OrderByDescending("createDate");
+        query.Limit = 10;
+
+        query.FindAsync((List<NCMBObject> _result, NCMBException _error) =>
+        {
+            result = _result;
+            error = _error;
+        });
+
+        //resultもしくはerrorが入るまで待機
+        yield return new WaitWhile(() => result == null && error == null);
+
+        //後続処理
+        if (error == null)
+        {
+            this.SetRecentClearTextFromFailedResult(result);
+        }
+    }
+
+    public void SetRecentClearTextFromFailedResult(List<NCMBObject> recentResults)
+    {
+        string playerName = "";
+        string clearDate = "";
+        List<ResultDataNameAndDate> results = new List<ResultDataNameAndDate>();
+
+        for (int i = 0; i < recentResults.Count; i++)
+        {
+            playerName += (i + 1).ToString() + ". " + recentResults[i]["PlayerName"].ToString() + "\n";
+            clearDate += recentResults[i].CreateDate.ToString().Substring(0, 10) + "\n";
+        }
+
+        this.recentPlayerNameText.text = playerName;
+        this.recentDateText.text = clearDate;
+        StaticData.recentResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndDate(playerName, clearDate));
+    }
+
+    public void SetHighRankingTextFromFailedResult(List<NCMBObject> highRanks)
+    {
+        string playerName = "";
+        string resultTime = "";
+        List<ResultDataNameAndTime> results = new List<ResultDataNameAndTime>();
+        for(int i = 0; i < highRanks.Count; i++)
+        {
+            playerName += (i + 1).ToString() + ". " + highRanks[i]["PlayerName"].ToString() + "\n";
+            resultTime += highRanks[i]["ClearTime"].ToString() + "\n";
+        }
+        this.rankingPlayerNameText.text = playerName;
+        this.rankingScoreOrTimeText.text = resultTime;
+        StaticData.highRankResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndTime(playerName, resultTime));
+    }
+
+    public void SetHighRankingTextFromClearResult(List<NCMBObject> highRanks)
+    {
+        bool rankined = false;
+        string playerName = "";
+        string resultTime = "";
+        int highRanksCount = highRanks.Count;
+
+        List<float> resultTimes = new List<float>();
+        int thisTimeIndex = highRanksCount; //今回クリアしたプレイヤーの順位
+        for(int i = 0; i < highRanksCount; i++)
+        {
+            if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
+            {
+                if (float.Parse(highRanks[i]["ClearTime"].ToString()) > TimeManager.Instance.CountTime)
+                {
+                    thisTimeIndex = i;
+                    break;
+                }
+            }
+            else
+            {
+                if(float.Parse(highRanks[i]["ClearTime"].ToString()) < TimeManager.Instance.CountTime)
+                {
+                    thisTimeIndex = i;
+                    break;
+                }
+            }
+        }
+        if (highRanksCount < 10) highRanksCount++;
+
+        for(int i = 0; i < highRanksCount; i++)
+        {
+            if(i == thisTimeIndex) //playerの順位
+            {
+                playerName += (i + 1).ToString() + ". " + StaticData.playerName + "\n";
+                resultTime += TimeManager.Instance.CountTime + "\n";
+                rankined = true;
+            }
+            else if(rankined) //playerがランクインしたあとの
+            {
+                playerName += (i + 1).ToString() + ". " + highRanks[i-1]["PlayerName"].ToString() + "\n";
+                resultTime += float.Parse((highRanks[i-1]["ClearTime"]).ToString()) + "\n";
+            }
+            else //playerがランクインする前
+            {
+                playerName += (i + 1).ToString() + ". " + highRanks[i]["PlayerName"].ToString() + "\n";
+                resultTime += float.Parse((highRanks[i]["ClearTime"]).ToString()) + "\n";
+            }
+        }
+
+        this.rankingPlayerNameText.text = playerName;
+        this.rankingScoreOrTimeText.text = resultTime;
+        if (StaticData.highRankResults.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            StaticData.highRankResults[SceneManager.GetActiveScene().name] = new ResultDataNameAndTime(playerName, resultTime);
+        }
+        else
+        {
+            StaticData.highRankResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndTime(playerName, resultTime));
+        }
+    }
+    /*public void SetRankingTextByPlayerPrefs()
     {
         string sceneName = SceneManager.GetActiveScene().name;
         string playerNameText = "";
@@ -153,8 +381,6 @@ public class StageUIManager : MonoBehaviour
         this.rankingScoreOrTimeText.text = timeText;
 
         this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
-        //if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp) this.playerResultText.text = StaticData.playerName + ": " + (TimeManager.Instance.CountTime + Time.deltaTime);
-        //else this.playerResultText.text = StaticData.playerName + ": " + (TimeManager.Instance.CountTime - Time.deltaTime);
 
 
         string recentPlayerNameText = "";
@@ -167,25 +393,43 @@ public class StageUIManager : MonoBehaviour
         }
         this.recentPlayerNameText.text = recentPlayerNameText;
         this.recentDateText.text = dateText;
+    }*/
 
+    public void SetResultAndShowUsedStaticData()
+    {
+        this.rankingPlayerNameText.text = StaticData.highRankResults[SceneManager.GetActiveScene().name].PlayerNameText;
+        this.rankingScoreOrTimeText.text = StaticData.highRankResults[SceneManager.GetActiveScene().name].ResultTimeText;
+        this.recentPlayerNameText.text = StaticData.recentResults[SceneManager.GetActiveScene().name].PlayerNameText;
+        this.recentDateText.text = StaticData.recentResults[SceneManager.GetActiveScene().name].ClearDateText;
 
+        this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
+        StageManager.Instance.StopAllMoving();
+        //StartCoroutine(DelayMethodRealTime(0.3f, () =>
+        //{
+        SEManager.PlaySE(SEManager.failed);
+        this.scoreText.SetActive(false);
+        this.timeText.SetActive(false);
+        this.flagCountText.transform.gameObject.SetActive(false);
+        this.gameOverText.SetActive(true);
+        this.smogPanel.SetActive(true);
+        //}));
+        StartCoroutine(DelayMethodRealTime(0.3f, () =>
+        {
+            this.gameOverText.SetActive(false);
+        }));
+        StartCoroutine(DelayMethodRealTime(0.5f, () =>
+        {
+            SEManager.PlaySE(SEManager.getItem);
+            this.rankingPanel.SetActive(true);
+            this.tweetResultButton.SetActive(false);
+            this.continueButton.Select();
+        }));
     }
 
     public void TweetResult()
     {
-        //TimeManager.Instance.UpdateCountTime();
-        /*float countTime;
-        if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
-        {
-            countTime = TimeManager.Instance.CountTime - Time.deltaTime;
-        }
-        else
-        {
-            countTime = TimeManager.Instance.CountTime + Time.deltaTime;
-        }*/
         string message = SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime + "でクリア!!" + " #UnderRocket #unityroom";
         Application.OpenURL("http://twitter.com/intent/tweet?text=" + UnityWebRequest.EscapeURL(message));
-        
     }
 
     public void Tweeting()
@@ -225,57 +469,60 @@ public class StageUIManager : MonoBehaviour
         //this.rankingScrollView.SetActive(!this.rankingScrollView.activeSelf);
         //this.recentScrollView.SetActive(!this.recentScrollView.activeSelf);
     }
-    public void GameOver()
+    public IEnumerator SetAndShowRankingWhenFailed()
     {
+        this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
         StageManager.Instance.StopAllMoving();
-        SetRankingText();
-        StartCoroutine(DelayMethodRealTime(0.5f, () =>
-        {
+        //SetRankingTextByPlayerPrefs();
+        //StartCoroutine(DelayMethodRealTime(0.5f, () =>
+        //{
             SEManager.PlaySE(SEManager.failed);
             this.scoreText.SetActive(false);
             this.timeText.SetActive(false);
             this.flagCountText.transform.gameObject.SetActive(false);
             this.gameOverText.SetActive(true);
             this.smogPanel.SetActive(true);
-        }));
-        StartCoroutine(DelayMethodRealTime(1f, () =>
+        //}));
+        StartCoroutine(DelayMethodRealTime(0.5f, () =>
         {
             this.gameOverText.SetActive(false);
         }));
-        StartCoroutine(DelayMethodRealTime(1.5f, () =>
-        {
-            SEManager.PlaySE(SEManager.getItem);
-            this.rankingPanel.SetActive(true);
-            this.tweetResultButton.SetActive(false);
-            this.continueButton.Select();
-        }));
+
+        StartCoroutine(SetHighRankingTextFromFailedResult());
+        yield return StartCoroutine(SetRecentClearTextFromFailedResult());
+
+        SEManager.PlaySE(SEManager.getItem);
+        this.rankingPanel.SetActive(true);
+        this.tweetResultButton.SetActive(false);
+        this.continueButton.Select();
     }
 
-    public void ShowRankingWhenStageClear()
+    public IEnumerator SetAndShowRankingWhenClear()
     {
+        this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
         StageManager.Instance.StopAllMoving();
-        //ランキングテキストの処理
-        SetRankingText();
 
-        StartCoroutine(DelayMethodRealTime(0.5f, () =>
-        {
+        //StartCoroutine(DelayMethodRealTime(0.5f, () =>
+        //{
             SEManager.PlaySE(SEManager.success);
             this.scoreText.SetActive(false);
             this.timeText.SetActive(false);
             this.flagCountText.transform.gameObject.SetActive(false);
             this.stageClearText.SetActive(true);
             this.smogPanel.SetActive(true);
-        }));
-        StartCoroutine(DelayMethodRealTime(1f, () =>
+        //}));
+        StartCoroutine(DelayMethodRealTime(0.5f, () =>
         {
             this.stageClearText.SetActive(false);
         }));
-        StartCoroutine(DelayMethodRealTime(1.5f, () =>
-        {
-            SEManager.PlaySE(SEManager.getItem);
-            this.rankingPanel.SetActive(true);
-            this.continueButton.Select();
-        }));
+
+        StartCoroutine(SetHighRankingTextFromClearResult());
+        yield return StartCoroutine(SetRecentClearTextFromClearResult());
+
+        SEManager.PlaySE(SEManager.getItem);
+        this.rankingPanel.SetActive(true);
+        this.continueButton.Select();
+        StageManager.Instance.SavePlayerResult();
     }
 
     IEnumerator DelayMethodRealTime(float waitTime, Action action)
