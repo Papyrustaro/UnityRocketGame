@@ -16,7 +16,7 @@ public class CircleBiggingMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (StageManager.Instance.IsStop) return;
         this.radius += this.expandRadisSpeed * Time.deltaTime;
         float x = this.radius * Mathf.Sin(Time.time * this.moveSpeed);
         float y = this.radius * Mathf.Cos(Time.time * this.moveSpeed);

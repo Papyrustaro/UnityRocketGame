@@ -21,7 +21,19 @@ public class PRM_ConstantSpeedAndMoveTime : PlayerRocketMovement
 
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (!this.M_Rigidbody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.M_Rigidbody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.M_Rigidbody2D.simulated = false;
+                return;
+            }
+        }
         if (!this.isMoving && !this.M_PlayerRocket.IsDied)
         {
             this.RocketMoveUpdate();
@@ -36,6 +48,7 @@ public class PRM_ConstantSpeedAndMoveTime : PlayerRocketMovement
 
     private void FixedUpdate()
     {
+        
         if (this.isMoving)
         {
             this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.transform.position.y + this.moveDirection.y * this.moveSpeed));

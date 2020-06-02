@@ -27,6 +27,23 @@ public class ForwardMovement : MonoBehaviour
         this.m_rigidbody2D.AddForce(this.moveDirection * this.moveSpeed);
     }
 
+    private void Update()
+    {
+        if (!this.m_rigidbody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.m_rigidbody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.m_rigidbody2D.simulated = false;
+                return;
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (this.boundWall && (collision.transform.CompareTag("Wall") || collision.transform.CompareTag("Obstacle")))

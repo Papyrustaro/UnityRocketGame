@@ -12,17 +12,10 @@ public class StageOverViewsManager : MonoBehaviour
 
     public void ShowStageOverView(int overViewIndex)
     {
-        Time.timeScale = 0f;
+        StageManager.Instance.StopAllMoving();
         this.stageOverViewsPanel.SetActive(true);
         this.overViews[overViewIndex].SetActive(true);
         SEManager.PlaySE(SEManager.decision);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ShowStageOverView(0);
-        }
-    }
 }

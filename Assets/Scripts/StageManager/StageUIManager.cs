@@ -60,7 +60,7 @@ public class StageUIManager : MonoBehaviour
 
     public void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (!StageManager.Instance.IsPausing && StageManager.Instance.IsStop) return;
         if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.LeftControl))
         {
             PauseAndResume();
@@ -88,12 +88,14 @@ public class StageUIManager : MonoBehaviour
     {
         if (this.pausePanel.activeSelf)
         {
+            StageManager.Instance.IsPausing = false;
             this.pausePanel.SetActive(false);
             SEManager.PlaySE(SEManager.back);
-            Time.timeScale = 1f;
+            StageManager.Instance.MoveAllMoving();
         }
         else
         {
+            StageManager.Instance.IsPausing = true;
             StageManager.Instance.StopAllMoving();
             this.pausePanel.SetActive(true);
             this.resumeButton.Select();
@@ -112,7 +114,7 @@ public class StageUIManager : MonoBehaviour
     public void MoveSceneToStageSelect()
     {
         E_PlayType playType = StageManager.Instance.PlayType;
-        StageManager.Instance.InitStageInstance();
+        //StageManager.Instance.InitStageInstance();
         switch (playType)
         {
             case E_PlayType.Mission:
@@ -126,14 +128,14 @@ public class StageUIManager : MonoBehaviour
                 SceneManager.LoadScene("SelectTimeAttackStage");
                 break;
         }
-        Time.timeScale = 1f;
+        StageManager.Instance.MoveAllMoving();
     }
 
     public void ContinueSameStage()
     {
-        StageManager.Instance.InitStageInstance();
+        //StageManager.Instance.InitStageInstance();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
+        StageManager.Instance.MoveAllMoving();
     }
 
     public void SetRankingText()

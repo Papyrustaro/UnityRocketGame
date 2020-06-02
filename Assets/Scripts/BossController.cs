@@ -29,6 +29,7 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         this.countTime += Time.deltaTime;
         if(this.countTime >= this.instantiateMasicCircleInterval)
         {

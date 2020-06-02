@@ -35,7 +35,7 @@ public class HomingOnAndOffMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (StageManager.Instance.IsStop) return;
         this.countTime += Time.deltaTime;
         if(this.countTime >= this.oneStopTime)
         {

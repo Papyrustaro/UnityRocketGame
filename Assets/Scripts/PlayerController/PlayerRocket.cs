@@ -42,7 +42,7 @@ public class PlayerRocket : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (StageManager.Instance.IsStop) return;
         if (this.haveWeapon && this.canShot && Input.GetKeyDown(KeyCode.J))
         {
             SEManager.PlaySE(SEManager.shot0);

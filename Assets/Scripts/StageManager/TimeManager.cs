@@ -67,6 +67,7 @@ public class TimeManager : MonoBehaviour
     }
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         if(this.CountTimeType == E_CountTimeType.CountUp)
         {
             this.CountTime += Time.deltaTime;

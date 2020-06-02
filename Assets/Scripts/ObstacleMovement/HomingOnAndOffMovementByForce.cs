@@ -33,7 +33,20 @@ public class HomingOnAndOffMovementByForce : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (!this.m_rigidbody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.m_rigidbody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.m_rigidbody2D.simulated = false;
+
+                return;
+            }
+        }
         this.countTime += Time.deltaTime;
         if (this.countTime >= this.oneStopTime)
         {
@@ -59,6 +72,7 @@ public class HomingOnAndOffMovementByForce : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         this.m_rigidbody2D.velocity *= this.decelerationRate;
     }
 

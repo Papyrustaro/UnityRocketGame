@@ -24,6 +24,22 @@ public class ForwardMovementByForce : MonoBehaviour
         this.transform.rotation = Quaternion.FromToRotation(this.forwardDirection3D, this.moveDirection);
     }
 
+    private void Update()
+    {
+        if (!this.m_rigidBody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.m_rigidBody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.m_rigidBody2D.simulated = false;
+                return;
+            }
+        }
+    }
     private void FixedUpdate()
     {
         this.m_rigidBody2D.AddForce(this.moveDirection * this.moveForce);

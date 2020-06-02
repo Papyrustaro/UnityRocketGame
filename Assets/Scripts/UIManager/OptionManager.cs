@@ -32,7 +32,7 @@ public class OptionManager : MonoBehaviour
     public void PressResume()
     {
         SEManager.PlaySE(SEManager.back);
-        Time.timeScale = 1f;
+        StageManager.Instance.MoveAllMoving();
         MenuUIManager.Instance.OptionPanel.SetActive(true);
         this.gameObject.SetActive(false);
     }

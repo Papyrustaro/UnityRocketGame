@@ -9,6 +9,7 @@ public class ClearFlag_Survival : MonoBehaviour
 
     private void Update()
     {
+        if (StageManager.Instance.IsStop) return;
         this.countTime += Time.deltaTime;
         if(this.countTime >= this.survivalTime)
         {

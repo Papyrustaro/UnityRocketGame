@@ -26,7 +26,19 @@ public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
 
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (!this.M_Rigidbody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.M_Rigidbody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.M_Rigidbody2D.simulated = false;
+                return;
+            }
+        }
         if (!this.M_PlayerRocket.IsDied)
         {
             this.RocketMoveUpdate();
@@ -35,6 +47,7 @@ public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
 
     private void FixedUpdate()
     {
+        
         if (this.isMoveForce && this.M_Rigidbody2D.velocity.magnitude <= this.maxSpeed)
         {
             this.M_Rigidbody2D.AddRelativeForce(new Vector2(0f, this.moveForce));

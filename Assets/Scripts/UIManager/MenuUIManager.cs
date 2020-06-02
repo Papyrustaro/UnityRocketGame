@@ -59,7 +59,7 @@ public class MenuUIManager : MonoBehaviour
                         SEManager.PlaySE(SEManager.decision);
                         this.manualPanel.SetActive(false);
                         this.manual.SetActive(true);
-                        Time.timeScale = 0f;
+                        StageManager.Instance.StopAllMoving();
                         this.CountTime = 0f;
                     }
                     break;
@@ -69,7 +69,7 @@ public class MenuUIManager : MonoBehaviour
                         SEManager.PlaySE(SEManager.decision);
                         this.optionPanel.SetActive(false);
                         this.option.SetActive(true);
-                        Time.timeScale = 0f;
+                        StageManager.Instance.StopAllMoving();
                         this.CountTime = 0f;
                     }
                     break;

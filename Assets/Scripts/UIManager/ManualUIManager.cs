@@ -52,7 +52,7 @@ public class ManualUIManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1f;
+            StageManager.Instance.MoveAllMoving();
             MenuUIManager.Instance.ManualPanel.SetActive(true);
         }
         this.gameObject.SetActive(false);

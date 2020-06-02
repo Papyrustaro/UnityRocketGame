@@ -17,12 +17,26 @@ public class PRM_ConstantMove : PlayerRocketMovement
     }
     private void Update()
     {
+        if (!this.M_Rigidbody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.M_Rigidbody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.M_Rigidbody2D.simulated = false;
+                return;
+            }
+        }
         this.moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
     }
 
     private void FixedUpdate()
     {
-        if(this.moveDirection != Vector2.zero)
+        
+        if (this.moveDirection != Vector2.zero)
         {
             if (this.transform.position.y >= this.upperPositionLimit) this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.upperPositionLimit));
             else this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.transform.position.y + this.moveDirection.y * this.moveSpeed));

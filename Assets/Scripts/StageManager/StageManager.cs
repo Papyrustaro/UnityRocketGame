@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using NCMB;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private E_ClearFlagType clearFlagType;
     [SerializeField] private E_PlayType playType;
     [SerializeField] private bool isStageScene = true;
+    [SerializeField] private Text testText;
 
     public static StageManager Instance { get; set; }
 
@@ -26,11 +29,13 @@ public class StageManager : MonoBehaviour
     /// </summary>
     public bool IsStop { get; set; } = false;
 
+    public bool IsPausing { get; set; } = false;
+
     private void Awake()
     {
-        if(StageManager.Instance == null)
+        if(Instance == null)
         {
-            StageManager.Instance = this;
+            Instance = this;
         }
         else
         {
@@ -45,12 +50,18 @@ public class StageManager : MonoBehaviour
 
     public void StopAllMoving()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         this.IsStop = true;
+    }
+
+    public void MoveAllMoving()
+    {
+        this.IsStop = false;
     }
 
     public void StageClear()
     {
+        //StartCoroutine("SortByDate");
         //InitStageInstance();
         //SceneManager.LoadScene("GameClear");
         StopAllMoving();
@@ -61,8 +72,80 @@ public class StageManager : MonoBehaviour
         //StopAllMoving();
     }
 
+    public IEnumerator SortByDate()
+    {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("Mission1");
+        List<NCMBObject> result = null;
+        NCMBException error = null;
+        //query.OrderByDescending("createDate"); //降順
+        //query.WhereLessThan("ClearTime", 10);
+        query.OrderByDescending("ClearTime");
+        //query.Limit = 10;
+        query.FindAsync((List<NCMBObject> _result, NCMBException _error) =>
+        {
+            result = _result;
+            error = _error;
+        });
+
+        //resultもしくはerrorが入るまで待機
+        yield return new WaitWhile(() => result == null && error == null);
+
+        //後続処理 
+        if (error == null)
+        {
+            Debug.Log("test");
+            Debug.Log(result.Count);
+            string s = "";
+            foreach (NCMBObject data in result)
+            {
+                s += data["PlayerName"] + "\n";
+            }
+            this.testText.text = s;
+        }
+        Debug.Log("Finish!!!");
+    }
+    /*public void SortByDate()
+    {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("Mission1");
+        //NCMBObject obj = new NCMBObject("Mission1");
+        query.OrderByDescending("createDate"); //降順
+        query.Limit = 10;
+        List<String> playerNames = new List<string>();
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+
+            //検索成功したら
+            if (e == null)
+            {
+                foreach(NCMBObject obj in objList)
+                {
+                    playerNames.Add(obj["PlayerName"].ToString());
+                }
+            }
+        });
+        foreach(String name in playerNames)
+        {
+            Debug.Log(name);
+        }
+    }*/
+
+    public void SortByTime()
+    {
+        if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
     public void SetRanking()
     {
+        /*NCMBObject obj = new NCMBObject("Mission1");
+        obj["PlayerName"] = StaticData.playerName;
+        obj["ClearTime"] = TimeManager.Instance.CountTime;
+        obj.SaveAsync();*/
+
         this.ResultTime = TimeManager.Instance.CountTime;
         string sceneName = SceneManager.GetActiveScene().name;
         if (TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)

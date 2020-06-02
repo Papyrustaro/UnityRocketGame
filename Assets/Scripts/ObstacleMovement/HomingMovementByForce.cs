@@ -25,7 +25,19 @@ public class HomingMovementByForce : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (!this.m_rigidbody2D.simulated)
+        {
+            if (StageManager.Instance.IsStop) return;
+            else this.m_rigidbody2D.simulated = true;
+        }
+        else
+        {
+            if (StageManager.Instance.IsStop)
+            {
+                this.m_rigidbody2D.simulated = false;
+                return;
+            }
+        }
         this.diff = new Vector3(this.playerPrefab.position.x - this.transform.position.x, this.playerPrefab.position.y - this.transform.position.y, 0f).normalized;
         if (this.changeRotation)
         {
@@ -35,6 +47,7 @@ public class HomingMovementByForce : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         this.m_rigidbody2D.AddForce(this.diff);
     }
 

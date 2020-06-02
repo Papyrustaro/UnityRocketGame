@@ -23,7 +23,7 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1f;
+        StageManager.Instance.MoveAllMoving();
     }
 
     public void SetPlayerName(string inputName)
