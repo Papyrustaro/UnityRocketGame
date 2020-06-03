@@ -642,8 +642,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -220}
-  m_SizeDelta: {x: 250, y: 440}
+  m_AnchoredPosition: {x: 375, y: -250}
+  m_SizeDelta: {x: 250, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &434674566
 CanvasRenderer:
@@ -672,7 +672,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4f7582dce307e5f48b4547c38917ba55, type: 3}
+    m_Font: {fileID: 12800000, guid: 134c1a63f6075444f9f3758d5022493f, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -1403,7 +1403,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4f7582dce307e5f48b4547c38917ba55, type: 3}
+    m_Font: {fileID: 12800000, guid: 134c1a63f6075444f9f3758d5022493f, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -2877,7 +2877,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4f7582dce307e5f48b4547c38917ba55, type: 3}
+    m_Font: {fileID: 12800000, guid: 134c1a63f6075444f9f3758d5022493f, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -3123,7 +3123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4f7582dce307e5f48b4547c38917ba55, type: 3}
+    m_Font: {fileID: 12800000, guid: 134c1a63f6075444f9f3758d5022493f, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -4505,6 +4505,11 @@ PrefabInstance:
       propertyPath: m_FontData.m_Alignment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2241486058564383878, guid: 35c7244f770564843b8521acc43a25ea,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 2289750444807727174, guid: 35c7244f770564843b8521acc43a25ea,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -5031,8 +5036,8 @@ PrefabInstance:
     - target: {fileID: 8398025684153635214, guid: 35c7244f770564843b8521acc43a25ea,
         type: 3}
       propertyPath: m_Text
-      value: "\u52A0\u901F(\u524D\u9032): Space\n\u5DE6\u56DE\u8EE2: A\n\u53F3\u56DE\u8EE2:
-        D"
+      value: "\u52A0\u901F(\u524D\u9032): W\u307E\u305F\u306FSpace\n\u5DE6\u56DE\u8EE2:
+        A\n\u53F3\u56DE\u8EE2: D"
       objectReference: {fileID: 0}
     - target: {fileID: 8398025684153635214, guid: 35c7244f770564843b8521acc43a25ea,
         type: 3}

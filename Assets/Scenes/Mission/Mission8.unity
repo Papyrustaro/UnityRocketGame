@@ -1262,7 +1262,7 @@ PrefabInstance:
     - target: {fileID: 7098067659880870109, guid: 354ab96b7ded3b942bbcf196d1031682,
         type: 3}
       propertyPath: moveSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7098067659880870110, guid: 354ab96b7ded3b942bbcf196d1031682,
         type: 3}
@@ -1363,6 +1363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveDirectionAndLength.x
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820112898866577206, guid: d57c59af3f5aff84ebd59a579e763fa8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57c59af3f5aff84ebd59a579e763fa8, type: 3}
@@ -6779,6 +6784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GoalField
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468005445959114493, guid: 2de665237e84c4a469c5b02f9ed06a8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2468005445959114495, guid: 2de665237e84c4a469c5b02f9ed06a8c,
         type: 3}

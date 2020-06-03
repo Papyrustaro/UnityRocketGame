@@ -6,13 +6,10 @@ using UnityEngine.UI;
 public class BossStageUIManager : MonoBehaviour
 {
     [SerializeField] private Text bossHPText;
-    [SerializeField] private Text playerHPText;
 
     [SerializeField] private ColliderFunctionOfHaveHpObject boss;
-    [SerializeField] private ColliderFunctionOfHaveHpObject player;
 
     public Text BossHPText => this.bossHPText;
-    public Text PlayerHPText => this.playerHPText;
 
     public static BossStageUIManager Instance { get; set; }
 
@@ -30,7 +27,7 @@ public class BossStageUIManager : MonoBehaviour
 
     private void Start()
     {
-        this.bossHPText.text = "ボスHP: " + boss.Hp.ToString();
-        this.playerHPText.text = "味方HP: " + player.Hp.ToString();
+        this.bossHPText.text = "敵HP: " + boss.Hp.ToString();
+        if (BGMManager.playingBGM == E_BGM.boss1) BGMManager.PlayBGM(BGMManager.bossBGM0);
     }
 }

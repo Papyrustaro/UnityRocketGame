@@ -103,13 +103,7 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
 
     public void UpdateBossHPText()
     {
-        BossStageUIManager.Instance.BossHPText.text = "ボスHP: " + this.Hp.ToString();
-    }
-
-    public void UpdatePlayerHPText()
-    {
-        SEManager.PlaySE(SEManager.explosionObstacle);
-        BossStageUIManager.Instance.PlayerHPText.text = "味方HP: " + this.Hp.ToString();
+        BossStageUIManager.Instance.BossHPText.text = "敵HP: " + this.Hp.ToString();
     }
 
     public void UpdateEnemyHPText()

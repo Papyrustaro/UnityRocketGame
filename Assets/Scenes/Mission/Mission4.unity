@@ -16935,7 +16935,7 @@ PrefabInstance:
     - target: {fileID: 6999808084182050858, guid: 7f3518ee28541bf4baf46804f2ccf916,
         type: 3}
       propertyPath: <LimitSecond>k__BackingField
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6999808085188708289, guid: 7f3518ee28541bf4baf46804f2ccf916,
         type: 3}

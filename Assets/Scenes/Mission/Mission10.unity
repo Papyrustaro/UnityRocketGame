@@ -703,9 +703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHPText: {fileID: 1562519623}
-  playerHPText: {fileID: 1761273356}
   boss: {fileID: 1782454670}
-  player: {fileID: 1866861775}
 --- !u!224 &1212705819 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6999808085188708289, guid: 7f3518ee28541bf4baf46804f2ccf916,
@@ -944,12 +942,12 @@ PrefabInstance:
     - target: {fileID: 4939219205769941197, guid: b74b92ee61e2596498d30e9cb2eb745a,
         type: 3}
       propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939219205769941197, guid: b74b92ee61e2596498d30e9cb2eb745a,
         type: 3}
       propertyPath: hp
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4939219205769941197, guid: b74b92ee61e2596498d30e9cb2eb745a,
         type: 3}
@@ -1015,12 +1013,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1212705819}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -60}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 145, y: -60}
+  m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562519623
 MonoBehaviour:
@@ -1053,7 +1051,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6575HP: 11"
+  m_Text: "\u6575HP: 50"
 --- !u!222 &1562519624
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1092,83 +1090,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1761273354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1761273355}
-  - component: {fileID: 1761273357}
-  - component: {fileID: 1761273356}
-  m_Layer: 5
-  m_Name: PlayerHPText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1761273355
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761273354}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1212705819}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -90}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1761273356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761273354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u5473\u65B9HP: 3"
---- !u!222 &1761273357
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761273354}
-  m_CullTransparentMesh: 0
 --- !u!1 &1782454668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7812469671914944708, guid: 2a49f658ef4e8e443b0577780030267e,
@@ -2429,6 +2350,11 @@ PrefabInstance:
       propertyPath: masicCirclePositions.Array.data[4]
       value: 
       objectReference: {fileID: 1439279408}
+    - target: {fileID: 7812469672715008845, guid: 2a49f658ef4e8e443b0577780030267e,
+        type: 3}
+      propertyPath: changeAttackHp
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7812469672715008846, guid: 2a49f658ef4e8e443b0577780030267e,
         type: 3}
       propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.size
@@ -2437,7 +2363,7 @@ PrefabInstance:
     - target: {fileID: 7812469672715008846, guid: 2a49f658ef4e8e443b0577780030267e,
         type: 3}
       propertyPath: hp
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7812469672715008846, guid: 2a49f658ef4e8e443b0577780030267e,
         type: 3}

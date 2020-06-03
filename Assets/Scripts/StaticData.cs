@@ -28,6 +28,7 @@ public class StaticData : MonoBehaviour
     /// プレイヤーの回転速度
     /// </summary>
     public static float rotationSpeed = 300f;
+
 }
 
 public class ResultDataNameAndTime

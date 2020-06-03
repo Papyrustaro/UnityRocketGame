@@ -8,7 +8,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject[] finalStageMasicCircles;
     [SerializeField] private Transform[] masicCirclePositions;
     [SerializeField] private float instantiateMasicCircleInterval;
-    [SerializeField] private int changeAttackHp = 50;
+    [SerializeField] private int changeAttackHp = 25;
 
     private int earlyStageMasicCirclesCount;
     private int finalStageMasicCirclesCount;
