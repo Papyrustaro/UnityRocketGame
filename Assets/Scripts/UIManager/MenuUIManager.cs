@@ -12,6 +12,16 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject manualPanel;
     [SerializeField] private GameObject manual;
     [SerializeField] private GameObject option;
+    [SerializeField] private GameObject rankingPanel;
+    [SerializeField] private GameObject ranking;
+
+    private ShowRankingManager showRankingManager;
+
+
+    /// <summary>
+    /// ランキングを一度でも表示したかどうか
+    /// </summary>
+    private bool showedRanking = false;
 
     public E_MenuType CurrentSelectType { get; set; } = E_MenuType.Other;
 
@@ -32,6 +42,7 @@ public class MenuUIManager : MonoBehaviour
         {
             throw new System.Exception();
         }
+        this.showRankingManager = this.ranking.GetComponent<ShowRankingManager>();
     }
 
     private void Update()
@@ -75,6 +86,23 @@ public class MenuUIManager : MonoBehaviour
                         this.CountTime = 0f;
                     }
                     break;
+                case E_MenuType.Ranking:
+                    if(CountTime > 0.3f)
+                    {
+                        OptionClickManager.Instance.OptionIcon.SetActive(false);
+                        SEManager.PlaySE(SEManager.decision);
+                        this.rankingPanel.SetActive(false);
+                        this.ranking.SetActive(true);
+                        this.showRankingManager.RankingTitleText.text = "ランキング(Mission" + (this.showRankingManager.ShowingMissionIndex + 1).ToString() + ")";
+                        this.showRankingManager.NextRankingIndexButton.Select();
+                        if (!this.showedRanking)
+                        {
+                            this.showRankingManager.SetRanking();
+                        }
+                        StageManager.Instance.StopAllMoving();
+                        this.CountTime = 0f;
+                    }
+                    break;
             }
         }
     }
@@ -95,6 +123,9 @@ public class MenuUIManager : MonoBehaviour
             case E_MenuType.Option:
                 this.optionPanel.SetActive(wantOpen);
                 break;
+            case E_MenuType.Ranking:
+                this.rankingPanel.SetActive(wantOpen);
+                break;
             case E_MenuType.ScoreAttack:
                 this.scoreAttackPanel.SetActive(wantOpen);
                 break;
@@ -113,4 +144,5 @@ public enum E_MenuType
     Option,
     Manual,
     Other,
+    Ranking,
 }
