@@ -111,6 +111,11 @@ public class ColliderFunctionOfHaveHpObject : MonoBehaviour
         SEManager.PlaySE(SEManager.explosionObstacle);
         BossStageUIManager.Instance.PlayerHPText.text = "味方HP: " + this.Hp.ToString();
     }
+
+    public void UpdateEnemyHPText()
+    {
+        EnemyHPTextManager.Instance.EnemyHPText.text = "敵HP: " + this.Hp.ToString();
+    }
     public void DestroyMyGameObject()
     {
         Destroy(this.transform.root.gameObject);

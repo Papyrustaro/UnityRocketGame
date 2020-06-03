@@ -537,6 +537,98 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 250598058}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &680488872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680488873}
+  - component: {fileID: 680488875}
+  - component: {fileID: 680488874}
+  - component: {fileID: 680488876}
+  m_Layer: 5
+  m_Name: EnemyHPText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &680488873
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680488872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6999808084346692139}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -60}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &680488874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680488872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 4f7582dce307e5f48b4547c38917ba55, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4f7582dce307e5f48b4547c38917ba55, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u6575HP:"
+--- !u!222 &680488875
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680488872}
+  m_CullTransparentMesh: 0
+--- !u!114 &680488876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680488872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b48fb06b67e524da0705fd4308cfe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHPText: {fileID: 680488874}
+  enemy: {fileID: 1117357750}
 --- !u!1 &696113838 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1880334398735676067, guid: 84a63d5d1c81a1342bf20e9830818024,
@@ -588,6 +680,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+      propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
       propertyPath: destroyMe.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -630,6 +726,26 @@ PrefabInstance:
     - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
       propertyPath: hp
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+      propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+      propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+      propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1117357750}
+    - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+      propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateEnemyHPText
+      objectReference: {fileID: 0}
+    - target: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+      propertyPath: haveDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6331003099949921387, guid: 9226cd251372928469d4910a89454fcd,
         type: 3}
@@ -710,6 +826,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3318409170085804353, guid: 9226cd251372928469d4910a89454fcd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9226cd251372928469d4910a89454fcd, type: 3}
+--- !u!114 &1117357750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 552012451, guid: 9226cd251372928469d4910a89454fcd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1117357749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930267420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391aec57918018243a7e8abea64f56b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1167486175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1880334397484327620, guid: 84a63d5d1c81a1342bf20e9830818024,
@@ -1990,6 +2118,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1308557782, guid: 7f3518ee28541bf4baf46804f2ccf916, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2018774497, guid: 7f3518ee28541bf4baf46804f2ccf916, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -2134,3 +2266,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3518ee28541bf4baf46804f2ccf916, type: 3}
+--- !u!224 &6999808084346692139 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6999808085188708289, guid: 7f3518ee28541bf4baf46804f2ccf916,
+    type: 3}
+  m_PrefabInstance: {fileID: 6999808084346692138}
+  m_PrefabAsset: {fileID: 0}
