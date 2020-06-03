@@ -92,6 +92,7 @@ public class StageUIManager : MonoBehaviour
         if (this.pausePanel.activeSelf)
         {
             StageManager.Instance.IsPausing = false;
+            OptionClickManager.Instance.OptionIcon.SetActive(true);
             this.pausePanel.SetActive(false);
             SEManager.PlaySE(SEManager.back);
             StageManager.Instance.MoveAllMoving();
@@ -100,6 +101,7 @@ public class StageUIManager : MonoBehaviour
         {
             StageManager.Instance.IsPausing = true;
             StageManager.Instance.StopAllMoving();
+            OptionClickManager.Instance.OptionIcon.SetActive(false);
             this.pausePanel.SetActive(true);
             this.resumeButton.Select();
             SEManager.PlaySE(SEManager.pause);

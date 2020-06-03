@@ -78,6 +78,7 @@ public class TimeManager : MonoBehaviour
             if(this.CountTime <= 0f && this.needCount)
             {
                 this.CountTime = 0f;
+                OptionClickManager.Instance.OptionIcon.SetActive(false);
                 StageManager.Instance.GameOver();
                 this.needCount = false;
                 return;

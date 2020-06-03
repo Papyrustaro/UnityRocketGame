@@ -57,6 +57,7 @@ public class PlayerRocket : MonoBehaviour
 
     public void DestroyPlayerRocket()
     {
+        OptionClickManager.Instance.OptionIcon.SetActive(false);
         this.IsDied = true;
         this.m_rocketController.InjectionFire.SetActive(false);
         StageManager.Instance.StopAllMoving();

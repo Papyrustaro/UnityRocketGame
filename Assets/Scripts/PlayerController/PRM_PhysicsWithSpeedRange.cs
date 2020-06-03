@@ -8,12 +8,12 @@ using UnityEngine;
 public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
 {
     [SerializeField] private float moveForce = 1f;
-    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float rotationSpeed = -1f;
     [SerializeField] private float minSpeed = 3f;
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float decelerationRate = 0.98f;
     private bool isMoveForce; //加速しているか
-
+    private bool useOriginalRotationSpeed = false; //Inspectorで設定されたrotationSpeedを利用しているかどうか
     private void Awake()
     {
         this.AwakeFunc();
@@ -22,10 +22,13 @@ public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
     private void Start()
     {
         this.M_Rigidbody2D.velocity = new Vector2(0f, 1f);
+        if (this.rotationSpeed < 0f) this.rotationSpeed = StaticData.rotationSpeed;
+        else this.useOriginalRotationSpeed = true;
     }
 
     private void Update()
     {
+        if (!this.useOriginalRotationSpeed && this.rotationSpeed != StaticData.rotationSpeed) this.rotationSpeed = StaticData.rotationSpeed;
         if (!this.M_Rigidbody2D.simulated)
         {
             if (StageManager.Instance.IsStop) return;
@@ -82,7 +85,7 @@ public class PRM_PhysicsWithSpeedRange : PlayerRocketMovement
             //右回転
             this.transform.Rotate(new Vector3(0, 0, this.rotationSpeed * Time.deltaTime * -1));
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
             //加速
             this.isMoveForce = true;

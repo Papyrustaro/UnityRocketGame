@@ -23,6 +23,11 @@ public class StaticData : MonoBehaviour
     /// missionFailedのときは、こちらにランキングデータを格納し、次回以降のmissionFailed時はこちらを参照。keyはミッション名(Mission0など)。valueは上位10名のデータ
     /// </summary>
     public static Dictionary<string, ResultDataNameAndDate> recentResults = new Dictionary<string, ResultDataNameAndDate>();
+
+    /// <summary>
+    /// プレイヤーの回転速度
+    /// </summary>
+    public static float rotationSpeed = 300f;
 }
 
 public class ResultDataNameAndTime

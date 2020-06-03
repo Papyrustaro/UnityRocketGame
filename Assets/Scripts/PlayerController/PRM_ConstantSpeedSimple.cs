@@ -79,7 +79,7 @@ public class PRM_ConstantSpeedSimple : PlayerRocketMovement
             //右回転
             this.transform.Rotate(new Vector3(0, 0, this.rotationSpeed * Time.deltaTime * -1));
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
             //加速
             this.isMoveForce = true;

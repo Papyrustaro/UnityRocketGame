@@ -54,6 +54,7 @@ public class ManualUIManager : MonoBehaviour
         {
             StageManager.Instance.MoveAllMoving();
             MenuUIManager.Instance.ManualPanel.SetActive(true);
+            OptionClickManager.Instance.OptionIcon.SetActive(true);
         }
         this.gameObject.SetActive(false);
     }

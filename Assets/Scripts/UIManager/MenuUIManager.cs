@@ -56,6 +56,7 @@ public class MenuUIManager : MonoBehaviour
                 case E_MenuType.Manual:
                     if(CountTime > 0.3f)
                     {
+                        OptionClickManager.Instance.OptionIcon.SetActive(false);
                         SEManager.PlaySE(SEManager.decision);
                         this.manualPanel.SetActive(false);
                         this.manual.SetActive(true);
@@ -66,6 +67,7 @@ public class MenuUIManager : MonoBehaviour
                 case E_MenuType.Option:
                     if (CountTime > 0.3f)
                     {
+                        OptionClickManager.Instance.OptionIcon.SetActive(false);
                         SEManager.PlaySE(SEManager.decision);
                         this.optionPanel.SetActive(false);
                         this.option.SetActive(true);

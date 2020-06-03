@@ -91,7 +91,7 @@ public class PRM_PhysicsWithSpeedRangeAndMoveDirectionWithRotation : PlayerRocke
             this.transform.Rotate(new Vector3(0, 0, this.rotationSpeed * Time.deltaTime * -1));
             this.rotationValue -= this.rotationSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
             //加速
             this.isMoveForce = true;

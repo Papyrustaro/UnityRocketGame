@@ -9,18 +9,26 @@ using System;
 public class PRM_ConstantSpeedAndMoveTime : PlayerRocketMovement
 {
     [SerializeField] private float moveSpeed = 0.1f;
-    [SerializeField] private float rotationSpeed = 300f;
+    [SerializeField] private float rotationSpeed = -1f;
     [SerializeField] private float oneMovementTime = 0.5f;
     private bool isMoving; //動いているか
     private Vector2 moveDirection;
+    private bool useOriginalRotationSpeed = false; //Inspectorで設定されたrotationSpeedを利用しているかどうか
 
     private void Awake()
     {
         this.AwakeFunc();
     }
 
+    private void Start()
+    {
+        if (this.rotationSpeed < 0f) this.rotationSpeed = StaticData.rotationSpeed;
+        else this.useOriginalRotationSpeed = true;
+    }
+
     private void Update()
     {
+        if (!this.useOriginalRotationSpeed && this.rotationSpeed != StaticData.rotationSpeed) this.rotationSpeed = StaticData.rotationSpeed;
         if (!this.M_Rigidbody2D.simulated)
         {
             if (StageManager.Instance.IsStop) return;
@@ -77,7 +85,7 @@ public class PRM_ConstantSpeedAndMoveTime : PlayerRocketMovement
             //右回転
             this.transform.Rotate(new Vector3(0, 0, this.rotationSpeed * Time.deltaTime * -1));
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
             //加速
             float z = (this.transform.rotation.eulerAngles.z + 90) * Mathf.Deg2Rad;

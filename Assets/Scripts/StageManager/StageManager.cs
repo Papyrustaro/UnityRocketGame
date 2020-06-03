@@ -60,6 +60,7 @@ public class StageManager : MonoBehaviour
 
     public void StageClear()
     {
+        OptionClickManager.Instance.OptionIcon.SetActive(false);
         //StartCoroutine("SortByDate");
         //InitStageInstance();
         //SceneManager.LoadScene("GameClear");
