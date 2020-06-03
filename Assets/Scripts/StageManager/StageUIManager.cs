@@ -34,6 +34,8 @@ public class StageUIManager : MonoBehaviour
     private GameObject gameOverText;
     private ManualUIManager manualUIManager;
 
+    private int thisTimePlayerRank = -1; //今回のプレイヤーのタイム順位
+
     public GameObject PausePanel => this.pausePanel;
     public Button ResumeButton => this.resumeButton;
     public static StageUIManager Instance { get; set; }
@@ -206,7 +208,8 @@ public class StageUIManager : MonoBehaviour
         for(int i = 0; i < recentResults.Count; i++)
         {
             playerName += (i + 2).ToString() + ". " + recentResults[i]["PlayerName"].ToString() + "\n";
-            clearDate += recentResults[i].CreateDate.ToString().Substring(0, 10) + "\n";
+            DateTime cDate = DateTime.Parse(recentResults[i].CreateDate.ToString());
+            clearDate += cDate.ToString("yyyy/MM/dd") + "\n";
         }
 
         this.recentPlayerNameText.text = playerName;
@@ -282,7 +285,8 @@ public class StageUIManager : MonoBehaviour
         for (int i = 0; i < recentResults.Count; i++)
         {
             playerName += (i + 1).ToString() + ". " + recentResults[i]["PlayerName"].ToString() + "\n";
-            clearDate += recentResults[i].CreateDate.ToString().Substring(0, 10) + "\n";
+            DateTime cDate = DateTime.Parse(recentResults[i].CreateDate.ToString());
+            clearDate += cDate.ToString("yyyy/MM/dd") + "\n";
         }
 
         this.recentPlayerNameText.text = playerName;
@@ -341,6 +345,7 @@ public class StageUIManager : MonoBehaviour
             {
                 playerName += (i + 1).ToString() + ". " + StaticData.playerName + "\n";
                 resultTime += TimeManager.Instance.CountTime + "\n";
+                this.thisTimePlayerRank = i + 1;
                 rankined = true;
             }
             else if(rankined) //playerがランクインしたあとの
@@ -434,8 +439,19 @@ public class StageUIManager : MonoBehaviour
 
     public void Tweeting()
     {
-        var url = "https://twitter.com/intent/tweet?"
-            + "text=" + SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime + "でクリア!!"
+        string tweetText = "";
+        if (this.thisTimePlayerRank != -1) tweetText = "【現在" + this.thisTimePlayerRank.ToString() + "位】";
+        if(TimeManager.Instance.CountTimeType == E_CountTimeType.CountUp)
+        {
+            tweetText += SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime.ToString() + "秒でクリア!!";
+        }
+        else
+        {
+            tweetText += SceneManager.GetActiveScene().name + "を" + StageManager.Instance.ResultTime.ToString() + "秒残しでクリア!!";
+        }
+
+        string url = "https://twitter.com/intent/tweet?"
+            + "text=" + tweetText
             + "&url=" + "https://unityroom.com/games/underrocket"
             + "&hashtags=" + "UnderRocket,unityroom";
 

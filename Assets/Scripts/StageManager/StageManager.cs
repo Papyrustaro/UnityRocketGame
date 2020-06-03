@@ -65,6 +65,7 @@ public class StageManager : MonoBehaviour
         //SceneManager.LoadScene("GameClear");
         StopAllMoving();
         TimeManager.Instance.UpdateCountTime();
+        this.ResultTime = TimeManager.Instance.CountTime;
         //TimeManager.Instance.AddTime(Time.deltaTime);
         //SetRankingByPlayerPrefs();
         StartCoroutine(StageUIManager.Instance.SetAndShowRankingWhenClear());
@@ -108,7 +109,7 @@ public class StageManager : MonoBehaviour
     }
 
 
-    public void SetRankingByPlayerPrefs()
+    /*public void SetRankingByPlayerPrefs()
     {
 
         this.ResultTime = TimeManager.Instance.CountTime;
@@ -175,7 +176,7 @@ public class StageManager : MonoBehaviour
         PlayerPrefs.SetString(sceneName + "RecentPlayerName" + 1, StaticData.playerName);
         PlayerPrefs.SetString(sceneName + "RecentDate" + 1, dateTime.Year.ToString() + "/" + dateTime.Month.ToString() + "/" + dateTime.Day.ToString());
         PlayerPrefs.Save();
-    }
+    }*/
 
     public void GameOver()
     {

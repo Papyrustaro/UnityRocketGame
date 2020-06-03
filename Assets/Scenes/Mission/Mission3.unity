@@ -458,6 +458,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoalField
       objectReference: {fileID: 0}
+    - target: {fileID: 2468005445959114493, guid: 2de665237e84c4a469c5b02f9ed06a8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2468005445959114495, guid: 2de665237e84c4a469c5b02f9ed06a8c,
         type: 3}
       propertyPath: m_LocalPosition.x

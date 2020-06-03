@@ -38,7 +38,7 @@ public class PRM_ConstantMove : PlayerRocketMovement
         
         if (this.moveDirection != Vector2.zero)
         {
-            if (this.transform.position.y >= this.upperPositionLimit) this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.upperPositionLimit));
+            if (this.transform.position.y >= this.upperPositionLimit && this.moveDirection.y > 0) this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.upperPositionLimit));
             else this.M_Rigidbody2D.MovePosition(new Vector2(this.transform.position.x + this.moveDirection.x * this.moveSpeed, this.transform.position.y + this.moveDirection.y * this.moveSpeed));
         }
     }
