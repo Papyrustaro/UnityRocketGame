@@ -184,16 +184,7 @@ public class StageManager : MonoBehaviour
         //SetRanking();
         StopAllMoving();
         TimeManager.Instance.UpdateCountTime();
-        //TimeManager.Instance.AddTime(Time.deltaTime);
-        if (StaticData.highRankResults.ContainsKey(SceneManager.GetActiveScene().name))
-        {
-            StageUIManager.Instance.SetResultAndShowUsedStaticData();
-        }
-        else
-        {
-            StartCoroutine(StageUIManager.Instance.SetAndShowRankingWhenFailed());
-        }
-        //StopAllMoving();
+        StartCoroutine(StageUIManager.Instance.SetAndShowRankingWhenFailed());
     }
 
     public void InitStageInstance()

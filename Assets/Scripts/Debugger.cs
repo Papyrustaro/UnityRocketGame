@@ -8,4 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class Debugger : MonoBehaviour
 {
+    private int hp;
+    public int Hp { get; private set; }
+
+    private void Awake()
+    {
+        this.Hp = this.hp;
+    }
 }

@@ -293,7 +293,8 @@ public class StageUIManager : MonoBehaviour
 
         this.recentPlayerNameText.text = playerName;
         this.recentDateText.text = clearDate;
-        StaticData.recentResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndDate(playerName, clearDate));
+        if (StaticData.recentResults.ContainsKey(SceneManager.GetActiveScene().name)) StaticData.recentResults[SceneManager.GetActiveScene().name] = new ResultDataNameAndDate(playerName, clearDate);
+        else StaticData.recentResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndDate(playerName, clearDate));
     }
 
     public void SetHighRankingTextFromFailedResult(List<NCMBObject> highRanks)
@@ -308,7 +309,8 @@ public class StageUIManager : MonoBehaviour
         }
         this.rankingPlayerNameText.text = playerName;
         this.rankingScoreOrTimeText.text = resultTime;
-        StaticData.highRankResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndTime(playerName, resultTime));
+        if (StaticData.highRankResults.ContainsKey(SceneManager.GetActiveScene().name)) StaticData.highRankResults[SceneManager.GetActiveScene().name] = new ResultDataNameAndTime(playerName, resultTime);
+        else StaticData.highRankResults.Add(SceneManager.GetActiveScene().name, new ResultDataNameAndTime(playerName, resultTime));
     }
 
     public void SetHighRankingTextFromClearResult(List<NCMBObject> highRanks)
@@ -487,7 +489,7 @@ public class StageUIManager : MonoBehaviour
         //this.rankingScrollView.SetActive(!this.rankingScrollView.activeSelf);
         //this.recentScrollView.SetActive(!this.recentScrollView.activeSelf);
     }
-    public IEnumerator SetAndShowRankingWhenFailed()
+    /*public IEnumerator SetAndShowRankingWhenFailed()
     {
         this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
         StageManager.Instance.StopAllMoving();
@@ -513,7 +515,7 @@ public class StageUIManager : MonoBehaviour
         this.rankingPanel.SetActive(true);
         this.tweetResultButton.SetActive(false);
         this.continueButton.Select();
-    }
+    }*/
 
     public IEnumerator SetAndShowRankingWhenClear()
     {
@@ -541,6 +543,51 @@ public class StageUIManager : MonoBehaviour
         this.rankingPanel.SetActive(true);
         this.continueButton.Select();
         StageManager.Instance.SavePlayerResult();
+    }
+
+    public IEnumerator SetAndShowRankingWhenFailed()
+    {
+        this.playerResultText.text = StaticData.playerName + ": " + TimeManager.Instance.CountTime;
+        StageManager.Instance.StopAllMoving();
+
+        //StartCoroutine(DelayMethodRealTime(0.5f, () =>
+        //{
+        SEManager.PlaySE(SEManager.failed);
+        this.scoreText.SetActive(false);
+        this.timeText.SetActive(false);
+        this.flagCountText.transform.gameObject.SetActive(false);
+        this.gameOverText.SetActive(true);
+        this.smogPanel.SetActive(true);
+        //}));
+        StartCoroutine(DelayMethodRealTime(0.5f, () =>
+        {
+            this.gameOverText.SetActive(false);
+        }));
+
+        if (StaticData.highRankResults.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            this.rankingPlayerNameText.text = StaticData.highRankResults[SceneManager.GetActiveScene().name].PlayerNameText;
+            this.rankingScoreOrTimeText.text = StaticData.highRankResults[SceneManager.GetActiveScene().name].ResultTimeText;
+        }
+        else
+        {
+            yield return StartCoroutine(SetHighRankingTextFromFailedResult());
+        }
+
+        if (StaticData.recentResults.ContainsKey(SceneManager.GetActiveScene().name))
+        {
+            this.recentPlayerNameText.text = StaticData.recentResults[SceneManager.GetActiveScene().name].PlayerNameText;
+            this.recentDateText.text = StaticData.recentResults[SceneManager.GetActiveScene().name].ClearDateText;
+        }
+        else
+        {
+            yield return StartCoroutine(SetRecentClearTextFromFailedResult());
+        }
+
+        SEManager.PlaySE(SEManager.getItem);
+        this.rankingPanel.SetActive(true);
+        this.tweetResultButton.SetActive(false);
+        this.continueButton.Select();
     }
 
     IEnumerator DelayMethodRealTime(float waitTime, Action action)
