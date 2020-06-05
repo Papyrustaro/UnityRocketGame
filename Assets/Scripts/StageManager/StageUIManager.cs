@@ -34,6 +34,7 @@ public class StageUIManager : MonoBehaviour
     private GameObject gameOverText;
     private ManualUIManager manualUIManager;
 
+
     private int thisTimePlayerRank = -1; //今回のプレイヤーのタイム順位
 
     public GameObject PausePanel => this.pausePanel;

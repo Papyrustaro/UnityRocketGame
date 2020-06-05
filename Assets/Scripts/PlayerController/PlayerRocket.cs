@@ -14,6 +14,7 @@ public class PlayerRocket : MonoBehaviour
     private WeaponGenerator weaponGenerator;
     private bool haveWeapon = true;
     private bool canShot = true;
+    private float countTime = 0f;
 
     public static Transform PlayerTransform { private set; get; }
 
@@ -43,15 +44,17 @@ public class PlayerRocket : MonoBehaviour
     private void Update()
     {
         if (StageManager.Instance.IsStop) return;
+        this.countTime += Time.deltaTime;
+        if (!this.canShot && this.countTime >= this.shotInterval)
+        {
+            this.canShot = true;
+        }
         if (this.haveWeapon && this.canShot && Input.GetKeyDown(KeyCode.J))
         {
             SEManager.PlaySE(SEManager.shot0);
             this.weaponGenerator.GenerateWeapon();
             this.canShot = false;
-            StartCoroutine(DelayMethod(this.shotInterval, () =>
-            {
-                this.canShot = true;
-            }));
+            this.countTime = 0f;
         }
     }
 

@@ -30,6 +30,16 @@ public class StageManager : MonoBehaviour
 
     public bool IsPausing { get; set; } = false;
 
+    /// <summary>
+    /// クリア判定が重複しないための確認フラグ
+    /// </summary>
+    private bool isClear = false;
+
+    /// <summary>
+    /// ランキングセットが重複しないための確認フラグ
+    /// </summary>
+    private bool isSetRanking = false;
+
     private void Awake()
     {
         if(Instance == null)
@@ -60,6 +70,8 @@ public class StageManager : MonoBehaviour
 
     public void StageClear()
     {
+        if (this.isClear) return;
+        this.isClear = true;
         OptionClickManager.Instance.OptionIcon.SetActive(false);
         //StartCoroutine("SortByDate");
         //InitStageInstance();
@@ -69,6 +81,8 @@ public class StageManager : MonoBehaviour
         this.ResultTime = TimeManager.Instance.CountTime;
         //TimeManager.Instance.AddTime(Time.deltaTime);
         //SetRankingByPlayerPrefs();
+        if (this.isSetRanking) return;
+        this.isSetRanking = true;
         StartCoroutine(StageUIManager.Instance.SetAndShowRankingWhenClear());
         //StopAllMoving();
     }

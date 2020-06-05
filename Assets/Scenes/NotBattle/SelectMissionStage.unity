@@ -1099,6 +1099,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5442251074219885446, guid: 43d39d3410822f74ab1d34cb4ef8dee2,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5236\u4F5C: \u3055\u3093\u305F\u308D\n\nBGM: Ucchii0\u69D8\nSE: \u52B9\u679C\u97F3\u30E9\u30DC\u3001\u9B54\u738B\u9B42\n\u753B\u50CF:
+        \u3044\u3089\u3059\u3068\u3084\n\u30B9\u30DA\u30B7\u30E3\u30EB\u30B5\u30F3\u30AF\u30B9:
+        Yasufumi\u3001hushojin"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442251074219885447, guid: 43d39d3410822f74ab1d34cb4ef8dee2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d39d3410822f74ab1d34cb4ef8dee2, type: 3}
 --- !u!66 &578017821 stripped
@@ -2981,6 +2993,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547592372487951736, guid: 08163d1453b28a64d914faccf90dd24b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6547592372487951737, guid: 08163d1453b28a64d914faccf90dd24b,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5236\u4F5C: \u3055\u3093\u305F\u308D\n\nBGM: Ucchii0\u69D8\nSE: \u52B9\u679C\u97F3\u30E9\u30DC\u3001\u9B54\u738B\u9B42\n\u753B\u50CF:
+        \u3044\u3089\u3059\u3068\u3084\n\u30B9\u30DA\u30B7\u30E3\u30EB\u30B5\u30F3\u30AF\u30B9:
+        Yasufumi\u3001hushojin"
       objectReference: {fileID: 0}
     - target: {fileID: 7417819519392105568, guid: 08163d1453b28a64d914faccf90dd24b,
         type: 3}

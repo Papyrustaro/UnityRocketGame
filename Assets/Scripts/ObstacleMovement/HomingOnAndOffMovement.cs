@@ -35,7 +35,17 @@ public class HomingOnAndOffMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (StageManager.Instance.IsStop) return;
+        if (StageManager.Instance.IsStop)
+        {
+            this.m_rigidbody2D.simulated = false;
+            return;
+        }
+        else
+        {
+            this.m_rigidbody2D.simulated = true;
+        }
+
+
         this.countTime += Time.deltaTime;
         if(this.countTime >= this.oneStopTime)
         {

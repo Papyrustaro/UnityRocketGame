@@ -218,7 +218,6 @@ MonoBehaviour:
   optionPanel: {fileID: 5442251074083618342}
   resumeButton: {fileID: 5442251076174136769}
   optionIcon: {fileID: 5337254789878329854}
-  otherButton: {fileID: 0}
 --- !u!1001 &5337254789890522742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,6 +334,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114699337613737456, guid: 37efe7a8d8917a34da2217b61e90d613,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5236\u4F5C: \u3055\u3093\u305F\u308D\n\nBGM: Ucchii0\u69D8\nSE: \u52B9\u679C\u97F3\u30E9\u30DC\u3001\u9B54\u738B\u9B42\n\u753B\u50CF:
+        \u3044\u3089\u3059\u3068\u3084\n\u30B9\u30DA\u30B7\u30E3\u30EB\u30B5\u30F3\u30AF\u30B9:
+        Yasufumi\u3001hushojin"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114699337613737457, guid: 37efe7a8d8917a34da2217b61e90d613,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37efe7a8d8917a34da2217b61e90d613, type: 3}
